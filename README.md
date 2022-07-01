@@ -2,7 +2,9 @@
 
 ## Contributors:
 
+
 Michalle
+
 Wenling Yu
 
 ## User Story
@@ -40,3 +42,4 @@ Wenling Yu
 ## ERD
 
 ## Next Steps
+
