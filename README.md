@@ -40,6 +40,3 @@ Wenling Yu
 
 ## Next Steps
 
-
-- michalle
-
