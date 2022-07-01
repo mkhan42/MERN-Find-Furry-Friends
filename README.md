@@ -2,6 +2,7 @@
 
 ## Contributors:
 
+Michalle
 Wenling Yu
 
 ## User Story
