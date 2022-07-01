@@ -1,6 +1,6 @@
 import * as usersService from '../../utilities/users-service'
 
-export default function OrderHistoryPage() {
+export default function LostPostsPage() {
 
     async function handleCheckToken() {
         const expDate = await usersService.checkToken()
