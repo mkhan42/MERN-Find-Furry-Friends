@@ -5,11 +5,6 @@
 - Yonatan Kumsa
 - Michalle Khan
 
-
-Michalle
-
-Wenling Yu
-
 ## User Story
 
 - As a user, we want to be able to create an account for the application and be able to log in and logout.
