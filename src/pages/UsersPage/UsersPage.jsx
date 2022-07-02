@@ -16,8 +16,10 @@ export default function UsersPage() {
       <h3>My Posts: ....eidt,delete</h3>
       {/* after mvp */}
       <h3>My comments: ...delete </h3>
-
-      {/* if someone comment our post, we get notification... */}
+      <h3>
+        InMail: ??number?? - click then show the list - comment in the post
+      </h3>
+      {/* if someone comment our post, we got notification... */}
     </>
   );
 }
