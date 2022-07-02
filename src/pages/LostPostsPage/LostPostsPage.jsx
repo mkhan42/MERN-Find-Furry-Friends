@@ -1,18 +1,21 @@
-import * as usersService from '../../utilities/users-service'
+// import * as usersService from "../../utilities/users-service";
+import PetCard from "../../components/PetCard/PetCard";
 
 export default function LostPostsPage() {
+  // data with type=Lost
+  // const lostData = ...;
+  return (
+    <>
+      <h3>This is LostPostsPage</h3>
+      <PetCard />
 
-    async function handleCheckToken() {
-        const expDate = await usersService.checkToken()
-        console.log(expDate)
-    }
-
-    return (
-        <>
-            <h1>OrderHistoryPage</h1>
-            <button onClick={handleCheckToken}>Check When My Login Expires</button>
-        </>
-        
-    );
-  }
-  
+      <button
+        onClick={() => {
+          alert("it will jump to Lost Page");
+        }}
+      >
+        More in LOST
+      </button>
+    </>
+  );
+}
