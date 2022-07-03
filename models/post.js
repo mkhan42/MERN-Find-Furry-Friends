@@ -30,19 +30,7 @@ const postSchema = new Schema ({
         required: true,
         default: 'Unknown'
     },
-    lastLocationCity: {
-        type: String,
-        required: true
-    },
-    lastLocationState: {
-        type: String,
-        required: true
-    },
-    lastLocationZip: {
-        type: String,
-        required: true
-    },
-    lastLocationCountry: {
+    lastAddress: {
         type: String,
         required: true
     },
