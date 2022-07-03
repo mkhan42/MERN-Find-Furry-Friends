@@ -19,10 +19,7 @@ export default function PostForm() {
         <label>Age:</label>
         <input type="text" name="age"></input>
         <label>Last seen/found:</label>
-        <input type="text" name="lastLocationCity" placeholder="city"></input>
-        <input type="text" name="lastLocationState" placeholder="state"></input>
-        <input type="text" name="lastLocationZip" placeholder="zip"></input>
-        <input type="text" name="lastLocationCountry" placeholder="country"></input>
+        <input type="text" name="lastAddress" placeholder="Address"></input>
         <label>Description:</label>
         <input type="text" name="description"></input>
         <label>Reward:</label>
