@@ -15,19 +15,23 @@ import Footer from "../../components/Footer/Footer";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  const [comments, setComments] = useState("this a fake comment");
+
   return (
     <main className="App">
       {user ? (
         <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
-            {/* TODO: confirm w/ team */}
-            <Route path="/AllPosts" element={<AllPostsPage />} />
-            {/* <Route path="/FoundPosts" element={<FoundPostsPage />} />
-            <Route path="/LostPosts" element={<LostPostsPage />} /> */}
+            <Route
+              path="/AllPosts"
+              element={<AllPostsPage comments={comments} />}
+            />
+            <Route path="/FoundPosts" element={<FoundPostsPage />} />
+            <Route path="/LostPosts" element={<LostPostsPage />} />
             <Route path="/NewPost" element={<NewPostPage />} />
-            <Route path="/:UserId" element={<UsersPage />} />
-            {/* redirect to /orders/new if path in address bar hasn't matched a <Route> above */}
+            <Route path="/myaccount" element={<UsersPage user={user} />} />
+            {/* redirect to /AllPostt if path in address bar hasn't matched a <Route> above */}
             <Route path="/*" element={<Navigate to="/AllPosts" />} />
           </Routes>
         </>

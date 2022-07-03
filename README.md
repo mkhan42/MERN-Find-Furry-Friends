@@ -1,6 +1,7 @@
 # MERN-Find-Furry-Friends
 
 ## Contributors:
+
 - Wendy Yu
 - Yonatan Kumsa
 - Michalle Khan
@@ -15,6 +16,7 @@
 - Users should be able to see a nav bar with all lost or found pet posts, create lost or found post, account, and logout.
 
 ### After MVP
+
 - Users should sign in and see all availble pets for adoption.
 - Users should be able to filter the categories for types animals.
 - Users should be able to request pets and add them to their requests page.
@@ -48,3 +50,4 @@
 
 ## Next Steps
 
+## Wireframes
