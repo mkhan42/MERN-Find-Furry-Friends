@@ -29,6 +29,8 @@ export default function PostForm() {
         <input type="text" name="reward"></input>
         <label>Contact Info:</label>
         <input type="text" name="contactInfo"></input>
+        <label>Day pet was lost/found?:</label>
+        <input type="text" name="date"></input>
         <input type="submit"></input>
       </form>
     </>
