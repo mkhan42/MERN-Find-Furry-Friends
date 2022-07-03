@@ -1,7 +1,15 @@
-export default function CommentsCard() {
+export default function CommentsCard({ comments }) {
   return (
     <div className="Comments-Card-container">
-      <h1>This is a Comment Card</h1>
+      {comments.map((c) => {
+        return (
+          <>
+            <p>Title: {c.commentTitle}</p>
+            <p>Contents: {c.content}</p>
+            <p>Created by: {c.user}</p>
+          </>
+        );
+      })}
     </div>
   );
 }

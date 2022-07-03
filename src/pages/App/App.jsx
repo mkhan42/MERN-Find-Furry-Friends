@@ -16,7 +16,13 @@ import Footer from "../../components/Footer/Footer";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [comments, setComments] = useState("this a fake comment");
+  const [comments, setComments] = useState([
+    {
+      commentTitle: "Initialize Title",
+      content: "Initialize content",
+      user: "???", //need get the user info by commentSchema?
+    },
+  ]);
 
   return (
     <main className="App">
@@ -24,16 +30,18 @@ export default function App() {
         <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
-            <Route
-              path="/AllPosts"
-              element={<AllPostsPage comments={comments} />}
-            />
+            <Route path="/AllPosts" element={<AllPostsPage />} />
             <Route path="/FoundPosts" element={<FoundPostsPage />} />
             <Route path="/LostPosts" element={<LostPostsPage />} />
             <Route path="/NewPost" element={<NewPostPage />} />
             <Route path="/myaccount" element={<UsersPage user={user} />} />
             {/* pet id ....how to get it? */}
-            <Route path="/:petId" element={<PetDetailsPage />} />
+            <Route
+              path="/:petId"
+              element={
+                <PetDetailsPage comments={comments} setComments={setComments} />
+              }
+            />
             {/* redirect to /AllPostt if path in address bar hasn't matched a <Route> above */}
             <Route path="/*" element={<Navigate to="/AllPosts" />} />
           </Routes>
