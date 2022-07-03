@@ -7,8 +7,10 @@ export default function PetCard() {
 
   return (
     <>
-      <h4>This is a PetCard</h4>
-      <Link to={"/"}> This is a link to the Pet Details Page</Link>
+      <Link to={"/:petId"}>
+        {" "}
+        This is a PetCard ant its link to the Pet Details Page
+      </Link>
     </>
   );
 }
