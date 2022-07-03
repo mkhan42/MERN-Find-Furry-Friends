@@ -23,6 +23,8 @@ const userSchema = new Schema(
       minLength: 3,
       required: true,
     },
+    // posts that the user created - no need to add it here
+    // comments that the user created - no need to add it here - we can search comments in comment dbs
   },
   {
     timestamps: true,

@@ -7,13 +7,6 @@ export default function FoundPostsPage() {
     <div>
       <h3>this is FoundPostsPage</h3>
       <PetCard />
-      <button
-        onClick={() => {
-          alert("it will jump to Found Page");
-        }}
-      >
-        More in FOUND
-      </button>
     </div>
   );
 }
