@@ -1,4 +1,16 @@
+import { useState, useEffect, useRef } from 'react';
+import * as postsAPI from '../../utilities/posts-api';
+import { Routes, Route, Navigate } from 'react-router-dom';
 export default function PostForm() {
+  const [post, setPosts] = useState([]);
+
+  async function handleAddToPosts(postData) {
+
+    const addNewPost = await postsAPI.addPost(postData);
+
+    setPosts(addNewPost);
+  }
+
   return (
     <>
       <h1>this is a create Post form</h1>
@@ -28,7 +40,7 @@ export default function PostForm() {
         <input type="text" name="contactInfo"></input>
         <label>Day pet was lost/found?:</label>
         <input type="text" name="date"></input>
-        <input type="submit"></input>
+        <input type="submit"/>
       </form>
     </>
   );
