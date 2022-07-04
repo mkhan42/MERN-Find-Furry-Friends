@@ -18,24 +18,24 @@ export default function CommentsForm({ comments, setComments }) {
   //   },    ])
   async function handleSubmit(event) {
     event.preventDefault();
-    // to post the new data
-    const comment = await fetch("/api/comments", {
-      method: "POST",
-      body: JSON.stringify(),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const json = await response.json;
+    // // to post the new data
+    // const comment = await fetch("/api/comments", {
+    //   method: "POST",
+    //   body: JSON.stringify(),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
+    // const json = await response.json;
 
-    if (!response.ok) {
-      setError(json.error);
-    }
-    if (response.ok) {
-      setNewComment({});
-      setError(null);
-      console.log("new comment added");
-    }
+    // if (!response.ok) {
+    //   setError(json.error);
+    // }
+    // if (response.ok) {
+    //   setNewComment({});
+    //   setError(null);
+    //   console.log("new comment added");
+    // }
   }
 
   return (

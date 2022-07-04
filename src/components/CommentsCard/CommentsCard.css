@@ -1,0 +1,6 @@
+.comments-card-container {
+  display: grid;
+  grid-template-rows: repeat(3, 20px);
+  text-align: left;
+  margin-bottom: 20px;
+}

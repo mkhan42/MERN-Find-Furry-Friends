@@ -2,29 +2,23 @@ import CommentsCard from "../../components/CommentsCard/CommentsCard";
 import CommentsForm from "../../components/CommentsForm/CommentsForm";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import * as commentsAPI from "../../utilities/comments-api";
 
 export default function PetDetails() {
   // let { petId } = useParams();
   // const thePet = petsData.find((element) => element._id === petId);
   // console.log(thePet);
-  const [comments, setComments] = useState([
-    {
-      commentTitle: "Initialize Title",
-      content: "Initialize content",
-      user: null, // update from dbs
-    },
-  ]);
+  const [comments, setComments] = useState(null);
 
+  // infinite
   useEffect(() => {
+    // load comments
     async function fetchComments() {
-      const response = await fetch("/api/comments");
-      const json = await response.json();
-      if (response.ok) {
-        setComments(json);
-      }
+      const com = await commentsAPI.getAll();
+      setComments(com);
     }
     fetchComments();
-  }, [comments]);
+  }, []);
 
   return (
     <div className="pet-detail-container">
@@ -52,7 +46,7 @@ export default function PetDetails() {
       {/* comments for the pet! */}
       {comments ? (
         <>
-          <p>Comments:</p>
+          <h3>Comments:</h3>
           {comments.map((comment) => {
             return <CommentsCard key={comment._id} comment={comment} />;
           })}
