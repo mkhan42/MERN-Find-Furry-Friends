@@ -46,7 +46,6 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
-    //missing date?
     date: {
       type: Date,
       // require: true,
