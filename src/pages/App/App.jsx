@@ -16,13 +16,6 @@ import Footer from "../../components/Footer/Footer";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [comments, setComments] = useState([
-    {
-      commentTitle: "Initialize Title",
-      content: "Initialize content",
-      user: "???", //need get the user info by commentSchema?
-    },
-  ]);
 
   return (
     <main className="App">
@@ -36,12 +29,7 @@ export default function App() {
             <Route path="/NewPost" element={<NewPostPage />} />
             <Route path="/myaccount" element={<UsersPage user={user} />} />
             {/* pet id ....how to get it? */}
-            <Route
-              path="/:petId"
-              element={
-                <PetDetailsPage comments={comments} setComments={setComments} />
-              }
-            />
+            <Route path="/:petId" element={<PetDetailsPage />} />
             {/* redirect to /AllPostt if path in address bar hasn't matched a <Route> above */}
             <Route path="/*" element={<Navigate to="/AllPosts" />} />
           </Routes>
