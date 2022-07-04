@@ -9,7 +9,7 @@ export default function CommentsCard({ comment }) {
       <p>Contents: {comment.content}</p>
       <p>Created Date: {comment.createdAt}</p>
       {/* ???????????????????????????????????? */}
-      {/* <p>Created by: {comment.user.name}</p>
+      {/* <p>Author: {comment.user.name}</p>
       <p>Author Info: {comment.user.email}</p> */}
     </div>
   );

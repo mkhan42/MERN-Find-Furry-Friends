@@ -3,10 +3,11 @@
 import PetCard from "../../components/PetCard/PetCard";
 
 import { Link } from "react-router-dom";
-export default function AllPostsPage() {
+export default function AllPostsPage({ posts }) {
   // limit LOST & FOUND pet data to 6
-  // const lost6pets = [{ name: "Benben" }, { name: "Hanna" }];
-  // const found6pets = [{ name: "Tina" }, { name: "Stella" }];
+
+  // const lost6Pets = lostPets.slice(6);
+  // const found6Pets = foundPets.slice(6);
 
   return (
     <div className="all-posts-container">

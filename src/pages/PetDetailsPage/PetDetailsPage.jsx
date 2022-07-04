@@ -10,9 +10,8 @@ export default function PetDetails() {
   // console.log(thePet);
   const [comments, setComments] = useState(null);
 
-  // infinite
   useEffect(() => {
-    // load comments
+    // load comments only at the first time
     async function fetchComments() {
       const com = await commentsAPI.getAll();
       setComments(com);
