@@ -14,3 +14,7 @@ export function getById(id) {
   return sendRequest(`${BASE_URL}/${id}`);
 }
 
+export function editPost(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'PUT', id);
+}
+
