@@ -9,6 +9,8 @@ export default function FoundPostsPage({ posts }) {
       {posts.map((post) => {
         return <PetCard key={post._id} post={post} />;
       })}
+
+      
     </div>
   );
 }
