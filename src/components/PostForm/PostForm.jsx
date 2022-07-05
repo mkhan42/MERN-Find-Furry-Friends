@@ -46,10 +46,13 @@ export default function PostForm({ setPosts }) {
       [e.target.name]: e.target.value,
     };
     setNewPost(newPostData);
-    console.log(newPostData);
+  
+    
   }
+  // console.log(newPost);
 
   async function handleSubmit(e) {
+    console.log(newPost);
     e.preventDefault();
     const json = await postAPI.createPost({ ...newPost });
     console.log(json);
