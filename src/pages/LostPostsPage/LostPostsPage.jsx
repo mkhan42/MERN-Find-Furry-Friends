@@ -8,14 +8,6 @@ export default function LostPostsPage() {
     <>
       <h3>This is LostPostsPage</h3>
       <PetCard />
-
-      <button
-        onClick={() => {
-          alert("it will jump to Lost Page");
-        }}
-      >
-        More in LOST
-      </button>
     </>
   );
 }

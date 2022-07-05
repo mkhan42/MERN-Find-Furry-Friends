@@ -13,15 +13,12 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav>
-      {/* TODO: to update the link?? */}
       <Link to="/AllPosts">All Posts</Link>
       &nbsp; | &nbsp;
-      {/* TODO: to update the link?? */}
       <Link to="/NewPost">New Post</Link>
       &nbsp; | &nbsp; Welcome, {user.name}
       &nbsp; | &nbsp;
-      {/* TODO: to update the link?? */}
-      <Link to="/:userName">My Account</Link>
+      <Link to="/myaccount">My Account</Link>
       &nbsp; | &nbsp;
       <Link to="" onClick={handleLogOut}>
         Log Out
