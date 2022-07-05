@@ -23,7 +23,6 @@ export default function PetDetails() {
     }
     fetchPosts();
   }, []);
-  //console.log(thePost);
 
   /*========================================
         Comments Part
