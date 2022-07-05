@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 
-export default function PetCard() {
+export default function PetCard({ post }) {
   // TBD???
   // for example: /found/12345 or /lost/12346
-  // let petURL = `/${petData.type}/${petData.id}`;
-  // how many comments
+  let petURL = `/${post._id}`;
   return (
     <>
-      <Link to={"/:petId"}>
-        This is a PetCard ant its link to the Pet Details Page
+      <Link to={petURL}>
+        <h3>{post.postTitle}</h3>
       </Link>
+      <div>
+        <p>animal name: {post.name}</p>
+      </div>
+      <br />
     </>
   );
 }

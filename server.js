@@ -29,6 +29,7 @@ app.use("/api/posts", ensureLoggedIn, require("./routes/api/posts"));
 app.use("/api/comments", ensureLoggedIn, require("./routes/api/comments"));
 // app.use("/api/userAccount", ensureLoggedIn, require("./routes/api/userAccount"));
 
+
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.get("/*", function (req, res) {

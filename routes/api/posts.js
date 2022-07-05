@@ -1,3 +1,4 @@
+
 const express = require("express");
 const router = express.Router();
 const postCtrl = require("../../controllers/api/posts");
@@ -7,7 +8,7 @@ const postCtrl = require("../../controllers/api/posts");
 router.get("/", postCtrl.getPosts);
 
 // GET a single post
-router.get("/:id", postCtrl.getPost);
+router.get("/:id", postCtrl.getOnePost);
 
 // POST /api/posts
 router.post("/", postCtrl.createPost);
@@ -19,3 +20,4 @@ router.delete("/:id", postCtrl.deletePost);
 router.put("/:id", postCtrl.updatePost);
 
 module.exports = router;
+
