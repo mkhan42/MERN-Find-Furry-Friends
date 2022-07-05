@@ -56,16 +56,15 @@ export default function PostForm({ posts, setPosts }) {
 
   //console.log(newPost);
 
-  let temp = {}
 
   async function handleSubmit(e) {
     e.preventDefault();
     const json = await postAPI.createPost({ ...newPost });
     console.log(json);
-    temp = json;
-    console.log(temp);
     //setPosts(newPost)
     setNewPost({});
+    //window.location.href = "/AllPosts"
+   window.location.href = `/${json._id}`
   }
 
   return (
@@ -152,9 +151,9 @@ export default function PostForm({ posts, setPosts }) {
           onChange={handleChange}
           value={newPost.date}
         ></input>
-      <Link to={`/AllPosts`}>
-        <input type="submit" />
-      </Link>
+      {/* <Link to={`/AllPosts`}> */}
+        <input type="submit" onClick={handleSubmit} />
+      {/* </Link> */}
       </form>
     </>
   );
