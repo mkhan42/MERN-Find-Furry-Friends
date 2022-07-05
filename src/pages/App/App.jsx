@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
 // Pages
@@ -13,7 +13,6 @@ import PetDetailsPage from "../../pages/PetDetailsPage/PetDetailsPage";
 // Components
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
-// API
 import * as postsAPI from "../../utilities/posts-api";
 
 export default function App() {
@@ -28,6 +27,7 @@ export default function App() {
     }
     fetchPosts();
   }, []);
+
 
   // status code 304 - not modified client
   // const lostPets = posts.filter((p) => p.type === "Lost");
@@ -50,9 +50,12 @@ export default function App() {
               element={<LostPostsPage posts={posts} />}
             />
             <Route
-              path="/NewPost"
-              element={<NewPostPage posts={posts} setPosts={setPosts} />}
+              path="/AllPosts"
+              element={<AllPostsPage posts={posts} />}
             />
+            <Route path="/FoundPosts" element={<FoundPostsPage posts={posts}/>} />
+            <Route path="/LostPosts" element={<LostPostsPage posts={posts}/>} />
+            <Route path="/NewPost" element={<NewPostPage posts={posts} setPosts={setPosts}/>} />
             <Route path="/myaccount" element={<UsersPage user={user} />} />
             {/* pet id ....how to get it? */}
             <Route path="/:petId" element={<PetDetailsPage />} />

@@ -1,4 +1,5 @@
-import sendRequest from "./send-request";
+import { getToken } from './users-service'
+import sendRequest from './send-request';
 
 // This is the base path of the Express rout we'll defing
 const BASE_URL = "/api/users";
