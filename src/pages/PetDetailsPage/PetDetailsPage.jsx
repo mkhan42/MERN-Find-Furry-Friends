@@ -15,7 +15,7 @@ export default function PetDetails() {
   const [thePost, setThePost] = useState(null);
 
   useEffect(() => {
-    // load comments only at the first time
+    // load the post
     async function fetchPosts() {
       const po = await postsAPI.getById(postId);
       console.log(po);
@@ -23,7 +23,6 @@ export default function PetDetails() {
     }
     fetchPosts();
   }, []);
-  console.log(thePost);
 
   /*========================================
         Comments Part

@@ -7,7 +7,7 @@ export default function PetCard({ post }) {
   return (
     <>
       <Link to={petURL}>
-        <h3>{post.title}</h3>
+        <h3>{post.postTitle}</h3>
       </Link>
       <div>
         <p>animal name: {post.name}</p>
