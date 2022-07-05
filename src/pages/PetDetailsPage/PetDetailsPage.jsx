@@ -23,17 +23,17 @@ export default function PetDetails() {
     <div className="pet-detail-container">
       <h1>This is PetDetails: name, last seen location, Map Api ...</h1>
       <p>Author: </p>
-      <p>ContactInfo:</p>
+      <p>Contact Info:</p>
       <p>Title: </p>
       <p>Animal Name:</p>
       <p>Animal Type: </p>
       <p>Images: </p>
-      <p>Age: </p>
+      <p>Animal Age: </p>
       <p>Last Seen Location: </p>
       <p>reserved place for map api</p>
       <p>Description: </p>
       <p>Reward($): </p>
-      <p>Created Date: </p>
+      <p>Day pet was lost/found?:: </p>
       <br />
       <br />
       <hr />
@@ -51,7 +51,7 @@ export default function PetDetails() {
           })}
         </>
       ) : (
-        <p>No Comments</p>
+        <h3>No Comments</h3>
       )}
 
       <CommentsForm comments={comments} setComments={setComments} />

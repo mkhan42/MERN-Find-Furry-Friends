@@ -7,8 +7,12 @@ export function getAll() {
   return sendRequest(BASE_URL);
 }
 
-// Add a comment to the comments????
-export function addComment(commentId) {
-  // Just send commentId for best security (no pricing)
-  return sendRequest(`${BASE_URL}/${commentId}`, "POST");
+// export function addComment(commentId) {
+//   // Just send commentId for best security (no pricing)
+//   return sendRequest(`${BASE_URL}/comments/${commentId}`, "POST");
+// }
+
+// create a comment
+export function createComment(data) {
+  return sendRequest(BASE_URL, "POST", data);
 }

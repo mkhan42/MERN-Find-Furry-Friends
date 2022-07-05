@@ -5,9 +5,15 @@ export default function CommentsCard({ comment }) {
 
   return (
     <div className="comments-card-container">
-      <p>Title: {comment.commentTitle}</p>
-      <p>Contents: {comment.content}</p>
-      <p>Created Date: {comment.createdAt}</p>
+      <p>
+        <strong>Title:</strong> {comment.commentTitle}
+      </p>
+      <p>
+        <strong>Contents:</strong> {comment.content}
+      </p>
+      <p>
+        <strong>Created Date:</strong> {comment.createdAt}
+      </p>
       {/* ???????????????????????????????????? */}
       {/* <p>Author: {comment.user.name}</p>
       <p>Author Info: {comment.user.email}</p> */}

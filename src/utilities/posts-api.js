@@ -7,7 +7,7 @@ export function getAll() {
   return sendRequest(BASE_URL);
 }
 
-// Add post
+// Add post not create post?
 export function addPost(postId) {
   // Just send postId for best security (no pricing)
   return sendRequest(`${BASE_URL}/${postId}`, "POST");

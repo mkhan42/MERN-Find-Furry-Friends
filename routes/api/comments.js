@@ -6,6 +6,7 @@ const commentsCtrl = require("../../controllers/api/comments");
 // GET /api/comments
 router.get("/", commentsCtrl.getComments);
 
+// CREATE
 // POST /api/comments
 router.post("/", commentsCtrl.createComment);
 

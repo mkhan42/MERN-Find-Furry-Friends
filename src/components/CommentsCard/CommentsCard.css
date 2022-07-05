@@ -1,6 +1,9 @@
 .comments-card-container {
-  display: grid;
-  grid-template-rows: repeat(3, 20px);
+  background: rgb(223, 221, 221);
+  border-radius: 4px;
   text-align: left;
-  margin-bottom: 20px;
+  margin: 20px auto;
+  padding: 10px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0);
 }

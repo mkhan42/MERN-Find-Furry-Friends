@@ -29,7 +29,7 @@ export default function App() {
     fetchPosts();
   }, []);
 
-  // BUG: status code 304 - not modified client
+  // status code 304 - not modified client
   // const lostPets = posts.filter((p) => p.type === "Lost");
   // const foundPets = posts.filter((p) => p.type === "Found");
   // console.log(lostPets);

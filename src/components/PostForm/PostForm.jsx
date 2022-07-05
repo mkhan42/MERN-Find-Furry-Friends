@@ -1,15 +1,27 @@
+import { useState } from "react";
+
 export default function PostForm() {
+  const [newPost, setNewPost] = useState({});
+
+  function handleChange(e) {
+    e.preventDefault();
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
     <>
-      <h1>this is a create Post form</h1>
+      <h3>Create a New Post</h3>
       <form>
         <label>Post Title:</label>
         <input type="text" name="postTitle"></input>
         <label>Post Type:</label>
-       <select name="postType">
-         <option>Lost</option>
-         <option>Found</option>
-       </select>
+        <select name="postType">
+          <option>Lost</option>
+          <option>Found</option>
+        </select>
         <label>Name:</label>
         <input type="text" name="name"></input>
         <label>Image URL:</label>

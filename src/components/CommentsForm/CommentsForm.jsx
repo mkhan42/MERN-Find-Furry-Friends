@@ -1,41 +1,28 @@
 import { useState } from "react";
+import * as commentsAPI from "../../utilities/comments-api";
 
 export default function CommentsForm({ comments, setComments }) {
   const [newComment, setNewComment] = useState({});
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
 
   function handleChange(event) {
-    event.preventDefault();
     setNewComment({
+      ...newComment,
       [event.target.name]: event.target.value,
     });
   }
-  // JSON.stringify([
 
-  //   {
-  //     commentTitle: event.target.commentTitle,
-  //     content: event.target.content,
-  //   },    ])
   async function handleSubmit(event) {
     event.preventDefault();
-    // // to post the new data
-    // const comment = await fetch("/api/comments", {
-    //   method: "POST",
-    //   body: JSON.stringify(),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-    // const json = await response.json;
+    console.log({ ...newComment });
+    // it goes to controller
+    // POST into dbs
+    const json = await commentsAPI.createComment({ ...newComment });
+    console.log(json); //got comment id
 
-    // if (!response.ok) {
-    //   setError(json.error);
-    // }
-    // if (response.ok) {
-    //   setNewComment({});
-    //   setError(null);
-    //   console.log("new comment added");
-    // }
+    // also need it in front end
+    setComments({ ...comments, ...newComment });
+    setNewComment({});
   }
 
   return (
@@ -55,6 +42,7 @@ export default function CommentsForm({ comments, setComments }) {
         name="content"
       />
       <button type="submit">Submit</button>
+      {/* {error && <div className="error">{error}</div>} */}
     </form>
   );
 }
