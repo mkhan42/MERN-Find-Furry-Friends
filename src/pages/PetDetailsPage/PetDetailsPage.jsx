@@ -54,6 +54,7 @@ export default function PetDetails() {
           <>
             <p>Author: {thePost.userName}</p>
             <p>Contact Info: {thePost.contactInfo}</p>
+            <p>Post Type: {thePost.postType}</p>
             <p>Title: {thePost.postTitle}</p>
             <p>Animal Name:{thePost.name}</p>
             <p>Animal Type:{thePost.animalType} </p>

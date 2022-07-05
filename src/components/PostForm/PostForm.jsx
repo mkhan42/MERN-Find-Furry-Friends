@@ -7,6 +7,7 @@ export default function PostForm({ user }) {
   // console.log("user id: " + user._id);
 
   const [newPost, setNewPost] = useState({
+    // userName: "",
     postTitle: "",
     postType: "Lost",
     name: "",

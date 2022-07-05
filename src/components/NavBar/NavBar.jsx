@@ -13,7 +13,7 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav>
-      <Link to="/AllPosts">HomePage</Link>
+      <Link to="/AllPosts">All Posts</Link>
       &nbsp; | &nbsp;
       <Link to="/LostPosts">LOST</Link>
       &nbsp; | &nbsp;
