@@ -19,9 +19,6 @@ export default function CommentsForm({ comments, setComments }) {
     // POST into dbs
     const json = await commentsAPI.createComment({ ...newComment });
     console.log(json); //got comment id
-
-    // also need it in front end
-    setComments({ ...comments, ...newComment });
     setNewComment({});
   }
 
