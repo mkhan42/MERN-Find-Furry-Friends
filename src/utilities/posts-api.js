@@ -10,7 +10,7 @@ export function getById(id) {
   return sendRequest(`${BASE_URL}/${id}`);
 }
 
-export function addPost(postData) {
+export function createPost(postData) {
   return sendRequest(BASE_URL, "POST", postData);
 }
 

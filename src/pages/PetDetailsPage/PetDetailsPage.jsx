@@ -15,14 +15,15 @@ export default function PetDetails() {
   const [thePost, setThePost] = useState(null);
 
   useEffect(() => {
-    // load comments only at the first time
+    // load the post
     async function fetchPosts() {
       const po = await postsAPI.getById(postId);
       console.log(po);
-      setThePost({ ...po });
+      setThePost(po);
     }
     fetchPosts();
   }, []);
+  //console.log(thePost);
 
   /*========================================
         Comments Part
@@ -50,19 +51,24 @@ export default function PetDetails() {
     <>
       <div className="pet-detail-container">
         <h1>This is PetDetails: name, last seen location, Map Api ...</h1>
-        <p>Author: </p>
-        <p>Contact Info: {thePost.contactInfo}</p>
-        <p>Title: {thePost.title}</p>
-        <p>Animal Name:{thePost.name}</p>
-        <p>Animal Type:{thePost.animalType} </p>
-        <p>Images: </p>
-        <img src={thePost.imgURL} alt={thePost.name} />
-        <p>Animal Age: {thePost.age}</p>
-        <p>Last Seen Location: </p>
-        <p>reserved place for map api</p>
-        <p>Description: {thePost.description}</p>
-        <p>Reward($): {thePost.reward}</p>
-        <p>Day pet was lost/found?: {thePost.date}</p>
+        {thePost && (
+          <>
+            <p>Author: </p>
+            <p>Contact Info: {thePost.contactInfo}</p>
+            <p>Title: {thePost.postTitle}</p>
+            <p>Animal Name:{thePost.name}</p>
+            <p>Animal Type:{thePost.animalType} </p>
+            <p>Images: </p>
+            <img src={thePost.imgURL} alt={thePost.name} />
+            <p>Animal Age: {thePost.age}</p>
+            <p>Last Seen Location: </p>
+            <p>reserved place for map api</p>
+            <p>Description: {thePost.description}</p>
+            <p>Reward($): {thePost.reward}</p>
+            <p>Day pet was lost/found?: {thePost.date}</p>
+          </>
+        )}
+
         <br />
         <br />
         <hr />
