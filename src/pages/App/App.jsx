@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
 // Pages
@@ -13,10 +13,26 @@ import PetDetailsPage from "../../pages/PetDetailsPage/PetDetailsPage";
 // Components
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
+// API
+import * as postsAPI from "../../utilities/posts-api";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [comments, setComments] = useState("this a fake comment");
+  const [posts, setPosts] = useState(null);
+
+  useEffect(() => {
+    // load all posts at the first time
+    async function fetchPosts() {
+      const po = await postsAPI.getAll();
+      setPosts(po);
+    }
+    fetchPosts();
+  }, []);
+
+  // status code 304 - not modified client
+  // const lostPets = posts.filter((p) => p.type === "Lost");
+  // const foundPets = posts.filter((p) => p.type === "Found");
+  // console.log(lostPets);
 
   return (
     <main className="App">
@@ -24,17 +40,23 @@ export default function App() {
         <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
+            <Route path="/AllPosts" element={<AllPostsPage posts={posts} />} />
             <Route
-              path="/AllPosts"
-              element={<AllPostsPage comments={comments} />}
+              path="/FoundPosts"
+              element={<FoundPostsPage posts={posts} />}
             />
-            <Route path="/FoundPosts" element={<FoundPostsPage />} />
-            <Route path="/LostPosts" element={<LostPostsPage />} />
-            <Route path="/NewPost" element={<NewPostPage />} />
+            <Route
+              path="/LostPosts"
+              element={<LostPostsPage posts={posts} />}
+            />
+            <Route
+              path="/NewPost"
+              element={<NewPostPage posts={posts} setPosts={setPosts} />}
+            />
             <Route path="/myaccount" element={<UsersPage user={user} />} />
             {/* pet id ....how to get it? */}
             <Route path="/:petId" element={<PetDetailsPage />} />
-            {/* redirect to /AllPostt if path in address bar hasn't matched a <Route> above */}
+            {/* redirect to /AllPosts if path in address bar hasn't matched a <Route> above */}
             <Route path="/*" element={<Navigate to="/AllPosts" />} />
           </Routes>
         </>
