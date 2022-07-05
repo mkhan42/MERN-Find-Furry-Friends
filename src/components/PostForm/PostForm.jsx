@@ -2,9 +2,9 @@ import { useState } from "react";
 import * as postAPI from "../../utilities/posts-api";
 import { Link, Navigate } from "react-router-dom";
 
-export default function PostForm({ posts, setPosts }) {
-
-  // let petURL = `/${posts._id}`;
+export default function PostForm({ user }) {
+  // console.log("user name: " + user.name);
+  // console.log("user id: " + user._id);
 
   const [newPost, setNewPost] = useState({
     postTitle: "",
@@ -20,30 +20,6 @@ export default function PostForm({ posts, setPosts }) {
     date: "",
   });
 
-  // let petURL = `/${posts._id}`;
-
-  // async function handleAddToPosts(e) {
-
-  //   const addNewPost = await postsAPI.addPost(postData);
-
-  //   setPosts(addNewPost);
-  // }
-
-  // useEffect(() => {
-  //   // load comments only at the first time
-  //   async function fetchComments() {
-  //     const com = await commentsAPI.getAll();
-  //     setComments(com);
-  //     // dispatch({ type: "SET_COMMENTS", payload: com });
-  //   }
-  //   fetchComments();
-  // }, []);
-
-  // function addComment(comment) {
-  //   setComments({ ...comments, comment });
-  //   console.log(comments); //got array of comment objects
-  // }
-
   function handleChange(e) {
     e.preventDefault();
     const newPostData = {
@@ -56,7 +32,6 @@ export default function PostForm({ posts, setPosts }) {
 
   //console.log(newPost);
 
-
   async function handleSubmit(e) {
     e.preventDefault();
     const json = await postAPI.createPost({ ...newPost });
@@ -64,13 +39,22 @@ export default function PostForm({ posts, setPosts }) {
     //setPosts(newPost)
     setNewPost({});
     //window.location.href = "/AllPosts"
-   window.location.href = `/${json._id}`
+    window.location.href = `/${json._id}`;
   }
 
   return (
     <>
       <h1>this is a create Post form</h1>
+
       <form onSubmit={handleSubmit}>
+        {/* it still not store in the post model */}
+        <label>Author Name:</label>
+        <input
+          type="text"
+          name="userName"
+          defaultValue={user.name.toUpperCase()}
+        />
+
         <label>Post Title:</label>
         <input
           type="text"
@@ -151,9 +135,8 @@ export default function PostForm({ posts, setPosts }) {
           onChange={handleChange}
           value={newPost.date}
         ></input>
-      {/* <Link to={`/AllPosts`}> */}
-        <input type="submit" onClick={handleSubmit} />
-      {/* </Link> */}
+
+        <input type="submit" />
       </form>
     </>
   );

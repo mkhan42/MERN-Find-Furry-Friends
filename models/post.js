@@ -4,6 +4,9 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: "User" },
+    userName: {
+      type: String,
+    },
     postType: {
       type: String,
       required: true,
@@ -36,7 +39,7 @@ const postSchema = new Schema(
     },
     description: {
       type: String,
-      required: true,
+      // required: true,
     },
     reward: {
       type: String,

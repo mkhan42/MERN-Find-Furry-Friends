@@ -59,7 +59,9 @@ export default function App() {
             />
             <Route
               path="/NewPost"
-              element={<NewPostPage posts={posts} setPosts={setPosts} />}
+              element={
+                <NewPostPage posts={posts} setPosts={setPosts} user={user} />
+              }
             />
             <Route path="/myaccount" element={<UsersPage user={user} />} />
             {/* pet id ....how to get it? */}
