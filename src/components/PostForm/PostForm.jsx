@@ -3,7 +3,7 @@ import * as postAPI from '../../utilities/posts-api';
 
 export default function PostForm( { setPosts } ) {
   const [newPost, setNewPost] = useState({
-    title: "",
+    postTitle: "",
     postType: 'Lost',
     name: "",
     imgURL: "",
@@ -62,7 +62,7 @@ export default function PostForm( { setPosts } ) {
       <h1>this is a create Post form</h1>
       <form onSubmit={handleSubmit}>
         <label>Post Title:</label>
-        <input type="text" name="title" onChange={handleChange} value={newPost.postTitle} ></input>
+        <input type="text" name="postTitle" onChange={handleChange} value={newPost.postTitle} ></input>
         <label>Post Type:</label>
        <select name="postType" onChange={handleChange} value={newPost.postType}>
          <option>Lost</option>
