@@ -19,7 +19,7 @@ export default function App() {
   const [user, setUser] = useState(getUser());
   const [posts, setPosts] = useState(null);
 
-    useEffect(() => {
+  useEffect(() => {
     // load all posts at the first time
     async function fetchPosts() {
       const po = await postsAPI.getAll();
@@ -28,12 +28,27 @@ export default function App() {
     fetchPosts();
   }, []);
 
+
+  // status code 304 - not modified client
+  // const lostPets = posts.filter((p) => p.type === "Lost");
+  // const foundPets = posts.filter((p) => p.type === "Found");
+  // console.log(lostPets);
+
   return (
     <main className="App">
       {user ? (
         <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
+            <Route path="/AllPosts" element={<AllPostsPage posts={posts} />} />
+            <Route
+              path="/FoundPosts"
+              element={<FoundPostsPage posts={posts} />}
+            />
+            <Route
+              path="/LostPosts"
+              element={<LostPostsPage posts={posts} />}
+            />
             <Route
               path="/AllPosts"
               element={<AllPostsPage posts={posts} />}
@@ -44,7 +59,7 @@ export default function App() {
             <Route path="/myaccount" element={<UsersPage user={user} />} />
             {/* pet id ....how to get it? */}
             <Route path="/:petId" element={<PetDetailsPage />} />
-            {/* redirect to /AllPostt if path in address bar hasn't matched a <Route> above */}
+            {/* redirect to /AllPosts if path in address bar hasn't matched a <Route> above */}
             <Route path="/*" element={<Navigate to="/AllPosts" />} />
           </Routes>
         </>

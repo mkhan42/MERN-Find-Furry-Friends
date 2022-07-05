@@ -2,16 +2,16 @@ import { getToken } from './users-service'
 import sendRequest from './send-request';
 
 // This is the base path of the Express rout we'll defing
-const BASE_URL = '/api/users'
+const BASE_URL = "/api/users";
 
 export async function signUp(userData) {
-    return sendRequest(BASE_URL, 'POST', userData)
+  return sendRequest(BASE_URL, "POST", userData);
 }
 
 export async function login(credentials) {
-    return sendRequest(`${BASE_URL}/login`, 'POST', credentials)
+  return sendRequest(`${BASE_URL}/login`, "POST", credentials);
 }
 
 export function checkToken() {
-    return sendRequest(`${BASE_URL}/check-token`)
+  return sendRequest(`${BASE_URL}/check-token`);
 }
