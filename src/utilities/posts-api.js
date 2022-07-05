@@ -9,5 +9,5 @@ export function getAll() {
 }
 
 export function addPost(postData) {
-    return sendRequest(`${BASE_URL}/addPost`, 'POST', postData);
+    return sendRequest(`${BASE_URL}`, 'POST', postData);
   }
