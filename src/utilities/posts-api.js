@@ -11,5 +11,7 @@ export function getById(id) {
 }
 
 export function addPost(postData) {
-  return sendRequest(`${BASE_URL}/addPost`, "POST", postData);
+  return sendRequest(`${BASE_URL}/NewPost`, "POST", postData);
 }
+
+// return sendRequest(`${BASE_URL}`, 'POST', postData);
