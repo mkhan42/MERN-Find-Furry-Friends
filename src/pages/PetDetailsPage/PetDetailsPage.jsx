@@ -2,22 +2,31 @@ import CommentsCard from "../../components/CommentsCard/CommentsCard";
 import CommentsForm from "../../components/CommentsForm/CommentsForm";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useCommentsContext } from "../../hooks/useCommentsContext";
 import * as commentsAPI from "../../utilities/comments-api";
 
 export default function PetDetails() {
   // let { petId } = useParams();
   // const thePet = petsData.find((element) => element._id === petId);
   // console.log(thePet);
+
   const [comments, setComments] = useState(null);
+  // const { comments, dispatch } = useCommentsContext();
 
   useEffect(() => {
     // load comments only at the first time
     async function fetchComments() {
       const com = await commentsAPI.getAll();
       setComments(com);
+      // dispatch({ type: "SET_COMMENTS", payload: com });
     }
     fetchComments();
   }, []);
+
+  function addComment(comment) {
+    setComments({ ...comments, comment });
+    console.log(comments); //got array of comment objects
+  }
 
   return (
     <div className="pet-detail-container">
@@ -54,7 +63,11 @@ export default function PetDetails() {
         <h3>No Comments</h3>
       )}
 
-      <CommentsForm comments={comments} setComments={setComments} />
+      <CommentsForm addComment={addComment} />
+      {/* <CommentsForm
+        comments={comments}
+        setComments={dispatch({ type: "CREATE_COMMENTS", payload: comments })}
+      /> */}
     </div>
   );
 }

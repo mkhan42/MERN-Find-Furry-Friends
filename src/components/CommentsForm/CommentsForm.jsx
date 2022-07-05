@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as commentsAPI from "../../utilities/comments-api";
 
-export default function CommentsForm({ comments, setComments }) {
+export default function CommentsForm({ addComment }) {
   const [newComment, setNewComment] = useState({});
   // const [error, setError] = useState(null);
 
@@ -19,6 +19,10 @@ export default function CommentsForm({ comments, setComments }) {
     // POST into dbs
     const json = await commentsAPI.createComment({ ...newComment });
     console.log(json); //got comment id
+    // ???
+    //setComments({ ...comments, ...newComment }); //got a warning - not working
+    // BUG: TypeError: comments.map is not a function
+    // addComment({ ...newComment });
     setNewComment({});
   }
 
@@ -39,7 +43,6 @@ export default function CommentsForm({ comments, setComments }) {
         name="content"
       />
       <button type="submit">Submit</button>
-      {/* {error && <div className="error">{error}</div>} */}
     </form>
   );
 }
