@@ -1,4 +1,7 @@
 import "./UsersPage.css";
+// import Api from "../../components/Api/Api"
+import Places from "../../components/Api/map/AdressInput"
+
 export default function UsersPage() {
   const today = new Date().toLocaleDateString("en-us", {
     weekday: "long",
@@ -18,6 +21,8 @@ export default function UsersPage() {
       <h3>My comments: ...delete </h3>
 
       {/* if someone comment our post, we get notification... */}
-    </>
+      {/* <Api /> */}
+      <Places />
+      </>
   );
 }
