@@ -1,7 +1,11 @@
 import { useState } from "react";
 import * as postAPI from "../../utilities/posts-api";
+import { Link, Navigate } from "react-router-dom";
 
-export default function PostForm({ setPosts }) {
+export default function PostForm({ posts, setPosts }) {
+
+  // let petURL = `/${posts._id}`;
+
   const [newPost, setNewPost] = useState({
     postTitle: "",
     postType: "Lost",
@@ -15,6 +19,8 @@ export default function PostForm({ setPosts }) {
     contactInfo: "",
     date: "",
   });
+
+  // let petURL = `/${posts._id}`;
 
   // async function handleAddToPosts(e) {
 
@@ -48,12 +54,17 @@ export default function PostForm({ setPosts }) {
     // console.log(newPostData);
   }
 
+  //console.log(newPost);
+
+
   async function handleSubmit(e) {
     e.preventDefault();
     const json = await postAPI.createPost({ ...newPost });
     console.log(json);
     //setPosts(newPost)
     setNewPost({});
+    //window.location.href = "/AllPosts"
+   window.location.href = `/${json._id}`
   }
 
   return (
@@ -140,8 +151,12 @@ export default function PostForm({ setPosts }) {
           onChange={handleChange}
           value={newPost.date}
         ></input>
-        <input type="submit" />
+      {/* <Link to={`/AllPosts`}> */}
+        <input type="submit" onClick={handleSubmit} />
+      {/* </Link> */}
       </form>
     </>
   );
 }
+
+//
