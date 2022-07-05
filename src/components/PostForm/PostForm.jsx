@@ -54,6 +54,8 @@ export default function PostForm({ posts, setPosts }) {
     // console.log(newPostData);
   }
 
+  //console.log(newPost);
+
   let temp = {}
 
   async function handleSubmit(e) {
