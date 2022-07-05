@@ -28,7 +28,6 @@ export default function App() {
     fetchPosts();
   }, []);
 
-
   // status code 304 - not modified client
   // const lostPets = posts.filter((p) => p.type === "Lost");
   // const foundPets = posts.filter((p) => p.type === "Found");
@@ -49,16 +48,22 @@ export default function App() {
               path="/LostPosts"
               element={<LostPostsPage posts={posts} />}
             />
+            <Route path="/AllPosts" element={<AllPostsPage posts={posts} />} />
             <Route
-              path="/AllPosts"
-              element={<AllPostsPage posts={posts} />}
+              path="/FoundPosts"
+              element={<FoundPostsPage posts={posts} />}
             />
-            <Route path="/FoundPosts" element={<FoundPostsPage posts={posts}/>} />
-            <Route path="/LostPosts" element={<LostPostsPage posts={posts}/>} />
-            <Route path="/NewPost" element={<NewPostPage posts={posts} setPosts={setPosts}/>} />
+            <Route
+              path="/LostPosts"
+              element={<LostPostsPage posts={posts} />}
+            />
+            <Route
+              path="/NewPost"
+              element={<NewPostPage posts={posts} setPosts={setPosts} />}
+            />
             <Route path="/myaccount" element={<UsersPage user={user} />} />
             {/* pet id ....how to get it? */}
-            <Route path="/:petId" element={<PetDetailsPage />} />
+            <Route path="/:postId" element={<PetDetailsPage />} />
             {/* redirect to /AllPosts if path in address bar hasn't matched a <Route> above */}
             <Route path="/*" element={<Navigate to="/AllPosts" />} />
           </Routes>
