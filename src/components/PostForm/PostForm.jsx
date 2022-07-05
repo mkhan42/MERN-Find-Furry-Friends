@@ -45,7 +45,7 @@ export default function PostForm({ setPosts }) {
       [e.target.name]: e.target.value,
     };
     setNewPost(newPostData);
-    console.log(newPostData);
+    // console.log(newPostData);
   }
 
   async function handleSubmit(e) {
