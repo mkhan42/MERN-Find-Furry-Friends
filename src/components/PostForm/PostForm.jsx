@@ -1,6 +1,5 @@
 import { useState } from "react";
 import * as postAPI from "../../utilities/posts-api";
-import { Link, Navigate } from "react-router-dom";
 
 export default function PostForm({ user }) {
   // console.log("user name: " + user.name);

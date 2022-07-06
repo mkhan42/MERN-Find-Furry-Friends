@@ -28,23 +28,18 @@ export default function PetDetails() {
         Comments Part
 ========================================*/
 
-  const [comments, setComments] = useState(null);
+  const [comments, setComments] = useState([]);
   // const { comments, dispatch } = useCommentsContext();
 
   useEffect(() => {
     // load comments only at the first time
     async function fetchComments() {
-      const com = await commentsAPI.getAll();
+      const com = await commentsAPI.getAll(postId);
       setComments(com);
       // dispatch({ type: "SET_COMMENTS", payload: com });
     }
     fetchComments();
   }, []);
-
-  function addComment(comment) {
-    setComments({ ...comments, comment });
-    console.log(comments); //got array of comment objects
-  }
 
   return (
     <>
@@ -75,7 +70,7 @@ export default function PetDetails() {
         <br />
         <br />
       </div>
-      {/* Is there any comments? */}
+      {/* Is there any comments? comments.length -not works every time?! */}
       {/* comments for the pet! */}
       {comments ? (
         <>
@@ -87,8 +82,8 @@ export default function PetDetails() {
       ) : (
         <h3>No Comments</h3>
       )}
-
-      <CommentsForm addComment={addComment} />
+      <h3>Create a New Comment:</h3>
+      <CommentsForm postId={postId} />
       {/* <CommentsForm
         comments={comments}
         setComments={dispatch({ type: "CREATE_COMMENTS", payload: comments })}

@@ -8,7 +8,6 @@ export default function PetCard({ post }) {
         {/* <p>{post.postTitle}</p> */}
         <img src={post.imgURL} alt={post.name} className="animalImg" />
       </Link>
-      <br />
     </>
   );
 }

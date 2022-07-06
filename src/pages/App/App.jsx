@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
 // Pages
@@ -27,6 +27,10 @@ export default function App() {
     }
     fetchPosts();
   }, []);
+  // BUG:
+  // [posts] - infinite running
+  // [] - refresh lost/found page then it's gone
+  //    - refresh home page is fine
 
   return (
     <main className="App">
@@ -35,7 +39,6 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/AllPosts" element={<AllPostsPage posts={posts} />} />
-
             <Route
               path="/FoundPosts"
               element={<FoundPostsPage posts={posts} />}
@@ -44,22 +47,8 @@ export default function App() {
               path="/LostPosts"
               element={<LostPostsPage posts={posts} />}
             />
-            <Route
-              path="/FoundPosts"
-              element={<FoundPostsPage posts={posts} />}
-            />
-            <Route
-              path="/LostPosts"
-              element={<LostPostsPage posts={posts} />}
-            />
-            <Route
-              path="/NewPost"
-              element={
-                <NewPostPage posts={posts} setPosts={setPosts} user={user} />
-              }
-            />
+            <Route path="/NewPost" element={<NewPostPage user={user} />} />
             <Route path="/myaccount" element={<UsersPage user={user} />} />
-            {/* pet id ....how to get it? */}
             <Route path="/:postId" element={<PetDetailsPage />} />
             {/* redirect to /AllPosts if path in address bar hasn't matched a <Route> above */}
             <Route path="/*" element={<Navigate to="/AllPosts" />} />
