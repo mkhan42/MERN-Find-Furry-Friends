@@ -50,12 +50,13 @@ async function deletePost(req, res) {
     return res.status(404).json({ error: "No such post" });
   }
 
-  const post = await Post.findOneAndDelete({ _id: id });
+  const post = await Post.findByIdAndDelete({ _id: id });
   if (!post) {
     res.status(404).json({ error: "No Such Post" });
   }
   res.status(200).json(post);
-  res.redirect('/AllPosts')
+  //res.redirect('/AllPosts')
+  
 }
 
 /*========================================
