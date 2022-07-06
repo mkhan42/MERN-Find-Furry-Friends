@@ -55,6 +55,7 @@ async function deletePost(req, res) {
     res.status(404).json({ error: "No Such Post" });
   }
   res.status(200).json(post);
+  res.redirect('/AllPosts')
 }
 
 /*========================================

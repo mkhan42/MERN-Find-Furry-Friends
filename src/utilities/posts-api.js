@@ -14,3 +14,11 @@ export function getById(id) {
   return sendRequest(`${BASE_URL}/${id}`);
 }
 
+export function updatePost(id, body) {
+  return sendRequest(`${BASE_URL}/${id}`, 'PUT', body);
+}
+
+export function deletePost(id, body) {
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE', id);
+}
+
