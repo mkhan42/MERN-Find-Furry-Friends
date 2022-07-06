@@ -7,13 +7,14 @@ import * as commentsAPI from "../../utilities/comments-api";
 import * as postsAPI from "../../utilities/posts-api";
 //import post from "../../../models/post";
 
-export default function PetDetails() {
-  /*========================================
-        Post Part
-========================================*/
-
+export default function PetDetails({ user }) {
   let { postId } = useParams();
+
+  let editURL = `/${postId}/EditPost`;
+
   const [thePost, setThePost] = useState(null);
+  const [comments, setComments] = useState([]);
+  // const { comments, dispatch } = useCommentsContext();
 
   useEffect(() => {
     // load the post
@@ -23,22 +24,7 @@ export default function PetDetails() {
       setThePost(po);
     }
     fetchPosts();
-  }, []);
 
-  async function handleDeletePost () {
-    const del = await postsAPI.deletePost(postId)
-    console.log(del);
-    window.location.href = `/AllPosts`;
-  }
-
-  /*========================================
-        Comments Part
-========================================*/
-
-  const [comments, setComments] = useState([]);
-  // const { comments, dispatch } = useCommentsContext();
-
-  useEffect(() => {
     // load comments only at the first time
     async function fetchComments() {
       const com = await commentsAPI.getAll(postId);
@@ -47,14 +33,26 @@ export default function PetDetails() {
     }
     fetchComments();
   }, []);
+  // why warning??? React Hook useEffect has a missing dependency: 'postId'.
+
+  /*========================================
+        Event handler
+========================================*/
+
+  async function handleDeletePost() {
+    if (thePost.user === user._id) {
+      const del = await postsAPI.deletePost(postId);
+      console.log(del);
+      window.location.href = `/AllPosts`;
+    } else {
+      window.location.href = `/${postId}}`;
+    }
+  }
 
   // function addComment(comment) {
   //   setComments({ ...comments, comment });
   //   console.log(comments); //got array of comment objects
   // }
-
-  let editURL = `/${postId}/EditPost`;
-  let deleteURL = `/${postId}`;
 
   return (
     <>
@@ -91,7 +89,7 @@ export default function PetDetails() {
         <a href={editURL}>
           <button>Edit</button>
         </a>
-          <button onClick={handleDeletePost}>Delete</button>
+        <button onClick={handleDeletePost}>Delete</button>
       </div>
       {/* Is there any comments? comments.length -not works every time?! */}
       {/* comments for the pet! */}
@@ -99,18 +97,18 @@ export default function PetDetails() {
         <>
           <h3>Comments:</h3>
           {comments.map((comment) => {
-            return <CommentsCard key={comment._id} comment={comment} />;
+            return (
+              <CommentsCard key={comment._id} comment={comment} user={user} />
+            );
           })}
         </>
       ) : (
         <h3>No Comments</h3>
       )}
+
+      {/* New Comment */}
       <h3>Create a New Comment:</h3>
-      <CommentsForm postId={postId} />
-      {/* <CommentsForm
-        comments={comments}
-        setComments={dispatch({ type: "CREATE_COMMENTS", payload: comments })}
-      /> */}
+      <CommentsForm />
     </>
   );
 }
