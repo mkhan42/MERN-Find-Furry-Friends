@@ -28,11 +28,6 @@ export default function App() {
     fetchPosts();
   }, []);
 
-  // status code 304 - not modified client
-  // const lostPets = posts.filter((p) => p.type === "Lost");
-  // const foundPets = posts.filter((p) => p.type === "Found");
-  // console.log(lostPets);
-
   return (
     <main className="App">
       {user ? (
@@ -40,6 +35,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/AllPosts" element={<AllPostsPage posts={posts} />} />
+
             <Route
               path="/FoundPosts"
               element={<FoundPostsPage posts={posts} />}
@@ -48,7 +44,6 @@ export default function App() {
               path="/LostPosts"
               element={<LostPostsPage posts={posts} />}
             />
-            <Route path="/AllPosts" element={<AllPostsPage posts={posts} />} />
             <Route
               path="/FoundPosts"
               element={<FoundPostsPage posts={posts} />}

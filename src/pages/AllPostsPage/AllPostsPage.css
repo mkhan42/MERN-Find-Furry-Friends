@@ -1,0 +1,8 @@
+.first6-lost-container {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+}
+.first6-found-container {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+}
