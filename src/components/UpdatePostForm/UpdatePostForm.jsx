@@ -1,11 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import * as postsAPI from "../../utilities/posts-api";
 import { useParams } from "react-router-dom";
 
 export default function UpdatePostForm({posts}) {
 
   const [currentPost, setCurrentPost] = useState({});
-  const [isFetching, setIsFetching] = useState(false)
   let { postId } = useParams();
   const [editAPost, setEditAPost] = useState({
     postTitle: "",
@@ -22,24 +21,10 @@ export default function UpdatePostForm({posts}) {
   });
 
 
-  // const fetchPosts =  useCallback( async () => {
-  //   try{
-  //     const po = await postsAPI.getById(postId);
-  //     console.log(po, "ZOHAIB");
-  //     setCurrentPost(po);
-
-  //   } catch (error){
-  //     console.log(error)
-  //   }
-  // }, [])
-
- 
-  
 
 useEffect(() => {
   const fetchPosts = async () => {
     try{
-      setIsFetching(true)
       const po = await postsAPI.getById(postId);
       setEditAPost({
         postTitle: po.postTitle,
