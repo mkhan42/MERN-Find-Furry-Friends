@@ -9,13 +9,20 @@ import * as postsAPI from "../../utilities/posts-api";
 //import post from "../../../models/post";
 
 export default function PetDetails({ user }) {
+
   /*========================================
         Post Part
 ========================================*/
 
+
   let { postId } = useParams();
+
   const [thePost, setThePost] = useState(null);
-  //const [showBtn, setShowBtn] = useState()
+
+  const [comments, setComments] = useState([]);
+
+  // const disableBtn = thePost.user !== user._id
+  // const { comments, dispatch } = useCommentsContext();
 
   useEffect(() => {
     // load the post
@@ -25,8 +32,19 @@ export default function PetDetails({ user }) {
       setThePost(po);
     }
     fetchPosts();
+    
+    // load comments only at the first time
+    async function fetchComments() {
+      const com = await commentsAPI.getAll(postId);
+      setComments(com);
+    }
+    fetchComments();
+  // why warning??? React Hook useEffect has a missing dependency: 'postId'.
   }, []);
-
+  
+  /*========================================
+        Event handler
+========================================*/
   async function handleDeletePost () {
     if(thePost.user === user._id) {
       //setShowBtn(true)
@@ -49,22 +67,7 @@ export default function PetDetails({ user }) {
     }
   }
 
-  /*========================================
-        Comments Part
-========================================*/
-
-  const [comments, setComments] = useState([]);
-  // const { comments, dispatch } = useCommentsContext();
-
-  useEffect(() => {
-    // load comments only at the first time
-    async function fetchComments() {
-      const com = await commentsAPI.getAll(postId);
-      setComments(com);
-    }
-    fetchComments();
-  }, []);
-
+  //let disableBtn = {thePost.user}
 
   return (
     <>
@@ -100,7 +103,9 @@ export default function PetDetails({ user }) {
         <br />
         {/* </div>let petURL = `/${post._id}`; */}
           <button onClick={handleEditPost}  >Edit</button>
-          <button onClick={handleDeletePost}>Delete</button>
+
+          <button  onClick={handleDeletePost}>Delete</button>
+
       </div>
       {/* Is there any comments? comments.length -not works every time?! */}
       {/* comments for the pet! */}
@@ -108,18 +113,18 @@ export default function PetDetails({ user }) {
         <>
           <h3>Comments:</h3>
           {comments.map((comment) => {
-            return <CommentsCard key={comment._id} comment={comment} />;
+            return (
+              <CommentsCard key={comment._id} comment={comment} user={user} />
+            );
           })}
         </>
       ) : (
         <h3>No Comments</h3>
       )}
+
+      {/* New Comment */}
       <h3>Create a New Comment:</h3>
-      <CommentsForm postId={postId} />
-      {/* <CommentsForm
-        comments={comments}
-        setComments={dispatch({ type: "CREATE_COMMENTS", payload: comments })}
-      /> */}
+      <CommentsForm />
     </>
   );
 }

@@ -5,21 +5,22 @@ module.exports = {
   getComments,
   createComment,
   deleteComment,
-  updateComment,
+  // updateComment,
 };
 /*========================================
-        get comments
+        get all comments
 ========================================*/
 
 async function getComments(req, res) {
   const { postId } = req.params;
   // find all the comments in the Post
-  const comments = await CommentModel.find({ post: postId }).sort({
-    createdAt: -1,
-  });
-  // .populate("post")
-  // .populate("user")
-  // .exec();
+  const comments = await CommentModel.find({ post: postId })
+    .sort({
+      createdAt: -1,
+    })
+    .populate("post")
+    .populate("user")
+    .exec();
   console.log(comments);
   res.status(200).json(comments);
 }
@@ -28,17 +29,14 @@ async function getComments(req, res) {
         create new comment
 ========================================*/
 async function createComment(req, res) {
-  //baby step
-  //   res.json({ mssg: "POST a new comment" });
-
   const { postId } = req.params;
-  const { commentTitle, content } = req.body;
+  //const { commentTitle, content } = req.body;
   // add doc to db
   try {
     const comment = await CommentModel.create({
-      commentTitle,
-      content,
+      ...req.body,
       post: postId,
+      user: req.user._id,
     });
     res.status(200).json(comment);
   } catch (error) {
@@ -50,15 +48,12 @@ async function createComment(req, res) {
         Delete a comment
 ========================================*/
 async function deleteComment(req, res) {
-  //baby step
-  //res.json({ mssg: "DELETE a comment" });
-  const { id } = req.params;
+  const { commentId } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  if (!mongoose.Types.ObjectId.isValid(commentId)) {
     return res.status(404).json({ error: "No such comment" });
   }
-
-  const comment = await CommentModel.findByIdAndDelete({ _id: id });
+  const comment = await CommentModel.findByIdAndDelete({ _id: commentId });
   if (!comment) {
     res.status(404).json("No such comment");
   }
@@ -68,18 +63,18 @@ async function deleteComment(req, res) {
 /*========================================
         UPDATE a comment
 ========================================*/
-async function updateComment(req, res) {
-  //baby step
-  //res.json({ mssg: "UPDATE a comment" });
-  const { id } = req.params;
+// async function updateComment(req, res) {
+//   //baby step
+//   //res.json({ mssg: "UPDATE a comment" });
+//   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such comment" });
-  }
+//   if (!mongoose.Types.ObjectId.isValid(id)) {
+//     return res.status(404).json({ error: "No such comment" });
+//   }
 
-  const comment = await CommentModel.findByIdAndUpdate({ _id: id }, req.body);
-  if (!comment) {
-    res.status(404).json("no such comment");
-  }
-  res.status(200).json(comment);
-}
+//   const comment = await CommentModel.findByIdAndUpdate({ _id: id }, req.body);
+//   if (!comment) {
+//     res.status(404).json("no such comment");
+//   }
+//   res.status(200).json(comment);
+// }
