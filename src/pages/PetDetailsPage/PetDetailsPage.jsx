@@ -25,6 +25,12 @@ export default function PetDetails() {
     fetchPosts();
   }, []);
 
+  async function handleDeletePost () {
+    const del = await postsAPI.deletePost(postId)
+    console.log(del);
+    window.location.href = `/AllPosts`;
+  }
+
   /*========================================
         Comments Part
 ========================================*/
@@ -48,6 +54,7 @@ export default function PetDetails() {
   // }
 
   let editURL = `/${postId}/EditPost`;
+  let deleteURL = `/${postId}`;
 
   return (
     <>
@@ -81,6 +88,7 @@ export default function PetDetails() {
         <a href={editURL}>
           <button>Edit</button>
         </a>
+          <button onClick={handleDeletePost}>Delete</button>
       </div>
       {/* Is there any comments? comments.length -not works every time?! */}
       {/* comments for the pet! */}
