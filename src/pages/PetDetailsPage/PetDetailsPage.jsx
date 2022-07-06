@@ -5,9 +5,16 @@ import { useEffect, useState } from "react";
 //import { useCommentsContext } from "../../hooks/useCommentsContext";
 import * as commentsAPI from "../../utilities/comments-api";
 import * as postsAPI from "../../utilities/posts-api";
+//import user from "../../../models/user";
 //import post from "../../../models/post";
 
 export default function PetDetails({ user }) {
+
+  /*========================================
+        Post Part
+========================================*/
+
+
   let { postId } = useParams();
 
   let editURL = `/${postId}/EditPost`;
@@ -24,35 +31,47 @@ export default function PetDetails({ user }) {
       setThePost(po);
     }
     fetchPosts();
-
+    
     // load comments only at the first time
     async function fetchComments() {
       const com = await commentsAPI.getAll(postId);
       setComments(com);
-      // dispatch({ type: "SET_COMMENTS", payload: com });
     }
     fetchComments();
-  }, []);
   // why warning??? React Hook useEffect has a missing dependency: 'postId'.
-
+  }, []);
+  
   /*========================================
         Event handler
 ========================================*/
-
-  async function handleDeletePost() {
-    if (thePost.user === user._id) {
-      const del = await postsAPI.deletePost(postId);
-      console.log(del);
-      window.location.href = `/AllPosts`;
-    } else {
-      window.location.href = `/${postId}}`;
+  async function handleDeletePost () {
+    if(thePost.user === user._id) {
+      const del = await postsAPI.deletePost(postId)
+    console.log(del);
+    window.location.href = `/AllPosts`;
     }
+    else {
+      alert("cannot delete because you are not the user")
+    }
+    //       const del = await postsAPI.deletePost(postId)
+    // console.log(del);
+    // window.location.href = `/AllPosts`;
   }
 
-  // function addComment(comment) {
-  //   setComments({ ...comments, comment });
-  //   console.log(comments); //got array of comment objects
-  // }
+  function handleEditPost () {
+    if(thePost.user !== user._id) {
+      alert("cannot edit because you are not the user")
+      window.location.href = `/${postId}`;
+    }
+    else {
+      window.location.href = `/${postId}/EditPost`
+    }
+    //       const del = await postsAPI.deletePost(postId)
+    // console.log(del);
+    // window.location.href = `/AllPosts`;
+  }
+
+
 
   return (
     <>
@@ -61,6 +80,7 @@ export default function PetDetails({ user }) {
         {thePost && (
           <>
             <p>Author: {thePost.userName}</p>
+            {/* <p>User: {thePost.user.name} </p> */}
             <p>Contact Info: {thePost.contactInfo}</p>
             <p>Post Type: {thePost.postType}</p>
             {/* Need to update time later --- */}
@@ -70,7 +90,7 @@ export default function PetDetails({ user }) {
             <p>Animal Name:{thePost.name}</p>
             <p>Animal Type:{thePost.animalType} </p>
             <p>Images: </p>
-            <img src={thePost.imgURL} alt={thePost.name} />
+            <img src={thePost.imgURL} alt={thePost.name} width="200px"/>
             <p>Animal Age: {thePost.age}</p>
             <p>Last Seen Location: </p>
             <p>reserved place for map api</p>
@@ -86,10 +106,10 @@ export default function PetDetails({ user }) {
         <br />
         <br />
         {/* </div>let petURL = `/${post._id}`; */}
-        <a href={editURL}>
-          <button>Edit</button>
-        </a>
-        <button onClick={handleDeletePost}>Delete</button>
+
+          <button onClick={handleEditPost}>Edit</button>
+          <button onClick={handleDeletePost}>Delete</button>
+
       </div>
       {/* Is there any comments? comments.length -not works every time?! */}
       {/* comments for the pet! */}

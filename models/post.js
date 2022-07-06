@@ -7,6 +7,7 @@ const postSchema = new Schema(
     userName: {
       type: String,
     },
+    //userId: {type: Number},
     postType: {
       type: String,
       required: true,
