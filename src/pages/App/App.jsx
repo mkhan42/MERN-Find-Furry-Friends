@@ -65,7 +65,7 @@ export default function App() {
             <Route path="/myaccount" element={<UsersPage user={user} />} />
             {/* pet id ....how to get it? */}
             <Route path="/:postId" element={<PetDetailsPage />} />
-            <Route path=":postId/EditPost" element={<UpdatePostPage />} />
+            <Route path=":postId/EditPost" element={<UpdatePostPage posts={posts}/>} />
             {/* redirect to /AllPosts if path in address bar hasn't matched a <Route> above */}
             <Route path="/*" element={<Navigate to="/AllPosts" />} />
           </Routes>
