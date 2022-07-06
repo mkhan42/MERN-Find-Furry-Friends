@@ -1,18 +1,13 @@
 import { Link } from "react-router-dom";
 
 export default function PetCard({ post }) {
-  // TBD???
-  // for example: /found/12345 or /lost/12346
   let petURL = `/${post._id}`;
   return (
     <>
       <Link to={petURL}>
-        <h3>{post.postTitle}</h3>
+        {/* <p>{post.postTitle}</p> */}
+        <img src={post.imgURL} alt={post.name} className="animalImg" />
       </Link>
-      <div>
-        <p>animal name: {post.name}</p>
-      </div>
-      <br />
     </>
   );
 }

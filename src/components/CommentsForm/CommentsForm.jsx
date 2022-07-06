@@ -1,9 +1,9 @@
 import { useState } from "react";
 import * as commentsAPI from "../../utilities/comments-api";
 
-export default function CommentsForm({ addComment }) {
+export default function CommentsForm({ postId }) {
   const [newComment, setNewComment] = useState({});
-  // const [error, setError] = useState(null);
+  // console.log("postId:" + postId);
 
   function handleChange(event) {
     setNewComment({
@@ -14,15 +14,13 @@ export default function CommentsForm({ addComment }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log({ ...newComment });
+    // console.log({ ...newComment });
     // it goes to controller
     // POST into dbs
-    const json = await commentsAPI.createComment({ ...newComment });
+    const json = await commentsAPI.createComment(postId, { ...newComment });
     console.log(json); //got comment id
-    // ???
-    //setComments({ ...comments, ...newComment }); //got a warning - not working
-    // BUG: TypeError: comments.map is not a function
-    // addComment({ ...newComment });
+    //redirect to the post....
+    window.location.href = `/${postId}`;
     setNewComment({});
   }
 

@@ -12,13 +12,15 @@ module.exports = {
 ========================================*/
 
 async function getComments(req, res) {
-  //baby step
-  // res.json({ mssg: "GET all comments" });
-  const comments = await CommentModel.find({})
-    .sort({ createdAt: -1 })
-    .populate("post")
-    .populate("user")
-    .exec();
+  const { postId } = req.params;
+  // find all the comments in the Post
+  const comments = await CommentModel.find({ post: postId }).sort({
+    createdAt: -1,
+  });
+  // .populate("post")
+  // .populate("user")
+  // .exec();
+  console.log(comments);
   res.status(200).json(comments);
 }
 
@@ -29,13 +31,15 @@ async function createComment(req, res) {
   //baby step
   //   res.json({ mssg: "POST a new comment" });
 
-  // ???const user grab from getToken()?;
-  // do we need post id?
-
+  const { postId } = req.params;
   const { commentTitle, content } = req.body;
   // add doc to db
   try {
-    const comment = await CommentModel.create({ commentTitle, content });
+    const comment = await CommentModel.create({
+      commentTitle,
+      content,
+      post: postId,
+    });
     res.status(200).json(comment);
   } catch (error) {
     res.status(400).json({ error: error.message });
