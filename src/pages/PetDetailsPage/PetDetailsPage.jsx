@@ -17,10 +17,11 @@ export default function PetDetails({ user }) {
 
   let { postId } = useParams();
 
-  let editURL = `/${postId}/EditPost`;
-
   const [thePost, setThePost] = useState(null);
+
   const [comments, setComments] = useState([]);
+
+  // const disableBtn = thePost.user !== user._id
   // const { comments, dispatch } = useCommentsContext();
 
   useEffect(() => {
@@ -46,6 +47,7 @@ export default function PetDetails({ user }) {
 ========================================*/
   async function handleDeletePost () {
     if(thePost.user === user._id) {
+      //setShowBtn(true)
       const del = await postsAPI.deletePost(postId)
     console.log(del);
     window.location.href = `/AllPosts`;
@@ -53,9 +55,6 @@ export default function PetDetails({ user }) {
     else {
       alert("cannot delete because you are not the user")
     }
-    //       const del = await postsAPI.deletePost(postId)
-    // console.log(del);
-    // window.location.href = `/AllPosts`;
   }
 
   function handleEditPost () {
@@ -66,12 +65,9 @@ export default function PetDetails({ user }) {
     else {
       window.location.href = `/${postId}/EditPost`
     }
-    //       const del = await postsAPI.deletePost(postId)
-    // console.log(del);
-    // window.location.href = `/AllPosts`;
   }
 
-
+  //let disableBtn = {thePost.user}
 
   return (
     <>
@@ -106,9 +102,9 @@ export default function PetDetails({ user }) {
         <br />
         <br />
         {/* </div>let petURL = `/${post._id}`; */}
+          <button onClick={handleEditPost}  >Edit</button>
 
-          <button onClick={handleEditPost}>Edit</button>
-          <button onClick={handleDeletePost}>Delete</button>
+          <button  onClick={handleDeletePost}>Delete</button>
 
       </div>
       {/* Is there any comments? comments.length -not works every time?! */}
