@@ -29,14 +29,10 @@ export default function UsersPage({ user }) {
             <li>
               <a href="/">Post2.title</a>
               &nbsp; | &nbsp;
-              <a href="/">Edit</a>
-              &nbsp; | &nbsp;
               <a href="/">Delete</a>
             </li>
             <li>
               <a href="/">Post3.title</a>
-              &nbsp; | &nbsp;
-              <a href="/">Edit</a>
               &nbsp; | &nbsp;
               <a href="/">Delete</a>
             </li>

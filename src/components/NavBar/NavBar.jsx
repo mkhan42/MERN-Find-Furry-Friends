@@ -18,9 +18,9 @@ export default function NavBar({ user, setUser }) {
       <Link to="/LostPosts">LOST</Link>
       &nbsp; | &nbsp;
       <Link to="/FoundPosts">FOUND</Link>
+      &nbsp; | &nbsp; Welcome, {user.name}
       &nbsp; | &nbsp;
       <Link to="/NewPost">New Post</Link>
-      &nbsp; | &nbsp; Welcome, {user.name}
       &nbsp; | &nbsp;
       <Link to="/myaccount">My Account</Link>
       &nbsp; | &nbsp;

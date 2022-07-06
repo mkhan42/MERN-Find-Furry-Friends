@@ -13,7 +13,7 @@ router.post("/:postId", commentsCtrl.createComment);
 // DELETE a comment
 router.delete("/:id", commentsCtrl.deleteComment);
 
-// UPDATE a comment
-router.put("/:id", commentsCtrl.updateComment);
+// UPDATE a comment - nahhh
+// router.put("/:id", commentsCtrl.updateComment);
 
 module.exports = router;
