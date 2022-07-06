@@ -14,13 +14,12 @@ module.exports = {
 async function getComments(req, res) {
   const { postId } = req.params;
   // find all the comments in the Post
-  const comments = await CommentModel.find({ post: postId })
-    .sort({
-      createdAt: -1,
-    })
-    .populate("post")
-    .populate("user")
-    .exec();
+  const comments = await CommentModel.find({ post: postId }).sort({
+    createdAt: -1,
+  });
+  // .populate("post")
+  // .populate("user")
+  // .exec();
   console.log(comments);
   res.status(200).json(comments);
 }

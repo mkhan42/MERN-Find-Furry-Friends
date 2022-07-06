@@ -16,6 +16,8 @@ export default function PetDetails({ user }) {
   let { postId } = useParams();
   const [thePost, setThePost] = useState(null);
   const [comments, setComments] = useState([]);
+
+  // const disableBtn = thePost.user !== user._id
   // const { comments, dispatch } = useCommentsContext();
 
   useEffect(() => {
@@ -39,17 +41,16 @@ export default function PetDetails({ user }) {
   /*========================================
         Event handler
 ========================================*/
+
   async function handleDeletePost() {
     if (thePost.user === user._id) {
+      //setShowBtn(true)
       const del = await postsAPI.deletePost(postId);
       console.log(del);
       window.location.href = `/AllPosts`;
     } else {
       alert("cannot delete because you are not the user");
     }
-    //       const del = await postsAPI.deletePost(postId)
-    // console.log(del);
-    // window.location.href = `/AllPosts`;
   }
 
   function handleEditPost() {
@@ -59,9 +60,6 @@ export default function PetDetails({ user }) {
     } else {
       window.location.href = `/${postId}/EditPost`;
     }
-    //       const del = await postsAPI.deletePost(postId)
-    // console.log(del);
-    // window.location.href = `/AllPosts`;
   }
 
   return (
@@ -95,7 +93,6 @@ export default function PetDetails({ user }) {
         <hr />
         <br />
         <br />
-        {/* </div>let petURL = `/${post._id}`; */}
 
         <button onClick={handleEditPost}>Edit</button>
         <button onClick={handleDeletePost}>Delete</button>
