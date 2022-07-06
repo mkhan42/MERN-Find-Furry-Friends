@@ -1,4 +1,5 @@
 const Post = require('../../models/post')
+const User = require('../../models/user')
 const mongoose = require("mongoose");
 
 module.exports = {
@@ -11,15 +12,20 @@ module.exports = {
 
 async function createPost(req, res) {
     try {
-      const post = await Post.create(req.body);
+      const post = await Post.create({
+        ...req.body,
+        user: req.user._id
+      });
+
       res.status(200).json(post);
+      //req.userName = req.user.name
     } catch (e) {
       res.status(400).json(e);
     }
   }
 
   async function getPosts(req, res) {
-    const posts = await Post.find({}).sort({ createdAt: -1 });
+    const posts = await Post.find({}).sort({ createdAt: -1 })
     res.status(200).json(posts);
   }
 
