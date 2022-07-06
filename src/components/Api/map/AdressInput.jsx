@@ -67,12 +67,10 @@ const PlacesAutocomplete = ({ setSelected }) => {
     <Combobox onSelect={handleSelect}>
       <ComboboxInput
         value={value}
-        name='lastAddress'
         onChange={(e) => setValue(e.target.value)}
         disabled={!ready}
         className="combobox-input"
         placeholder="Search an address"
-        type="text"
       />
       <ComboboxPopover>
         <ComboboxList>
