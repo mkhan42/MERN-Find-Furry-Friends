@@ -8,10 +8,12 @@ router.get("/:postId", commentsCtrl.getComments);
 
 // CREATE
 // POST /api/comments/:postId
+//router.post("/:postId", commentsCtrl.createComment);
+// POST /api/comments/:postId
 router.post("/:postId", commentsCtrl.createComment);
 
 // DELETE a comment
-router.delete("/:id", commentsCtrl.deleteComment);
+router.delete("/:commentId", commentsCtrl.deleteComment);
 
 // UPDATE a comment - nahhh
 // router.put("/:id", commentsCtrl.updateComment);

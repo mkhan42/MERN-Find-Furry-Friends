@@ -1,9 +1,14 @@
 import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import * as commentsAPI from "../../utilities/comments-api";
+import { useParams } from "react-router-dom";
 
-export default function CommentsForm({ postId }) {
+export default function CommentsForm() {
   const [newComment, setNewComment] = useState({});
-  // console.log("postId:" + postId);
+  const { postId } = useParams();
+
+  //Use the navigate function to change routes programmatically
+  // const navigate = useNavigate();
 
   function handleChange(event) {
     setNewComment({
@@ -14,13 +19,16 @@ export default function CommentsForm({ postId }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    // console.log({ ...newComment });
-    // it goes to controller
     // POST into dbs
-    const json = await commentsAPI.createComment(postId, { ...newComment });
-    console.log(json); //got comment id
+    const json = await commentsAPI.createComment(postId, {
+      ...newComment,
+    });
+
+    console.log("this is comment");
+    console.log(json); //got comment id - wiped out after redirect
     //redirect to the post....
     window.location.href = `/${postId}`;
+    // navigate(`/${postId}`); //still not working
     setNewComment({});
   }
 

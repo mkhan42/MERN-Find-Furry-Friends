@@ -1,4 +1,7 @@
 import "./UsersPage.css";
+import * as commentsAPI from "../../utilities/comments-api";
+import * as postsAPI from "../../utilities/posts-api";
+
 // "Friday, Jul 2, 2021"
 const today = new Date().toLocaleDateString("en-us", {
   weekday: "long",
@@ -21,8 +24,6 @@ export default function UsersPage({ user }) {
           <ul>
             <li>
               <a href="/">Post1.title</a>
-              &nbsp; | &nbsp;
-              <a href="/">Edit</a>
               &nbsp; | &nbsp;
               <a href="/">Delete</a>
             </li>
