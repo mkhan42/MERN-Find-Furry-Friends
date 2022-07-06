@@ -10,6 +10,7 @@ import FoundPostsPage from "../FoundPostsPage/FoundPostsPage";
 import LostPostsPage from "../LostPostsPage/LostPostsPage";
 import UsersPage from "../../pages/UsersPage/UsersPage";
 import PetDetailsPage from "../../pages/PetDetailsPage/PetDetailsPage";
+import UpdatePostPage from "../../pages/UpdatePostPage/UpdatePostPage";
 // Components
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
@@ -50,6 +51,7 @@ export default function App() {
             <Route path="/NewPost" element={<NewPostPage user={user} />} />
             <Route path="/myaccount" element={<UsersPage user={user} />} />
             <Route path="/:postId" element={<PetDetailsPage />} />
+            <Route path=":postId/EditPost" element={<UpdatePostPage posts={posts}/>} />
             {/* redirect to /AllPosts if path in address bar hasn't matched a <Route> above */}
             <Route path="/*" element={<Navigate to="/AllPosts" />} />
           </Routes>

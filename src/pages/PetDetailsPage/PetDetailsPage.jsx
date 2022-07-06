@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 //import { useCommentsContext } from "../../hooks/useCommentsContext";
 import * as commentsAPI from "../../utilities/comments-api";
 import * as postsAPI from "../../utilities/posts-api";
+//import post from "../../../models/post";
 
 export default function PetDetails() {
   /*========================================
@@ -41,6 +42,13 @@ export default function PetDetails() {
     fetchComments();
   }, []);
 
+  // function addComment(comment) {
+  //   setComments({ ...comments, comment });
+  //   console.log(comments); //got array of comment objects
+  // }
+
+  let editURL = `/${postId}/EditPost`;
+
   return (
     <>
       <div className="pet-detail-container">
@@ -69,6 +77,10 @@ export default function PetDetails() {
         <hr />
         <br />
         <br />
+        {/* </div>let petURL = `/${post._id}`; */}
+        <a href={editURL}>
+          <button>Edit</button>
+        </a>
       </div>
       {/* Is there any comments? comments.length -not works every time?! */}
       {/* comments for the pet! */}
