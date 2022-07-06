@@ -102,7 +102,7 @@ export default function PetDetails({ user }) {
         <br />
         <br />
         {/* </div>let petURL = `/${post._id}`; */}
-          <button onClick={handleEditPost}  >Edit</button>
+          <button onClick={handleEditPost}>Edit</button>
 
           <button  onClick={handleDeletePost}>Delete</button>
 
@@ -114,7 +114,7 @@ export default function PetDetails({ user }) {
           <h3>Comments:</h3>
           {comments.map((comment) => {
             return (
-              <CommentsCard key={comment._id} comment={comment} user={user} />
+              <CommentsCard key={comment._id} comment={comment} user={user} thePost={thePost}/>
             );
           })}
         </>
