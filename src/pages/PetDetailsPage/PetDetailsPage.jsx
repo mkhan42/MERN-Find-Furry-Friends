@@ -42,7 +42,7 @@ export default function PetDetails({ user }) {
 
   function handleEditPost () {
     if(thePost.user !== user._id) {
-      alert("cannot delete because you are not the user")
+      alert("cannot edit because you are not the user")
       window.location.href = `/${postId}`;
     }
     else {
