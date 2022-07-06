@@ -16,3 +16,8 @@ export function getAll(postId) {
 export function createComment(postId, data) {
   return sendRequest(`${BASE_URL}/${postId}`, "POST", data);
 }
+
+// delete a comment in a Post
+export function deleteComment(commentId) {
+  return sendRequest(`${BASE_URL}/${commentId}`, "DELETE");
+}
