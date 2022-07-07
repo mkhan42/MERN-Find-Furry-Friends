@@ -29,10 +29,7 @@ export default function App() {
     }
     fetchPosts();
   }, [user]);
-  // BUG:
-  // [posts] - infinite running
-  // [] - refresh lost/found page then it's gone
-  //    - refresh home page is fine
+  // []  -> needs to refresh homepage
 
   return (
     <main className="App">

@@ -76,7 +76,7 @@ export default function UsersPage({ user, posts }) {
           </ol>
         </section>
       ) : (
-        <h3>You didn't make any comments yet</h3>
+        <h3>You haven't made any comments yet</h3>
       )}
 
       {/* after mvp */}
@@ -84,8 +84,6 @@ export default function UsersPage({ user, posts }) {
       {/* <h3>
         InMail: ??number?? - click then show the list - comment in the post
       </h3>  */}
-
-      
     </>
   );
 }

@@ -1,11 +1,10 @@
 import CommentsCard from "../../components/CommentsCard/CommentsCard";
 import CommentsForm from "../../components/CommentsForm/CommentsForm";
 import { useParams } from "react-router-dom";
-import { useEffect, useState ,useMemo} from "react";
+import { useEffect, useState, useMemo } from "react";
 //import { useCommentsContext } from "../../hooks/useCommentsContext";
 import * as commentsAPI from "../../utilities/comments-api";
 import * as postsAPI from "../../utilities/posts-api";
-
 
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
@@ -21,18 +20,16 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
-import "../../components/Api/map/AdressInput.css"
-import Api from "../../components/Api/map/Api"
+import "../../components/Api/map/AdressInput.css";
+import Api from "../../components/Api/map/Api";
 
 //import post from "../../../models/post";
-
 
 const moment = require("moment");
 //import user from "../../../models/user";
 //import post from "../../../models/post";
 
 export default function PetDetails({ user }) {
-
   /*========================================
         Post Part
 ========================================*/
@@ -43,64 +40,59 @@ export default function PetDetails({ user }) {
   const postCreatedTime = thePost && moment(thePost.createdAt);
   const postUpdatedTime = thePost && moment(thePost.updatedAt);
   const dateTime = thePost && moment(thePost.date);
+
   useEffect(() => {
-    // load the post
-    async function fetchPosts() {
+    // load the post and Comments
+    async function fetchPostComment() {
       const po = await postsAPI.getById(postId);
-      console.log(po);
       setThePost(po);
-    }
-    fetchPosts();
-
-
-    // load comments only at the first time
-    async function fetchComments() {
       const com = await commentsAPI.getAll(postId);
       setComments(com);
     }
-    fetchComments();
-    // why warning??? React Hook useEffect has a missing dependency: 'postId'.
-  }, []);
+    fetchPostComment();
+
+    //postId is used in the useEffect
+  }, [postId]);
 
   /*========================================
         Event handler
 ========================================*/
 
   async function handleDeletePost() {
-
-      const del = await postsAPI.deletePost(postId);
-      console.log(del);
-      window.location.href = `/AllPosts`;
+    const del = await postsAPI.deletePost(postId);
+    console.log(del);
+    window.location.href = `/AllPosts`;
   }
 
   function handleEditPost() {
-      window.location.href = `/${postId}/EditPost`;
+    window.location.href = `/${postId}/EditPost`;
   }
-  
-  let btn = thePost?.user === user._id
-////////////////////////////////////////////////////////////////
-//       GOOGLE MAP API
-////////////////////////////////////////////////////////////////
+
+  let btn = thePost?.user === user._id;
+
+  ////////////////////////////////////////////////////////////////
+  //       GOOGLE MAP API
+  ////////////////////////////////////////////////////////////////
   function Places() {
     const { isLoaded } = useLoadScript({
-      googleMapsApiKey: 'AIzaSyCGBOGKipXcebuQ9uROeeHPyeIsG_CQQx4',
+      googleMapsApiKey: "AIzaSyCGBOGKipXcebuQ9uROeeHPyeIsG_CQQx4",
       libraries: ["places"],
     });
-  
+
     if (!isLoaded) return <div>Loading...</div>;
     return <Map />;
   }
-  
+
   function Map() {
     const center = useMemo(() => ({ lat: 43.45, lng: -80.49 }), []);
     const [selected, setSelected] = useState(null);
-  
+
     return (
       <>
         <div className="places-container">
           <PlacesAutocomplete setSelected={setSelected} />
         </div>
-  
+
         <GoogleMap
           zoom={15}
           center={selected}
@@ -111,7 +103,7 @@ export default function PetDetails({ user }) {
       </>
     );
   }
-  
+
   const PlacesAutocomplete = ({ setSelected }) => {
     const {
       ready,
@@ -120,13 +112,13 @@ export default function PetDetails({ user }) {
       suggestions: { status, data },
       clearSuggestions,
     } = usePlacesAutocomplete();
-  
+
     const handleSelect = async (address) => {
       setValue(address, false);
-      let naddress = JSON.stringify(address)
+      let naddress = JSON.stringify(address);
       clearSuggestions();
-      
-      const results = await getGeocode({ address});
+
+      const results = await getGeocode({ address });
       const { lat, lng } = await getLatLng(results[0]);
       setSelected({ lat, lng });
     };
@@ -141,9 +133,9 @@ export default function PetDetails({ user }) {
           placeholder="Search an address"
           name="lastAddress"
         /> */}
-         <ComboboxInput
-         value={thePost.lastAddress}
-         onSelect={(e) => setValue(thePost.lastAddress)}
+        <ComboboxInput
+          value={thePost.lastAddress}
+          onSelect={(e) => setValue(thePost.lastAddress)}
           disabled={!ready}
           className="combobox-input"
           placeholder="Search an address"
@@ -157,14 +149,12 @@ export default function PetDetails({ user }) {
               ))}
           </ComboboxList>
         </ComboboxPopover>
-       
       </Combobox>
     );
   };
   ////////////////////////////////////////////////////////////////
-//       GOOGLE MAP API
-////////////////////////////////////////////////////////////////
-
+  //       GOOGLE MAP API
+  ////////////////////////////////////////////////////////////////
 
   return (
     <>
@@ -196,9 +186,8 @@ export default function PetDetails({ user }) {
             <p>Description: {thePost.description}</p>
             <p>Reward($): {thePost.reward}</p>
             <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
-            <Places/>
+            <Places />
           </>
-
         )}
         <br />
         <br />
@@ -207,8 +196,8 @@ export default function PetDetails({ user }) {
           <div>
             <button onClick={handleEditPost}>Edit</button>
             <button onClick={handleDeletePost}>Delete</button>
-          </div> )
-        }
+          </div>
+        )}
 
         <hr />
         <hr />
@@ -217,12 +206,16 @@ export default function PetDetails({ user }) {
       </div>
       {/* Is there any comments? comments.length -not works every time?! */}
       {/* comments for the pet! */}
-      {comments ? (
+      {comments?.length ? (
         <>
           <h3>Comments:</h3>
           {comments.map((comment) => {
             return (
-              <CommentsCard key={comment._id} comment={comment} user={user} />
+              <CommentsCard
+                key={comment._id}
+                comment={comment}
+                userId={user._id}
+              />
             );
           })}
         </>

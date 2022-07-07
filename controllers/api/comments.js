@@ -21,7 +21,7 @@ async function getComments(req, res) {
   // .populate("post")
   // .populate("user")
   // .exec();
-  console.log(comments);
+  // console.log(comments);
   res.status(200).json(comments);
 }
 
@@ -49,7 +49,8 @@ async function createComment(req, res) {
     const comment = await CommentModel.create({
       ...req.body,
       post: postId,
-      user: req.user._id
+      user: req.user._id,
+      userName: req.user.name,
     });
     res.status(200).json(comment);
   } catch (error) {
