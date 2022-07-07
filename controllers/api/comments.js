@@ -21,7 +21,7 @@ async function getComments(req, res) {
   // .populate("post")
   // .populate("user")
   // .exec();
-  console.log(comments);
+  // console.log(comments);
   res.status(200).json(comments);
 }
 

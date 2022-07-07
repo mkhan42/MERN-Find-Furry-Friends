@@ -40,23 +40,19 @@ export default function PetDetails({ user }) {
   const postCreatedTime = thePost && moment(thePost.createdAt);
   const postUpdatedTime = thePost && moment(thePost.updatedAt);
   const dateTime = thePost && moment(thePost.date);
-  useEffect(() => {
-    // load the post
-    async function fetchPosts() {
-      const po = await postsAPI.getById(postId);
-      console.log(po);
-      setThePost(po);
-    }
-    fetchPosts();
 
-    // load comments only at the first time
-    async function fetchComments() {
+  useEffect(() => {
+    // load the post and Comments
+    async function fetchPostComment() {
+      const po = await postsAPI.getById(postId);
+      setThePost(po);
       const com = await commentsAPI.getAll(postId);
       setComments(com);
     }
-    fetchComments();
-    // why warning??? React Hook useEffect has a missing dependency: 'postId'.
-  }, []);
+    fetchPostComment();
+
+    //postId is used in the useEffect
+  }, [postId]);
 
   /*========================================
         Event handler
