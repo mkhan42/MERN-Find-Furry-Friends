@@ -6,6 +6,10 @@ const commentsCtrl = require("../../controllers/api/comments");
 // GET /api/comments/:postId
 router.get("/:postId", commentsCtrl.getComments);
 
+// GET all comments by the UserId
+// api/comments/user/:userId
+router.get("/user/:userId", commentsCtrl.getUserComments);
+
 // CREATE
 // POST /api/comments/:postId
 //router.post("/:postId", commentsCtrl.createComment);

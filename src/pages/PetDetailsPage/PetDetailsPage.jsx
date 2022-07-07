@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 //import { useCommentsContext } from "../../hooks/useCommentsContext";
 import * as commentsAPI from "../../utilities/comments-api";
 import * as postsAPI from "../../utilities/posts-api";
+const moment = require("moment");
 //import user from "../../../models/user";
 //import post from "../../../models/post";
 
@@ -17,6 +18,9 @@ export default function PetDetails({ user }) {
   const [thePost, setThePost] = useState(null);
   const [comments, setComments] = useState([]);
 
+  const postCreatedTime = thePost && moment(thePost.createdAt);
+  const postUpdatedTime = thePost && moment(thePost.updatedAt);
+  const dateTime = thePost && moment(thePost.date);
   // const disableBtn = thePost.user !== user._id
   // const { comments, dispatch } = useCommentsContext();
 
@@ -71,9 +75,16 @@ export default function PetDetails({ user }) {
             <p>Author: {thePost.userName}</p>
             <p>Contact Info: {thePost.contactInfo}</p>
             <p>Post Type: {thePost.postType}</p>
-            {/* Need to update time later --- */}
-            <p>Post Created at: {thePost.createdAt}</p>
-            <p>Post Updated at: {thePost.updatedAt}</p>
+
+            <p>Post Created at: {postCreatedTime.format("MM/DD/YYYY HH:mm")}</p>
+            {/* only show the updated time if there is an update */}
+            {thePost.createdAt !== thePost.updatedAt ? (
+              <p>
+                Post Updated at: {postUpdatedTime.format("MM/DD/YYYY HH:mm")}
+              </p>
+            ) : (
+              " "
+            )}
             <p>Title: {thePost.postTitle}</p>
             <p>Animal Name:{thePost.name}</p>
             <p>Animal Type:{thePost.animalType} </p>
@@ -84,7 +95,7 @@ export default function PetDetails({ user }) {
             <p>reserved place for map api</p>
             <p>Description: {thePost.description}</p>
             <p>Reward($): {thePost.reward}</p>
-            <p>Day pet was lost/found?: {thePost.date}</p>
+            <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
           </>
         )}
         <br />

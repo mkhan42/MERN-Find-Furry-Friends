@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 module.exports = {
   getComments,
+  getUserComments,
   createComment,
   deleteComment,
   // updateComment,
@@ -20,6 +21,19 @@ async function getComments(req, res) {
   // .populate("post")
   // .populate("user")
   // .exec();
+  console.log(comments);
+  res.status(200).json(comments);
+}
+
+/*========================================
+        get the user's comments
+========================================*/
+async function getUserComments(req, res) {
+  const { userId } = req.params;
+  // find all the comments in the Post
+  const comments = await CommentModel.find({ user: userId }).sort({
+    createdAt: -1,
+  });
   console.log(comments);
   res.status(200).json(comments);
 }
@@ -60,7 +74,7 @@ async function deleteComment(req, res) {
 }
 
 /*========================================
-        UPDATE a comment
+        UPDATE a comment - nahhh
 ========================================*/
 // async function updateComment(req, res) {
 //   //baby step
