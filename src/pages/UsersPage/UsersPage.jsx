@@ -1,6 +1,5 @@
 import "./UsersPage.css";
-import * as commentsAPI from "../../utilities/comments-api";
-import * as postsAPI from "../../utilities/posts-api";
+import PetCard from "../../components/PetCard/PetCard";
 
 // "Friday, Jul 2, 2021"
 const today = new Date().toLocaleDateString("en-us", {
@@ -10,7 +9,11 @@ const today = new Date().toLocaleDateString("en-us", {
   day: "numeric",
 });
 
-export default function UsersPage({ user }) {
+export default function UsersPage({ user, posts }) {
+  const userPosts = posts.filter((p) => p.user === user._id);
+  console.log(userPosts);
+  //const userComments;
+
   return (
     <>
       <h1>HI, {user.name.toUpperCase()}</h1>
@@ -19,26 +22,21 @@ export default function UsersPage({ user }) {
         <h3>YOUR EMAIL: {user.email}</h3>
         <h3>YOUR POSTS:</h3>
         {/* if I have post then show posts, else show "No Post yet" */}
-
-        <section className="user-posts-container">
-          <ul>
-            <li>
-              <a href="/">Post1.title</a>
-              &nbsp; | &nbsp;
-              <a href="/">Delete</a>
-            </li>
-            <li>
-              <a href="/">Post2.title</a>
-              &nbsp; | &nbsp;
-              <a href="/">Delete</a>
-            </li>
-            <li>
-              <a href="/">Post3.title</a>
-              &nbsp; | &nbsp;
-              <a href="/">Delete</a>
-            </li>
-          </ul>
-        </section>
+        {userPosts.length ? (
+          <section className="user-posts-container">
+            <ul>
+              {userPosts.map((post) => {
+                return (
+                  <li>
+                    <PetCard key={post._id} post={post} />
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ) : (
+          <h3>No Posts Yet</h3>
+        )}
       </div>
       {/* COMMENTS SECTION */}
       {/* if I have comments, else show "No Comments yet" */}

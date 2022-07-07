@@ -9,17 +9,14 @@ import * as postsAPI from "../../utilities/posts-api";
 //import post from "../../../models/post";
 
 export default function PetDetails({ user }) {
-
   /*========================================
         Post Part
 ========================================*/
 
-
   let { postId } = useParams();
-
   const [thePost, setThePost] = useState(null);
-
   const [comments, setComments] = useState([]);
+
 
   // const disableBtn = thePost.user !== user._id
   // const { comments, dispatch } = useCommentsContext();
@@ -32,42 +29,33 @@ export default function PetDetails({ user }) {
       setThePost(po);
     }
     fetchPosts();
-    
+
+
     // load comments only at the first time
     async function fetchComments() {
       const com = await commentsAPI.getAll(postId);
       setComments(com);
     }
     fetchComments();
-  // why warning??? React Hook useEffect has a missing dependency: 'postId'.
+    // why warning??? React Hook useEffect has a missing dependency: 'postId'.
   }, []);
-  
+
   /*========================================
         Event handler
 ========================================*/
-  async function handleDeletePost () {
-    if(thePost.user === user._id) {
-      //setShowBtn(true)
-      const del = await postsAPI.deletePost(postId)
-    console.log(del);
-    window.location.href = `/AllPosts`;
-    }
-    else {
-      alert("cannot delete because you are not the user")
-    }
+
+  async function handleDeletePost() {
+
+      const del = await postsAPI.deletePost(postId);
+      console.log(del);
+      window.location.href = `/AllPosts`;
   }
 
-  function handleEditPost () {
-    if(thePost.user !== user._id) {
-      alert("cannot edit because you are not the user")
-      window.location.href = `/${postId}`;
-    }
-    else {
-      window.location.href = `/${postId}/EditPost`
-    }
+  function handleEditPost() {
+      window.location.href = `/${postId}/EditPost`;
   }
-
-  //let disableBtn = {thePost.user}
+  
+  let btn = thePost?.user === user._id
 
   return (
     <>
@@ -76,7 +64,6 @@ export default function PetDetails({ user }) {
         {thePost && (
           <>
             <p>Author: {thePost.userName}</p>
-            {/* <p>User: {thePost.user.name} </p> */}
             <p>Contact Info: {thePost.contactInfo}</p>
             <p>Post Type: {thePost.postType}</p>
             {/* Need to update time later --- */}
@@ -86,7 +73,7 @@ export default function PetDetails({ user }) {
             <p>Animal Name:{thePost.name}</p>
             <p>Animal Type:{thePost.animalType} </p>
             <p>Images: </p>
-            <img src={thePost.imgURL} alt={thePost.name} width="200px"/>
+            <img src={thePost.imgURL} alt={thePost.name} width="200px" />
             <p>Animal Age: {thePost.age}</p>
             <p>Last Seen Location: </p>
             <p>reserved place for map api</p>
@@ -101,11 +88,13 @@ export default function PetDetails({ user }) {
         <hr />
         <br />
         <br />
-        {/* </div>let petURL = `/${post._id}`; */}
-          <button onClick={handleEditPost}>Edit</button>
 
-          <button  onClick={handleDeletePost}>Delete</button>
-
+        {btn && (
+          <div>
+            <button onClick={handleEditPost}>Edit</button>
+            <button onClick={handleDeletePost}>Delete</button>
+          </div> )
+        }
       </div>
       {/* Is there any comments? comments.length -not works every time?! */}
       {/* comments for the pet! */}

@@ -23,26 +23,8 @@ export default function CommentsCard({ comment, user}) {
     }
     window.location.href = `/${postId}`;
   }
-  // if (comment.user !== user._id) {
-  //   alert("you don't ...");
-  //   //comment._id
-  //   // const deleteCom = await commentsAPI.deleteComment(comment._id);
-  //   // console.log(deleteCom);
-  //   // need to refresh it
-  //   //navigate(`/${postId}`); //not working
-  // } else {
-  //   alert("Are you sure to delete the comment?");
-  //   const deleteCom = await commentsAPI.deleteComment(comment._id);
-  //   console.log(deleteCom);
-    
-  // }
-  // window.location.href = `/${postId}`;
 
-//   alert("Are you sure to delete the comment?");
-//     const deleteCom = await commentsAPI.deleteComment(comment._id);
-//     console.log(deleteCom);
-//   window.location.href = `/${postId}`;
-// }
+  let btn = comment?.user === user._id
 
   return (
     <div className="comments-card-container">
@@ -55,7 +37,11 @@ export default function CommentsCard({ comment, user}) {
       <p>
         <strong>Created Date:</strong> {comment.createdAt}
       </p>
-      <button onClick={handleDelete}>Delete</button>
+      {btn && (
+          <div>
+            <button onClick={handleDelete}>Delete</button>
+          </div> )
+        }
       {/* ???????????????????????????????????? */}
       {/* <p>Author: {comment.user.name}</p>*/}
     </div>
