@@ -23,6 +23,9 @@ const userSchema = new Schema(
       minLength: 3,
       required: true,
     },
+    userProfileImg: {
+      type: String
+    }
     //posts: [{ type: Schema.Types.ObjectId, ref: "Post" }]
     // posts that the user created - no need to add it here
     // comments that the user created - no need to add it here - we can search comments in comment dbs
