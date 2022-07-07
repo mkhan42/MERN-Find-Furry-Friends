@@ -75,7 +75,7 @@ export default function PetDetails({ user }) {
             <p>Images: </p>
             <img src={thePost.imgURL} alt={thePost.name} width="200px" />
             <p>Animal Age: {thePost.age}</p>
-            <p>Last Seen Location: </p>
+            <p>Last Seen Location:{thePost.lastAddress} </p>
             <p>reserved place for map api</p>
             <p>Description: {thePost.description}</p>
             <p>Reward($): {thePost.reward}</p>
@@ -104,7 +104,7 @@ export default function PetDetails({ user }) {
           <h3>Comments:</h3>
           {comments.map((comment) => {
             return (
-              <CommentsCard key={comment._id} comment={comment} user={user} thePost={thePost}/>
+              <CommentsCard key={comment._id} comment={comment} user={user} />
             );
           })}
         </>
