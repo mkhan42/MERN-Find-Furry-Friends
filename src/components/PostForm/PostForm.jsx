@@ -1,5 +1,3 @@
-
-
 import * as postAPI from "../../utilities/posts-api";
 import { useState, useMemo } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
@@ -18,19 +16,9 @@ import "@reach/combobox/styles.css";
 import "../Api/map/AdressInput.css"
 
 
-
-
-
-// import * as postAPI from "../../utilities/posts-api";
-// import Places from "../../components/Api/map/AdressInput"
-
 export default function PostForm({ user }) {
-  // console.log("user name: " + user.name);
-  // console.log("user id: " + user._id);
-  // let petURL = `/${posts._id}`;
 
   const [newPost, setNewPost] = useState({
-    // userName: "",
     postTitle: "",
     postType: "Lost",
     name: "",
@@ -39,10 +27,37 @@ export default function PostForm({ user }) {
     age: "",
     lastAddress: "",
     description: "",
-    reward: "$5",
+    reward: "$5 or none",
     contactInfo: "",
     date: "",
+  
   });
+
+  const [error, setError] = useState('');
+
+  function handleChange(e) {
+    e.preventDefault();
+    const newPostData = {
+      ...newPost,
+      [e.target.name]: e.target.value,
+    };
+    setNewPost(newPostData);
+    setError('')
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const json = await postAPI.createPost({ ...newPost });
+      setNewPost({});
+      window.location.href = `/${json._id}`;
+    } catch {
+      setError('Form Submission Failed - Try again')
+    }
+
+  }
+
+  //let errTitle = newPost.postTitle = ''
 
 ///////////////////////////////////////////
 
@@ -133,52 +148,16 @@ const PlacesAutocomplete = ({ setSelected }) => {
       </ComboboxPopover>
     </Combobox>
 
-
     </>
   );
 };
 
-// const [Adress, setAdress] = useState("");
-
-// console.log(Adress)
-
-
 ///////////////////////////////////////////
-
-  function handleChange(e) {
-    e.preventDefault();
-    const newPostData = {
-      ...newPost,
-      [e.target.name]: e.target.value,
-    };
-    setNewPost(newPostData);
-    console.log(newPostData);
-  }
-
-  //console.log(newPost);
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const json = await postAPI.createPost({ ...newPost });
-    console.log(json);
-    //setPosts(newPost)
-    setNewPost({});
-    //window.location.href = "/AllPosts"
-    window.location.href = `/${json._id}`;
-  }
 
   return (
     <>
       <h1>this is a create Post form</h1>
-
-    
-
-
       <form onSubmit={handleSubmit}>
-
-    
-        {/* it still not store in the post model */}
-
         <label>Author Name:</label>
         <input
           type="text"
@@ -192,12 +171,15 @@ const PlacesAutocomplete = ({ setSelected }) => {
           name="postTitle"
           onChange={handleChange}
           value={newPost.postTitle}
-        ></input>
+          placeholder="Post Title"
+          required
+        />
         <label>Post Type:</label>
         <select
           name="postType"
           onChange={handleChange}
           value={newPost.postType}
+          required
         >
           <option>Lost</option>
           <option>Found</option>
@@ -208,74 +190,82 @@ const PlacesAutocomplete = ({ setSelected }) => {
           name="name"
           onChange={handleChange}
           value={newPost.name}
-        ></input>
+          placeholder="Pet Name or Unknown"
+          required
+        />
         <label>Image URL:</label>
         <input
           type="text"
           name="imgURL"
           onChange={handleChange}
           value={newPost.imgURL}
-        ></input>
+          required
+          placeholder="Image URL"
+        />
         <label>Animal Type:</label>
         <input
           type="text"
           name="animalType"
           onChange={handleChange}
           value={newPost.animalType}
-        ></input>
+          placeholder="Animal Type: Ex: Dog"
+          required
+        />
         <label>Age:</label>
         <input
           type="text"
           name="age"
           onChange={handleChange}
           value={newPost.age}
-        ></input>
+          placeholder="Pet Age or Unknown"
+        />
         
         <label>Last seen/found:</label>
         
         <input
          type="text"
           name="lastAddress"
-          placeholder="Address"
           onChange={handleChange}
           value={newPost.lastAddress}
-        ></input>
+          placeholder="Ex: New York, NY, USA"
+          required
+        />
         <label>Description:</label>
         <input
           type="text"
           name="description"
           onChange={handleChange}
           value={newPost.description}
-        ></input>
+          placeholder="Description of pet"
+        />
         <label>Reward:</label>
         <input
           type="text"
           name="reward"
           onChange={handleChange}
           value={newPost.reward}
-        ></input>
+        />
         <label>Contact Info:</label>
         <input
-          type="text"
+          type="email"
           name="contactInfo"
           onChange={handleChange}
           value={newPost.contactInfo}
-        ></input>
+          required
+          placeholder="Ex: contactme@email.com"
+        />
         <label>Day pet was lost/found?:</label>
         <input
           type="date"
           name="date"
           onChange={handleChange}
           value={newPost.date}
-        ></input>
-
-      {/* <Link to={`/AllPosts`}> */}
+        />
         <input type="submit" onClick={handleSubmit} />
-      {/* </Link> */}
  
       </form>
+
+      <p className="error-message">&nbsp;{error}</p>
     </>
   );
 }
-
-//
