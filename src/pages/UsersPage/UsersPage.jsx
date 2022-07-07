@@ -2,15 +2,24 @@ import "./UsersPage.css";
 import { useState, useEffect } from "react";
 import PetCard from "../../components/PetCard/PetCard";
 import * as commentsAPI from "../../utilities/comments-api";
+
+// import Api from "../../components/Api/Api"
+
+
+
+  const today = new Date().toLocaleDateString("en-us", {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }); // "Friday, Jul 2, 2021"
+
+
 const moment = require("moment");
 
+
 // "Friday, Jul 2, 2021"
-const today = new Date().toLocaleDateString("en-us", {
-  weekday: "long",
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-});
+
 
 export default function UsersPage({ user, posts }) {
   const userPosts = posts?.filter((p) => p.user === user._id);
