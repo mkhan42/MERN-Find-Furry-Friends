@@ -39,7 +39,7 @@ export default function CommentsCard({ comment, user }) {
         <strong>Author:</strong> {user.name}
       </p>
       <p>
-        <strong>Created Date:</strong> {time.format("MM/DD/YY HH:mm")}
+        <strong>Created Date:</strong> {time.format("MM/DD/YYYY HH:mm")}
       </p>
       <button onClick={handleDelete}>Delete</button>
     </div>

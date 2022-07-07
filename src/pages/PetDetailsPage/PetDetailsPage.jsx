@@ -20,7 +20,7 @@ export default function PetDetails({ user }) {
 
   const postCreatedTime = thePost && moment(thePost.createdAt);
   const postUpdatedTime = thePost && moment(thePost.updatedAt);
-
+  const dateTime = thePost && moment(thePost.date);
   // const disableBtn = thePost.user !== user._id
   // const { comments, dispatch } = useCommentsContext();
 
@@ -76,10 +76,12 @@ export default function PetDetails({ user }) {
             <p>Contact Info: {thePost.contactInfo}</p>
             <p>Post Type: {thePost.postType}</p>
 
-            <p>Post Created at: {postCreatedTime.format("MM/DD/YY HH:mm")}</p>
+            <p>Post Created at: {postCreatedTime.format("MM/DD/YYYY HH:mm")}</p>
             {/* only show the updated time if there is an update */}
             {thePost.createdAt !== thePost.updatedAt ? (
-              <p>Post Updated at: {postUpdatedTime.format("MM/DD/YY HH:mm")}</p>
+              <p>
+                Post Updated at: {postUpdatedTime.format("MM/DD/YYYY HH:mm")}
+              </p>
             ) : (
               " "
             )}
@@ -93,7 +95,7 @@ export default function PetDetails({ user }) {
             <p>reserved place for map api</p>
             <p>Description: {thePost.description}</p>
             <p>Reward($): {thePost.reward}</p>
-            <p>Day pet was lost/found?: {thePost.date}</p>
+            <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
           </>
         )}
         <br />

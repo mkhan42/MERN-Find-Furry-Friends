@@ -47,7 +47,6 @@ export default function PostForm({ user }) {
       <h1>this is a create Post form</h1>
 
       <form onSubmit={handleSubmit}>
-        {/* it still not store in the post model */}
         <label>Author Name:</label>
         <input
           type="text"
@@ -130,7 +129,7 @@ export default function PostForm({ user }) {
         ></input>
         <label>Day pet was lost/found?:</label>
         <input
-          type="text"
+          type="date"
           name="date"
           onChange={handleChange}
           value={newPost.date}
