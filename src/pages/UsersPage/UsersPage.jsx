@@ -13,7 +13,7 @@ const today = new Date().toLocaleDateString("en-us", {
 });
 
 export default function UsersPage({ user, posts }) {
-  const userPosts = posts.filter((p) => p.user === user._id);
+  const userPosts = posts?.filter((p) => p.user === user._id);
   //grab user comments
   const [userComments, setUserComments] = useState([]);
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function UsersPage({ user, posts }) {
         <h3>YOUR EMAIL: {user.email}</h3>
         <h3>YOUR POSTS:</h3>
         {/* if I have post then show posts, else show "No Post yet" */}
-        {userPosts.length ? (
+        {userPosts?.length ? (
           <section className="user-posts-container">
             <ol>
               {userPosts.map((post) => {
@@ -54,7 +54,7 @@ export default function UsersPage({ user, posts }) {
       {/* COMMENTS SECTION */}
       {/* if I have comments, else show "No Comments yet" */}
       <h3>YOUR COMMENTS:</h3>
-      {userComments.length ? (
+      {userComments?.length ? (
         <section className="user-comments-container">
           <ol>
             {userComments.map((c) => {
