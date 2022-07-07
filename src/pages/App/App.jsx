@@ -27,7 +27,7 @@ export default function App() {
       setPosts(po);
     }
     fetchPosts();
-  }, []);
+  }, [user]);
   // BUG:
   // [posts] - infinite running
   // [] - refresh lost/found page then it's gone

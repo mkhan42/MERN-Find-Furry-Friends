@@ -78,7 +78,9 @@ export default function PetDetails({ user }) {
   }
   
   let btn = thePost?.user === user._id
-
+////////////////////////////////////////////////////////////////
+//       GOOGLE MAP API
+////////////////////////////////////////////////////////////////
   function Places() {
     const { isLoaded } = useLoadScript({
       googleMapsApiKey: 'AIzaSyCGBOGKipXcebuQ9uROeeHPyeIsG_CQQx4',
@@ -159,9 +161,10 @@ export default function PetDetails({ user }) {
       </Combobox>
     );
   };
-  
- 
-  
+  ////////////////////////////////////////////////////////////////
+//       GOOGLE MAP API
+////////////////////////////////////////////////////////////////
+
 
   return (
     <>
