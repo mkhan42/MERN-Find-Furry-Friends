@@ -18,7 +18,7 @@ import * as postsAPI from "../../utilities/posts-api";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [posts, setPosts] = useState(null);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     // load all posts at the first time
@@ -27,7 +27,7 @@ export default function App() {
       setPosts(po);
     }
     fetchPosts();
-  }, []);
+  }, [user]);
   // BUG:
   // [posts] - infinite running
   // [] - refresh lost/found page then it's gone

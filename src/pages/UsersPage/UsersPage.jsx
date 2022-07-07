@@ -36,7 +36,7 @@ export default function UsersPage({ user, posts }) {
         {userPosts?.length ? (
           <section className="user-posts-container">
             <ol>
-              {userPosts.map((post) => {
+              {userPosts?.map((post) => {
                 return (
                   <li>
                     <PetCard key={post._id} post={post} />
@@ -54,7 +54,7 @@ export default function UsersPage({ user, posts }) {
       {/* COMMENTS SECTION */}
       {/* if I have comments, else show "No Comments yet" */}
       <h3>YOUR COMMENTS:</h3>
-      {userComments?.length ? (
+      {userComments.length ? (
         <section className="user-comments-container">
           <ol>
             {userComments.map((c) => {
