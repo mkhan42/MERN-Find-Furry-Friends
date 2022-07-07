@@ -54,7 +54,7 @@ export default function UsersPage({ user, posts }) {
       {/* COMMENTS SECTION */}
       {/* if I have comments, else show "No Comments yet" */}
       <h3>YOUR COMMENTS:</h3>
-      {userComments && (
+      {userComments.length ? (
         <section className="user-comments-container">
           <ol>
             {userComments.map((c) => {
@@ -66,6 +66,8 @@ export default function UsersPage({ user, posts }) {
             })}
           </ol>
         </section>
+      ) : (
+        <h3>You didn't make any comments yet</h3>
       )}
 
       {/* after mvp */}
