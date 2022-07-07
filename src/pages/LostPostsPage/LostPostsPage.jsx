@@ -7,7 +7,7 @@ export default function LostPostsPage({ posts }) {
   return (
     <>
       <h1>This is LostPostsPage</h1>
-      {lostData.length ? (
+      {lostData?.length ? (
         <>
           {lostData.map((post) => {
             return <PetCard key={post._id} post={post} />;

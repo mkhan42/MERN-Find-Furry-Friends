@@ -84,10 +84,6 @@ export default function PetDetails({ user }) {
         )}
         <br />
         <br />
-        <hr />
-        <hr />
-        <br />
-        <br />
 
         {btn && (
           <div>
@@ -95,6 +91,11 @@ export default function PetDetails({ user }) {
             <button onClick={handleDeletePost}>Delete</button>
           </div> )
         }
+        
+        <hr />
+        <hr />
+        <br />
+        <br />
       </div>
       {/* Is there any comments? comments.length -not works every time?! */}
       {/* comments for the pet! */}
