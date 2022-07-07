@@ -29,7 +29,6 @@ export default function PetDetails({ user }) {
     }
     fetchPosts();
 
-
     // load comments only at the first time
     async function fetchComments() {
       const com = await commentsAPI.getAll(postId);
@@ -44,17 +43,16 @@ export default function PetDetails({ user }) {
 ========================================*/
 
   async function handleDeletePost() {
-
-      const del = await postsAPI.deletePost(postId);
-      console.log(del);
-      window.location.href = `/AllPosts`;
+    const del = await postsAPI.deletePost(postId);
+    console.log(del);
+    window.location.href = `/AllPosts`;
   }
 
   function handleEditPost() {
-      window.location.href = `/${postId}/EditPost`;
+    window.location.href = `/${postId}/EditPost`;
   }
-  
-  let btn = thePost?.user === user._id
+
+  let btn = thePost?.user === user._id;
 
   return (
     <>
@@ -95,8 +93,8 @@ export default function PetDetails({ user }) {
           <div>
             <button onClick={handleEditPost}>Edit</button>
             <button onClick={handleDeletePost}>Delete</button>
-          </div> )
-        }
+          </div>
+        )}
 
         <hr />
         <hr />
@@ -105,7 +103,7 @@ export default function PetDetails({ user }) {
       </div>
       {/* Is there any comments? comments.length -not works every time?! */}
       {/* comments for the pet! */}
-      {comments ? (
+      {comments?.length ? (
         <>
           <h3>Comments:</h3>
           {comments.map((comment) => {

@@ -27,11 +27,8 @@ export default function App() {
       setPosts(po);
     }
     fetchPosts();
-  }, []);
-  // BUG:
-  // [posts] - infinite running
-  // [] - refresh lost/found page then it's gone
-  //    - refresh home page is fine
+  }, [user]);
+  // []  -> needs to refresh homepage
 
   return (
     <main className="App">
