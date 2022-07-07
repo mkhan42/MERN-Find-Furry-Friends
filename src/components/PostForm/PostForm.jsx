@@ -1,25 +1,36 @@
 
+
 import * as postAPI from "../../utilities/posts-api";
 import { useState, useMemo } from "react";
-// import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-// import usePlacesAutocomplete, {
-//   getGeocode,
-//   getLatLng,
-// } from "use-places-autocomplete";
-// import {
-//   Combobox,
-//   ComboboxInput,
-//   ComboboxPopover,
-//   ComboboxList,
-//   ComboboxOption,
-// } from "@reach/combobox";
-// import "@reach/combobox/styles.css";
-// import "../Api/map/AdressInput.css"
-export default function PostForm({ posts, setPosts }) {
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+} from "@reach/combobox";
+import "@reach/combobox/styles.css";
+import "../Api/map/AdressInput.css"
 
+
+
+
+
+// import * as postAPI from "../../utilities/posts-api";
+// import Places from "../../components/Api/map/AdressInput"
+
+export default function PostForm({ user }) {
+  // console.log("user name: " + user.name);
+  // console.log("user id: " + user._id);
   // let petURL = `/${posts._id}`;
 
   const [newPost, setNewPost] = useState({
+    // userName: "",
     postTitle: "",
     postType: "Lost",
     name: "",
@@ -35,80 +46,97 @@ export default function PostForm({ posts, setPosts }) {
 
 ///////////////////////////////////////////
 
-// function Places() {
-//   const { isLoaded } = useLoadScript({
-//     googleMapsApiKey: 'AIzaSyCGBOGKipXcebuQ9uROeeHPyeIsG_CQQx4',
-//     libraries: ["places"],
-//   });
+function Places() {
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: 'AIzaSyCGBOGKipXcebuQ9uROeeHPyeIsG_CQQx4',
+    libraries: ["places"],
+  });
 
-//   if (!isLoaded) return <div>Loading...</div>;
-//   return <Map />;
-// }
+  if (!isLoaded) return <div>Loading...</div>;
+  return <Map />;
+}
 
-// function Map() {
-//   const center = useMemo(() => ({ lat: 43.45, lng: -80.49 }), []);
-//   const [selected, setSelected] = useState(null);
+function Map() {
+  const center = useMemo(() => ({ lat: 43.45, lng: -80.49 }), []);
+  const [selected, setSelected] = useState(null);
 
-//   return (
-//     <>
-//       <div className="places-container">
-//         <PlacesAutocomplete setSelected={setSelected} />
-//       </div>
-//     </>
-//   );
-// }
+  return (
+    <>
+      <div className="places-container">
+        <PlacesAutocomplete setSelected={setSelected} />
+      </div>
+    </>
+  );
+}
 
-// const PlacesAutocomplete = ({ setSelected }) => {
-//   const {
-//     ready,
-//     value,
-//     setValue,
-//     suggestions: { status, data },
-//     clearSuggestions,
-//   } = usePlacesAutocomplete();
+const PlacesAutocomplete = ({ setSelected }) => {
+  const {
+    ready,
+    value,
+    setValue,
+    suggestions: { status, data },
+    clearSuggestions,
+  } = usePlacesAutocomplete();
 
-//   const handleSelect = async (address) => {
-//     setValue(address, false);
-//     clearSuggestions();
+  const handleSelect = async (address) => {
+    setValue(address, false);
+    clearSuggestions();
 
-//     const results = await getGeocode({ address });
-//     const { lat, lng } = await getLatLng(results[0]);
-//     setSelected({ lat, lng });
-//   };
+    const results = await getGeocode({ address });
+    const { lat, lng } = await getLatLng(results[0]);
+    setSelected({ lat, lng });
+  };
 
-//   return (
-//     <Combobox onSelect={handleSelect}>
-//       <ComboboxInput
-//         value={value}
-//         name='lastAddress'
-//         onChange={(e) => setValue(e.target.value)}
-//         disabled={!ready}
-//         className="combobox-input"
-//         placeholder="Search an address"
-//         type="text"
-//       />
+  return (
+    <>
+    <Combobox onSelect={handleSelect}>
+      <ComboboxInput
+        value={value}
+        name='lastAddress'
+        onChange={(e) => setValue(e.target.value)}
+        disabled={!ready}
+        className="combobox-input"
+        placeholder="Search an address"
+        type="text"
+      />
 
-// <ComboboxInput
-//         value={value}
-//         name='lastAddress'
-//         onChange={(e) => setAdress(e.target.value)}
-//         disabled={!ready}
-//         className="combobox-input"
-//         placeholder="Search an address"
-//         type="text"
-//       />
 
-//       <ComboboxPopover>
-//         <ComboboxList>
-//           {status === "OK" &&
-//             data.map(({ place_id, description }) => (
-//               <ComboboxOption key={place_id} value={description} />
-//             ))}
-//         </ComboboxList>
-//       </ComboboxPopover>
-//     </Combobox>
-//   );
-// };
+      <ComboboxPopover>
+        <ComboboxList>
+          {status === "OK" &&
+            data.map(({ place_id, description }) => (
+              <ComboboxOption key={place_id} value={description} />
+            ))}
+        </ComboboxList>
+      </ComboboxPopover>
+    </Combobox>
+
+    <Combobox onChange={handleChange}>
+      <ComboboxInput
+         value={newPost.lastAddress}
+        name='lastAddress'
+        onChange={setNewPost}
+        disabled={!ready}
+        className="combobox-input"
+        placeholder="Search an address"
+        type="text"
+      />
+
+
+      <ComboboxPopover>
+        <ComboboxList>
+          {status === "OK" &&
+            data.map(({ place_id, description }) => (
+              <ComboboxOption key={place_id} value={description} />
+            ))}
+        </ComboboxList>
+      </ComboboxPopover>
+    </Combobox>
+
+
+    </>
+  );
+};
 
 // const [Adress, setAdress] = useState("");
 
@@ -129,7 +157,6 @@ export default function PostForm({ posts, setPosts }) {
 
   //console.log(newPost);
 
-
   async function handleSubmit(e) {
     e.preventDefault();
     const json = await postAPI.createPost({ ...newPost });
@@ -137,14 +164,26 @@ export default function PostForm({ posts, setPosts }) {
     //setPosts(newPost)
     setNewPost({});
     //window.location.href = "/AllPosts"
-   window.location.href = `/${json._id}`
+    window.location.href = `/${json._id}`;
   }
 
   return (
     <>
       <h1>this is a create Post form</h1>
-      {/* <Places/> */}
+
+    
+
+
       <form onSubmit={handleSubmit}>
+    
+        {/* it still not store in the post model */}
+        <label>Author Name:</label>
+        <input
+          type="text"
+          name="userName"
+          defaultValue={user.name.toUpperCase()}
+        />
+
         <label>Post Title:</label>
         <input
           type="text"
@@ -189,9 +228,11 @@ export default function PostForm({ posts, setPosts }) {
           onChange={handleChange}
           value={newPost.age}
         ></input>
+        
         <label>Last seen/found:</label>
+        
         <input
-          type="text"
+         type="text"
           name="lastAddress"
           placeholder="Address"
           onChange={handleChange}
@@ -225,10 +266,11 @@ export default function PostForm({ posts, setPosts }) {
           onChange={handleChange}
           value={newPost.date}
         ></input>
+
       {/* <Link to={`/AllPosts`}> */}
         <input type="submit" onClick={handleSubmit} />
       {/* </Link> */}
-   
+ 
       </form>
     </>
   );

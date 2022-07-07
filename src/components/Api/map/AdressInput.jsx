@@ -34,13 +34,13 @@ function Map() {
         <PlacesAutocomplete setSelected={setSelected} />
       </div>
 
-      <GoogleMap
+      {/* <GoogleMap
         zoom={5}
         center={center}
         mapContainerClassName="map-container"
       >
         {selected && <Marker position={selected} />}
-      </GoogleMap>
+      </GoogleMap> */}
     </>
   );
 }

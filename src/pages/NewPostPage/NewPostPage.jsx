@@ -1,10 +1,10 @@
 import PostForm from "../../components/PostForm/PostForm";
 
-export default function NewPostPage() {
+export default function NewPostPage({ user }) {
   return (
     <div className="new-post-container">
       <h1>Create a new POST:</h1>
-      <PostForm />
+      <PostForm user={user} />
     </div>
   );
 }

@@ -1,16 +1,21 @@
 import PetCard from "../../components/PetCard/PetCard";
 
 export default function FoundPostsPage({ posts }) {
-  // data with type=Found
-  // const foundData = ...;
+  // data with postType=Found
+  const foundData = posts.filter((p) => p.postType === "Found");
+  // console.log(foundData);
   return (
-    <div>
-      <h3>this is FoundPostsPage</h3>
-      {posts.map((post) => {
-        return <PetCard key={post._id} post={post} />;
-      })}
-
-      
-    </div>
+    <>
+      <h1>this is FoundPostsPage</h1>
+      {foundData.length ? (
+        <div>
+          {foundData.map((post) => {
+            return <PetCard key={post._id} post={post} />;
+          })}
+        </div>
+      ) : (
+        <h2>No Found Post</h2>
+      )}
+    </>
   );
 }
