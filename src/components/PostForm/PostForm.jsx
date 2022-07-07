@@ -34,7 +34,7 @@ export default function PostForm({ user }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const json = await postAPI.createPost({ ...newPost });
+      const json = await postAPI.createPost({ ...newPost });
     console.log(json);
     //setPosts(newPost)
     setNewPost({});
