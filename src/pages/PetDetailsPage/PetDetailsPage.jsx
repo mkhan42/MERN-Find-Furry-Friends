@@ -193,6 +193,7 @@ export default function PetDetails({ user }) {
             <p>Description: {thePost.description}</p>
             <p>Reward($): {thePost.reward}</p>
             <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
+            <Places/>
           </>
 
         )}

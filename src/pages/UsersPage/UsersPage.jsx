@@ -22,7 +22,7 @@ const moment = require("moment");
 
 
 export default function UsersPage({ user, posts }) {
-  const userPosts = posts.filter((p) => p.user === user._id);
+  const userPosts = posts?.filter((p) => p.user === user._id);
   //grab user comments
   const [userComments, setUserComments] = useState([]);
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function UsersPage({ user, posts }) {
         <h3>YOUR EMAIL: {user.email}</h3>
         <h3>YOUR POSTS:</h3>
         {/* if I have post then show posts, else show "No Post yet" */}
-        {userPosts.length ? (
+        {userPosts?.length ? (
           <section className="user-posts-container">
             <ol>
               {userPosts.map((post) => {
@@ -63,7 +63,7 @@ export default function UsersPage({ user, posts }) {
       {/* COMMENTS SECTION */}
       {/* if I have comments, else show "No Comments yet" */}
       <h3>YOUR COMMENTS:</h3>
-      {userComments.length ? (
+      {userComments?.length ? (
         <section className="user-comments-container">
           <ol>
             {userComments.map((c) => {
@@ -79,11 +79,13 @@ export default function UsersPage({ user, posts }) {
         <h3>You didn't make any comments yet</h3>
       )}
 
+      {/* after mvp */}
+      {/* if someone comment our post, we got notification... */}
+      {/* <h3>
+        InMail: ??number?? - click then show the list - comment in the post
+      </h3>  */}
 
-      {/* if someone comment our post, we get notification... */}
-      {/* <Api /> */}
-     
-      </>
-
+      
+    </>
   );
 }
