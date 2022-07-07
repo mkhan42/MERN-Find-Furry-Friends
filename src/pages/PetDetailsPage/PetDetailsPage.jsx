@@ -17,13 +17,9 @@ export default function PetDetails({ user }) {
   let { postId } = useParams();
   const [thePost, setThePost] = useState(null);
   const [comments, setComments] = useState([]);
-
   const postCreatedTime = thePost && moment(thePost.createdAt);
   const postUpdatedTime = thePost && moment(thePost.updatedAt);
   const dateTime = thePost && moment(thePost.date);
-  // const disableBtn = thePost.user !== user._id
-  // const { comments, dispatch } = useCommentsContext();
-
   useEffect(() => {
     // load the post
     async function fetchPosts() {
@@ -32,6 +28,7 @@ export default function PetDetails({ user }) {
       setThePost(po);
     }
     fetchPosts();
+
 
     // load comments only at the first time
     async function fetchComments() {
@@ -47,24 +44,17 @@ export default function PetDetails({ user }) {
 ========================================*/
 
   async function handleDeletePost() {
-    if (thePost.user === user._id) {
-      //setShowBtn(true)
+
       const del = await postsAPI.deletePost(postId);
       console.log(del);
       window.location.href = `/AllPosts`;
-    } else {
-      alert("cannot delete because you are not the user");
-    }
   }
 
   function handleEditPost() {
-    if (thePost.user !== user._id) {
-      alert("cannot edit because you are not the user");
-      window.location.href = `/${postId}`;
-    } else {
       window.location.href = `/${postId}/EditPost`;
-    }
   }
+  
+  let btn = thePost?.user === user._id
 
   return (
     <>
@@ -91,7 +81,7 @@ export default function PetDetails({ user }) {
             <p>Images: </p>
             <img src={thePost.imgURL} alt={thePost.name} width="200px" />
             <p>Animal Age: {thePost.age}</p>
-            <p>Last Seen Location: </p>
+            <p>Last Seen Location:{thePost.lastAddress} </p>
             <p>reserved place for map api</p>
             <p>Description: {thePost.description}</p>
             <p>Reward($): {thePost.reward}</p>
@@ -100,13 +90,18 @@ export default function PetDetails({ user }) {
         )}
         <br />
         <br />
-        <hr />
-        <hr />
-        <br />
-        <br />
 
-        <button onClick={handleEditPost}>Edit</button>
-        <button onClick={handleDeletePost}>Delete</button>
+        {btn && (
+          <div>
+            <button onClick={handleEditPost}>Edit</button>
+            <button onClick={handleDeletePost}>Delete</button>
+          </div> )
+        }
+
+        <hr />
+        <hr />
+        <br />
+        <br />
       </div>
       {/* Is there any comments? comments.length -not works every time?! */}
       {/* comments for the pet! */}

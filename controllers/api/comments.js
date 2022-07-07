@@ -49,7 +49,7 @@ async function createComment(req, res) {
     const comment = await CommentModel.create({
       ...req.body,
       post: postId,
-      user: req.user._id,
+      user: req.user._id
     });
     res.status(200).json(comment);
   } catch (error) {

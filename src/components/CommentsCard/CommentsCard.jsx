@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 const moment = require("moment");
 //import { useNavigate } from "react-router-dom";
 
-export default function CommentsCard({ comment, user }) {
+export default function CommentsCard({ comment, user}) {
   const { postId } = useParams();
   //Use the navigate function to change routes programmatically
   // const navigate = useNavigate();
@@ -14,18 +14,14 @@ export default function CommentsCard({ comment, user }) {
 
   async function handleDelete() {
     // if the user of the comment is same as the login user
-    if (comment.user === user._id) {
-      alert("Are you sure to delete the comment?");
-      //comment._id
       const deleteCom = await commentsAPI.deleteComment(comment._id);
       console.log(deleteCom);
       // need to refresh it
       //navigate(`/${postId}`); //not working
-    } else {
-      alert("you don't ...");
-    }
     window.location.href = `/${postId}`;
   }
+
+  let btn = comment?.user === user._id
 
   return (
     <div className="comments-card-container">
@@ -41,7 +37,13 @@ export default function CommentsCard({ comment, user }) {
       <p>
         <strong>Created Date:</strong> {time.format("MM/DD/YYYY HH:mm")}
       </p>
-      <button onClick={handleDelete}>Delete</button>
+      {btn && (
+          <div>
+            <button onClick={handleDelete}>Delete</button>
+          </div> )
+        }
+      {/* ???????????????????????????????????? */}
+      {/* <p>Author: {comment.user.name}</p>*/}
     </div>
   );
 }
