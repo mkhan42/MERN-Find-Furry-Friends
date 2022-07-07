@@ -13,4 +13,8 @@ const commentSchema = new Schema(
   }
 );
 
+commentSchema.statics.getComment = function (userId) {
+  return this.findOneAndUpdate();
+};
+
 module.exports = mongoose.model("Comment", commentSchema);

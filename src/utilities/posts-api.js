@@ -18,7 +18,7 @@ export function updatePost(id, body) {
   return sendRequest(`${BASE_URL}/${id}`, 'PUT', body);
 }
 
-export function deletePost(id, body) {
-  return sendRequest(`${BASE_URL}/${id}`, 'DELETE', id);
+export function deletePost(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }
 

@@ -1,4 +1,7 @@
 import "./UsersPage.css";
+import { useState, useEffect } from "react";
+import PetCard from "../../components/PetCard/PetCard";
+import * as commentsAPI from "../../utilities/comments-api";
 
 // import Api from "../../components/Api/Api"
 
@@ -11,10 +14,26 @@ import "./UsersPage.css";
     day: "numeric",
   }); // "Friday, Jul 2, 2021"
 
+
+const moment = require("moment");
+
+
 // "Friday, Jul 2, 2021"
 
 
-export default function UsersPage({ user }) {
+export default function UsersPage({ user, posts }) {
+  const userPosts = posts.filter((p) => p.user === user._id);
+  //grab user comments
+  const [userComments, setUserComments] = useState([]);
+  useEffect(() => {
+    // load comments only at the first time
+    async function fetchComments() {
+      const com = await commentsAPI.getUserComments(user._id);
+      setUserComments(com);
+    }
+    fetchComments();
+  }, []);
+
   return (
     <>
       <h1>HI, {user.name.toUpperCase()}</h1>
@@ -23,45 +42,42 @@ export default function UsersPage({ user }) {
         <h3>YOUR EMAIL: {user.email}</h3>
         <h3>YOUR POSTS:</h3>
         {/* if I have post then show posts, else show "No Post yet" */}
-
-        <section className="user-posts-container">
-          <ul>
-            <li>
-              <a href="/">Post1.title</a>
-              &nbsp; | &nbsp;
-              <a href="/">Edit</a>
-              &nbsp; | &nbsp;
-              <a href="/">Delete</a>
-            </li>
-            <li>
-              <a href="/">Post2.title</a>
-              &nbsp; | &nbsp;
-              <a href="/">Edit</a>
-              &nbsp; | &nbsp;
-              <a href="/">Delete</a>
-            </li>
-            <li>
-              <a href="/">Post3.title</a>
-              &nbsp; | &nbsp;
-              <a href="/">Edit</a>
-              &nbsp; | &nbsp;
-              <a href="/">Delete</a>
-            </li>
-          </ul>
-        </section>
+        {userPosts.length ? (
+          <section className="user-posts-container">
+            <ol>
+              {userPosts.map((post) => {
+                return (
+                  <li>
+                    <PetCard key={post._id} post={post} />
+                    created at:{" "}
+                    {moment(post.createdAt).format("MM/DD/YYYY HH:mm")}
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        ) : (
+          <h3>No Posts Yet</h3>
+        )}
       </div>
       {/* COMMENTS SECTION */}
       {/* if I have comments, else show "No Comments yet" */}
       <h3>YOUR COMMENTS:</h3>
-      <section className="user-comments-container">
-        <ul>
-          <li>
-            <a href="/">comment1</a>
-            &nbsp; | &nbsp;
-            <a href="/">Delete</a>
-          </li>
-        </ul>
-      </section>
+      {userComments.length ? (
+        <section className="user-comments-container">
+          <ol>
+            {userComments.map((c) => {
+              return (
+                <li>
+                  <a href={`/${c.post}`}>{c.commentTitle}</a>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      ) : (
+        <h3>You didn't make any comments yet</h3>
+      )}
 
 
       {/* if someone comment our post, we get notification... */}

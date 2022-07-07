@@ -39,7 +39,6 @@ useEffect(() => {
         contactInfo: po.contactInfo,
         date: po.date,
       })
-      console.log(po, "ZOHAIB");
       setCurrentPost(po);
     } catch (error){
       console.log(error)
@@ -51,8 +50,6 @@ useEffect(() => {
 }, []);
 
 console.log(currentPost)
-
-console.log(editAPost, "MICHALLE")
 
 function handleChange(e) {
   e.preventDefault();

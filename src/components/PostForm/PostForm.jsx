@@ -175,8 +175,10 @@ const PlacesAutocomplete = ({ setSelected }) => {
 
 
       <form onSubmit={handleSubmit}>
+
     
         {/* it still not store in the post model */}
+
         <label>Author Name:</label>
         <input
           type="text"
@@ -261,7 +263,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
         ></input>
         <label>Day pet was lost/found?:</label>
         <input
-          type="text"
+          type="date"
           name="date"
           onChange={handleChange}
           value={newPost.date}
