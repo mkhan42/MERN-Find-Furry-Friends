@@ -91,7 +91,7 @@ export default function PetDetails({ user }) {
             <button onClick={handleDeletePost}>Delete</button>
           </div> )
         }
-        
+
         <hr />
         <hr />
         <br />

@@ -10,17 +10,10 @@ export default function CommentsCard({ comment, user}) {
 
   async function handleDelete() {
     // if the user of the comment is same as the login user
-    if (comment.user === user._id) {
-      alert("Are you sure to delete the comment?");
-      //comment._id
       const deleteCom = await commentsAPI.deleteComment(comment._id);
       console.log(deleteCom);
       // need to refresh it
       //navigate(`/${postId}`); //not working
-    }
-    else {
-      alert("you don't ...");
-    }
     window.location.href = `/${postId}`;
   }
 

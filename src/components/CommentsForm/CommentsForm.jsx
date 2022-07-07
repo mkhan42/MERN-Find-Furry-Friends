@@ -3,7 +3,7 @@ import { useState } from "react";
 import * as commentsAPI from "../../utilities/comments-api";
 import { useParams } from "react-router-dom";
 
-export default function CommentsForm() {
+export default function CommentsForm({ user }) {
   const [newComment, setNewComment] = useState({});
   const { postId } = useParams();
 
