@@ -1,20 +1,33 @@
 import "./CommentsCard.css";
 import * as commentsAPI from "../../utilities/comments-api";
+// import * as usersAPI from "../../utilities/users-api";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
 const moment = require("moment");
-//import { useNavigate } from "react-router-dom";
 
-export default function CommentsCard({ comment, user }) {
+export default function CommentsCard({ comment, userId }) {
+  // variables
   const { postId } = useParams();
-  //Use the navigate function to change routes programmatically
-  // const navigate = useNavigate();
-
-  // get comment author name by comment id
-  useEffect(() => {});
-
-  // change the format of the ISODate
   const time = moment(comment.createdAt);
+  let btn = comment?.user === userId;
+
+  // comment.user is the author of the comment
+  // console.log("comment_userid: " + comment.user);
+  // console.log("comment_userName: " + comment.userName);
+  // const [author, setAuthor] = useState("");
+  // get comment author name by user id - this is not working???
+  // useInsertionEffect(() => {
+  //   async function fetchCommentAuthorName() {
+  //     // this is a promise?!
+  //     const newAuthor = await usersAPI.getUserInfoById(comment.user);
+  //     setAuthor(newAuthor);
+  //   }
+  //   fetchCommentAuthorName();
+  // }, []);
+  // console.log("author name: " + author);
+
+  /*========================================
+        Event Handlers
+========================================*/
 
   async function handleDelete() {
     // if the user of the comment is same as the login user
@@ -24,8 +37,6 @@ export default function CommentsCard({ comment, user }) {
     //navigate(`/${postId}`); //not working
     window.location.href = `/${postId}`;
   }
-
-  let btn = comment?.user === user._id;
 
   return (
     <div className="comments-card-container">
@@ -37,7 +48,7 @@ export default function CommentsCard({ comment, user }) {
       </p>
       {/* Need the comment author name .. not the user name/post author name */}
       <p>
-        <strong>Author:</strong>
+        <strong>Author:</strong> {comment.userName}
       </p>
       <p>
         <strong>Created Date:</strong> {time.format("MM/DD/YYYY HH:mm")}
