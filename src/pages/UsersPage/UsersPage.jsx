@@ -1,5 +1,8 @@
 import "./UsersPage.css";
+import { useState, useEffect } from "react";
 import PetCard from "../../components/PetCard/PetCard";
+import * as commentsAPI from "../../utilities/comments-api";
+const moment = require("moment");
 
 // "Friday, Jul 2, 2021"
 const today = new Date().toLocaleDateString("en-us", {
@@ -11,8 +14,16 @@ const today = new Date().toLocaleDateString("en-us", {
 
 export default function UsersPage({ user, posts }) {
   const userPosts = posts.filter((p) => p.user === user._id);
-  console.log(userPosts);
-  //const userComments;
+  //grab user comments
+  const [userComments, setUserComments] = useState([]);
+  useEffect(() => {
+    // load comments only at the first time
+    async function fetchComments() {
+      const com = await commentsAPI.getUserComments(user._id);
+      setUserComments(com);
+    }
+    fetchComments();
+  }, []);
 
   return (
     <>
@@ -24,15 +35,17 @@ export default function UsersPage({ user, posts }) {
         {/* if I have post then show posts, else show "No Post yet" */}
         {userPosts.length ? (
           <section className="user-posts-container">
-            <ul>
+            <ol>
               {userPosts.map((post) => {
                 return (
                   <li>
                     <PetCard key={post._id} post={post} />
+                    created at:{" "}
+                    {moment(post.createdAt).format("MM/DD/YYYY HH:mm")}
                   </li>
                 );
               })}
-            </ul>
+            </ol>
           </section>
         ) : (
           <h3>No Posts Yet</h3>
@@ -41,15 +54,19 @@ export default function UsersPage({ user, posts }) {
       {/* COMMENTS SECTION */}
       {/* if I have comments, else show "No Comments yet" */}
       <h3>YOUR COMMENTS:</h3>
-      <section className="user-comments-container">
-        <ul>
-          <li>
-            <a href="/">comment1</a>
-            &nbsp; | &nbsp;
-            <a href="/">Delete</a>
-          </li>
-        </ul>
-      </section>
+      {userComments && (
+        <section className="user-comments-container">
+          <ol>
+            {userComments.map((c) => {
+              return (
+                <li>
+                  <a href={`/${c.post}`}>{c.commentTitle}</a>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      )}
 
       {/* after mvp */}
       {/* if someone comment our post, we got notification... */}

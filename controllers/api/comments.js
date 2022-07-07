@@ -74,7 +74,7 @@ async function deleteComment(req, res) {
 }
 
 /*========================================
-        UPDATE a comment
+        UPDATE a comment - nahhh
 ========================================*/
 // async function updateComment(req, res) {
 //   //baby step
