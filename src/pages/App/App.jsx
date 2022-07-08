@@ -21,6 +21,7 @@ export default function App() {
   const [user, setUser] = useState(getUser());
   const [posts, setPosts] = useState([]);
 
+  //??? - this runs before the check on the user...
   useEffect(() => {
     // load all posts at the first time
     async function fetchPosts() {
