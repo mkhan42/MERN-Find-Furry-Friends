@@ -1,5 +1,5 @@
 import "./AllPostsPage.css";
-import PetCard from "../../components/PetCard/PetCard";
+import PetCard from "../../components/PetCard/PetCard"
 
 import { Link } from "react-router-dom";
 export default function AllPostsPage({ posts }) {

@@ -15,10 +15,11 @@ import UpdatePostPage from "../../pages/UpdatePostPage/UpdatePostPage";
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import * as postsAPI from "../../utilities/posts-api";
+//import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-  const [posts, setPosts] = useState(null);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     // load all posts at the first time
@@ -26,12 +27,9 @@ export default function App() {
       const po = await postsAPI.getAll();
       setPosts(po);
     }
-    fetchPosts();
+    user && fetchPosts();
   }, [user]);
-  // BUG:
-  // [posts] - infinite running
-  // [] - refresh lost/found page then it's gone
-  //    - refresh home page is fine
+  // []  -> needs to refresh homepage
 
   return (
     <main className="App">
