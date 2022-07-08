@@ -4,7 +4,7 @@ import "./Api.css"
 
 export default function Api() {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyCGBOGKipXcebuQ9uROeeHPyeIsG_CQQx4',
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
   });
 
   if (!isLoaded) return <div>Loading...</div>;
