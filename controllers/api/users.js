@@ -42,10 +42,11 @@ async function create(req, res) {
 ========================================*/
 // async function getUserInfo(req, res) {
 //   const { userId } = req.params;
-//   // find the userInfo by userId
-//   const userInfo = await User.findById({ userId });
-//   console.log(userInfo);
-//   res.status(200).json(userInfo.name);
+//   console.log("userId2:" + userId);
+// find the userInfo by userId
+// const userInfo = await User.findById({ userId });
+// console.log(userInfo);
+// res.status(200).json(userInfo.name);
 // }
 
 /*-- Helper Functions --*/

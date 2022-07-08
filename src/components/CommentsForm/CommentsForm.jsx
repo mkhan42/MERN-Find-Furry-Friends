@@ -1,16 +1,11 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-import * as commentsAPI from "../../utilities/comments-api";
 import { useParams } from "react-router-dom";
+import * as commentsAPI from "../../utilities/comments-api";
 
-export default function CommentsForm({ user }) {
+export default function CommentsForm({ addComments }) {
   const [newComment, setNewComment] = useState({});
   const [error, setError] = useState("");
-
   const { postId } = useParams();
-
-  //Use the navigate function to change routes programmatically
-  // const navigate = useNavigate();
 
   function handleChange(event) {
     setNewComment({
@@ -23,16 +18,18 @@ export default function CommentsForm({ user }) {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      // POST into dbs
+      // POST into dbs - does this work only after refresh?
       await commentsAPI.createComment(postId, {
         ...newComment,
       });
 
-      //console.log(json); //got comment id - wiped out after redirect
       //redirect to the post....
-      window.location.href = `/${postId}`;
-      // navigate(`/${postId}`); //still not working
-      setNewComment({});
+      //window.location.href = `/${postId}`;
+      const allComments = await commentsAPI.getAll(postId);
+
+      // re-render
+      addComments(allComments);
+      setNewComment({ commentTitle: "", content: "" });
     } catch {
       setError("Invalid Comment - Try Again");
     }

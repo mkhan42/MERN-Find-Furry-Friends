@@ -40,6 +40,8 @@ export default function PetDetails({ user }) {
   const postCreatedTime = thePost && moment(thePost.createdAt);
   const postUpdatedTime = thePost && moment(thePost.updatedAt);
   const dateTime = thePost && moment(thePost.date);
+  ///btn - to display edit/delete button or not
+  let btn = thePost?.user === user._id;
 
   useEffect(() => {
     // load the post and Comments
@@ -50,8 +52,6 @@ export default function PetDetails({ user }) {
       setComments(com);
     }
     fetchPostComment();
-
-    //postId is used in the useEffect
   }, [postId]);
 
   /*========================================
@@ -68,7 +68,9 @@ export default function PetDetails({ user }) {
     window.location.href = `/${postId}/EditPost`;
   }
 
-  let btn = thePost?.user === user._id;
+  function addComments(com) {
+    setComments([...com]);
+  }
 
   ////////////////////////////////////////////////////////////////
   //       GOOGLE MAP API
@@ -213,7 +215,9 @@ export default function PetDetails({ user }) {
             return (
               <CommentsCard
                 key={comment._id}
+                allComments={comments}
                 comment={comment}
+                setComments={setComments}
                 userId={user._id}
               />
             );
@@ -225,7 +229,7 @@ export default function PetDetails({ user }) {
 
       {/* New Comment */}
       <h3>Create a New Comment:</h3>
-      <CommentsForm />
+      <CommentsForm addComments={addComments} />
     </>
   );
 }

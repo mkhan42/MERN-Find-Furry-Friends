@@ -15,9 +15,10 @@ module.exports = {
 async function getComments(req, res) {
   const { postId } = req.params;
   // find all the comments in the Post
-  const comments = await CommentModel.find({ post: postId }).sort({
-    createdAt: -1,
-  });
+  const comments = await CommentModel.find({ post: postId });
+  // .sort({
+  //   createdAt: -1,
+  // });
   // .populate("post")
   // .populate("user")
   // .exec();
