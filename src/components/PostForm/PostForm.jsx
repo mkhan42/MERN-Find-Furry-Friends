@@ -1,6 +1,7 @@
 import * as postAPI from "../../utilities/posts-api";
-import React from "react";
 import { useState, useMemo } from "react";
+import FileBase64 from "react-file-base64";
+
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -187,7 +188,8 @@ export default function PostForm({ user }) {
           placeholder="Pet Name or Unknown"
           required
         />
-        <label>Image URL:</label>
+
+        {/* <label>Image URL:</label>
         <input
           type="text"
           name="imgURL"
@@ -195,7 +197,14 @@ export default function PostForm({ user }) {
           value={newPost.imgURL}
           required
           placeholder="Image URL"
+        /> */}
+        <FileBase64
+          type="file"
+          multiple={false}
+          name="imgURL"
+          onDone={({ base64 }) => setNewPost({ ...newPost, imgURL: base64 })}
         />
+        <br />
         <label>Animal Type:</label>
         <input
           type="text"
@@ -205,6 +214,7 @@ export default function PostForm({ user }) {
           placeholder="Animal Type: Ex: Dog"
           required
         />
+        <br />
         <label>Age:</label>
         <input
           type="text"
