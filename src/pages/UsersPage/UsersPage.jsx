@@ -1,4 +1,5 @@
 import "./UsersPage.css";
+import React from "react";
 import { useState, useEffect } from "react";
 import PetCard from "../../components/PetCard/PetCard";
 import * as commentsAPI from "../../utilities/comments-api";

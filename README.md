@@ -2,7 +2,7 @@
 
 ## Contributors:
 
-- Wendy Yu
+- Wenling Yu
 - Yonatan Kumsa
 - Michalle Khan
 
@@ -28,6 +28,8 @@
 - For each pet, users should be able to see the location on google maps and pet information.
 
 ## Screenshots
+
+- screenshots 2345
 
 ## Technologies Used
 

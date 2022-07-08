@@ -1,4 +1,5 @@
 import * as postAPI from "../../utilities/posts-api";
+import React from "react";
 import { useState, useMemo } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
@@ -13,11 +14,9 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import "../Api/map/AdressInput.css"
-
+import "../Api/map/AdressInput.css";
 
 export default function PostForm({ user }) {
-
   const [newPost, setNewPost] = useState({
     postTitle: "",
     postType: "Lost",
@@ -30,10 +29,9 @@ export default function PostForm({ user }) {
     reward: "$5 or none",
     contactInfo: "",
     date: "",
-  
   });
 
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   function handleChange(e) {
     e.preventDefault();
@@ -42,7 +40,7 @@ export default function PostForm({ user }) {
       [e.target.name]: e.target.value,
     };
     setNewPost(newPostData);
-    setError('')
+    setError("");
   }
 
   async function handleSubmit(e) {
@@ -52,107 +50,103 @@ export default function PostForm({ user }) {
       setNewPost({});
       window.location.href = `/${json._id}`;
     } catch {
-      setError('Form Submission Failed - Try again')
+      setError("Form Submission Failed - Try again");
     }
-
   }
 
   //let errTitle = newPost.postTitle = ''
 
-///////////////////////////////////////////
+  ///////////////////////////////////////////
 
-function Places() {
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyCGBOGKipXcebuQ9uROeeHPyeIsG_CQQx4',
-    libraries: ["places"],
-  });
+  function Places() {
+    const { isLoaded } = useLoadScript({
+      googleMapsApiKey: "AIzaSyCGBOGKipXcebuQ9uROeeHPyeIsG_CQQx4",
+      libraries: ["places"],
+    });
 
-  if (!isLoaded) return <div>Loading...</div>;
-  return <Map />;
-}
+    if (!isLoaded) return <div>Loading...</div>;
+    return <Map />;
+  }
 
-function Map() {
-  const center = useMemo(() => ({ lat: 43.45, lng: -80.49 }), []);
-  const [selected, setSelected] = useState(null);
+  function Map() {
+    const center = useMemo(() => ({ lat: 43.45, lng: -80.49 }), []);
+    const [selected, setSelected] = useState(null);
 
-  return (
-    <>
-      <div className="places-container">
-        <PlacesAutocomplete setSelected={setSelected} />
-      </div>
-    </>
-  );
-}
+    return (
+      <>
+        <div className="places-container">
+          <PlacesAutocomplete setSelected={setSelected} />
+        </div>
+      </>
+    );
+  }
 
-const PlacesAutocomplete = ({ setSelected }) => {
-  const {
-    ready,
-    value,
-    setValue,
-    suggestions: { status, data },
-    clearSuggestions,
-  } = usePlacesAutocomplete();
+  const PlacesAutocomplete = ({ setSelected }) => {
+    const {
+      ready,
+      value,
+      setValue,
+      suggestions: { status, data },
+      clearSuggestions,
+    } = usePlacesAutocomplete();
 
-  const handleSelect = async (address) => {
-    setValue(address, false);
-    clearSuggestions();
+    const handleSelect = async (address) => {
+      setValue(address, false);
+      clearSuggestions();
 
-    const results = await getGeocode({ address });
-    const { lat, lng } = await getLatLng(results[0]);
-    setSelected({ lat, lng });
+      const results = await getGeocode({ address });
+      const { lat, lng } = await getLatLng(results[0]);
+      setSelected({ lat, lng });
+    };
+
+    return (
+      <>
+        <Combobox onSelect={handleSelect}>
+          <ComboboxInput
+            value={value}
+            name="lastAddress"
+            onChange={(e) => setValue(e.target.value)}
+            disabled={!ready}
+            className="combobox-input"
+            placeholder="Search an address"
+            type="text"
+          />
+
+          <ComboboxPopover>
+            <ComboboxList>
+              {status === "OK" &&
+                data.map(({ place_id, description }) => (
+                  <ComboboxOption key={place_id} value={description} />
+                ))}
+            </ComboboxList>
+          </ComboboxPopover>
+        </Combobox>
+
+        <Combobox onChange={handleChange}>
+          <ComboboxInput
+            value={newPost.lastAddress}
+            name="lastAddress"
+            onChange={setNewPost}
+            disabled={!ready}
+            className="combobox-input"
+            placeholder="Search an address"
+            type="text"
+          />
+
+          <ComboboxPopover>
+            <ComboboxList>
+              {status === "OK" &&
+                data.map(({ place_id, description }) => (
+                  <ComboboxOption key={place_id} value={description} />
+                ))}
+            </ComboboxList>
+          </ComboboxPopover>
+        </Combobox>
+      </>
+    );
   };
 
-  return (
-    <>
-    <Combobox onSelect={handleSelect}>
-      <ComboboxInput
-        value={value}
-        name='lastAddress'
-        onChange={(e) => setValue(e.target.value)}
-        disabled={!ready}
-        className="combobox-input"
-        placeholder="Search an address"
-        type="text"
-      />
-
-
-      <ComboboxPopover>
-        <ComboboxList>
-          {status === "OK" &&
-            data.map(({ place_id, description }) => (
-              <ComboboxOption key={place_id} value={description} />
-            ))}
-        </ComboboxList>
-      </ComboboxPopover>
-    </Combobox>
-
-    <Combobox onChange={handleChange}>
-      <ComboboxInput
-         value={newPost.lastAddress}
-        name='lastAddress'
-        onChange={setNewPost}
-        disabled={!ready}
-        className="combobox-input"
-        placeholder="Search an address"
-        type="text"
-      />
-
-
-      <ComboboxPopover>
-        <ComboboxList>
-          {status === "OK" &&
-            data.map(({ place_id, description }) => (
-              <ComboboxOption key={place_id} value={description} />
-            ))}
-        </ComboboxList>
-      </ComboboxPopover>
-    </Combobox>
-
-    </>
-  );
-};
-
-///////////////////////////////////////////
+  ///////////////////////////////////////////
 
   return (
     <>
@@ -219,7 +213,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
           value={newPost.age}
           placeholder="Pet Age or Unknown"
         />
-        
+
         <label>Last seen/found:</label>
         <input
           type="text"
@@ -261,7 +255,6 @@ const PlacesAutocomplete = ({ setSelected }) => {
           value={newPost.date}
         />
         <input type="submit" onClick={handleSubmit} />
- 
       </form>
 
       <p className="error-message">&nbsp;{error}</p>
