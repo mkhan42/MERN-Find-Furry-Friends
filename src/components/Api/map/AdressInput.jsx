@@ -13,7 +13,7 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
-import "./AdressInput.css"
+import "./AdressInput.css";
 export default function Places() {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,

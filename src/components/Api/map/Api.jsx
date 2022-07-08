@@ -1,6 +1,6 @@
-import { useMemo } from "react"
+import { useMemo } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-import "./Api.css"
+import "./Api.css";
 
 export default function Api() {
   const { isLoaded } = useLoadScript({
@@ -15,11 +15,8 @@ function Map() {
   const center = useMemo(() => ({ lat: 8.9806, lng: 38.7578 }), []);
 
   return (
-    <GoogleMap 
-    zoom={15} 
-    center={center}
-    mapContainerClassName="map-container">
-    <Marker position={center} />
+    <GoogleMap zoom={15} center={center} mapContainerClassName="map-container">
+      <Marker position={center} />
     </GoogleMap>
   );
 }

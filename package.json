@@ -1,6 +1,9 @@
 {
-  "name": "mern-infrastructure",
+  "name": "find-furry-friends",
   "version": "0.1.0",
+  "engines": {
+    "node": "16.x"
+  },
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^2.9.4",

@@ -4,27 +4,23 @@ import PetCard from "../../components/PetCard/PetCard";
 import * as commentsAPI from "../../utilities/comments-api";
 import Avatar, { ConfigProvider } from 'react-avatar';
 
-// import Api from "../../components/Api/Api"
-
-
-
-  const today = new Date().toLocaleDateString("en-us", {
-    weekday: "long",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  }); // "Friday, Jul 2, 2021"
-
+const today = new Date().toLocaleDateString("en-us", {
+  weekday: "long",
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
 
 const moment = require("moment");
 
-
-// "Friday, Jul 2, 2021"
-
-
 export default function UsersPage({ user, posts }) {
+  ///////////////////////////
+  // grab user posts
+  ///////////////////////////
   const userPosts = posts?.filter((p) => p.user === user._id);
-  //grab user comments
+  ///////////////////////////
+  // grab user comments
+  ///////////////////////////
   const [userComments, setUserComments] = useState([]);
   useEffect(() => {
     // load comments only at the first time
@@ -34,20 +30,6 @@ export default function UsersPage({ user, posts }) {
     }
     fetchComments();
   }, [user._id]);
-  
-
-  //const [getDogURL, setGetDogURL] = useState("");
-
-  // async function getDog() {
-  //   const dogURL = `https://dog.ceo/api/breeds/image/random`;
-
-  //   const dogData = await fetch(dogURL);
-  //   const dogDataReal = await dogData.json();
-  //   console.log(dogData);
-  //   return dogDataReal
-  //   //setGetDogURL(getDogURL);
-  // }
-
   return (
     <>
       <h1>HI, {user.name.toUpperCase()}</h1>

@@ -27,7 +27,7 @@ export default function App() {
       const po = await postsAPI.getAll();
       setPosts(po);
     }
-    fetchPosts();
+    user && fetchPosts();
   }, [user]);
   // []  -> needs to refresh homepage
 
