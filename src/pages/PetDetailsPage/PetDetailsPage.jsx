@@ -77,7 +77,7 @@ export default function PetDetails({ user }) {
   ////////////////////////////////////////////////////////////////
   function Places() {
     const { isLoaded } = useLoadScript({
-      googleMapsApiKey: "AIzaSyCGBOGKipXcebuQ9uROeeHPyeIsG_CQQx4",
+      googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
       libraries: ["places"],
     });
 
