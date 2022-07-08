@@ -2,7 +2,7 @@
 
 ## Contributors:
 
-- Wendy Yu
+- Wenling Yu
 - Yonatan Kumsa
 - Michalle Khan
 
