@@ -1,5 +1,5 @@
 import PetCard from "../../components/PetCard/PetCard";
-
+import React from "react";
 export default function FoundPostsPage({ posts }) {
   // data with postType=Found
   const foundData = posts.filter((p) => p.postType === "Found");
