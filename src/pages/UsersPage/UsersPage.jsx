@@ -34,6 +34,7 @@ export default function UsersPage({ user, posts }) {
     }
     fetchComments();
   }, [user._id]);
+  
 
   //const [getDogURL, setGetDogURL] = useState("");
 
