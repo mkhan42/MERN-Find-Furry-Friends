@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import * as postsAPI from "../../utilities/posts-api";
 import { useParams } from "react-router-dom";
+import FileBase64 from "react-file-base64";
 
 export default function UpdatePostForm({ posts }) {
   const [currentPost, setCurrentPost] = useState({});
@@ -112,6 +113,15 @@ export default function UpdatePostForm({ posts }) {
           onChange={handleChange}
           value={editAPost.imgURL}
         ></input>
+        {/* <FileBase64
+          type="file"
+          multiple={false}
+          name="imgURL"
+          onDone={({ base64 }) =>
+            setCurrentPost({ ...currentPost, imgURL: base64 })
+          }
+        /> */}
+
         <label>Animal Type:</label>
         <input
           type="text"
