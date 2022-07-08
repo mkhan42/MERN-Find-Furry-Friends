@@ -1,21 +1,28 @@
 import "./CommentsCard.css";
 import * as commentsAPI from "../../utilities/comments-api";
 // import * as usersAPI from "../../utilities/users-api";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 const moment = require("moment");
 
-export default function CommentsCard({ comment, userId }) {
+export default function CommentsCard({
+  comment,
+  allComments,
+  setComments,
+  userId,
+}) {
   // variables
   const { postId } = useParams();
   const time = moment(comment.createdAt);
   let btn = comment?.user === userId;
 
+  ///try to move this to the petDetailsPage
   // comment.user is the author of the comment
-  // console.log("comment_userid: " + comment.user);
-  // console.log("comment_userName: " + comment.userName);
+  // console.log("comment_userid: " + comment.user); //undefined
+  //console.log("comment_userName: " + comment.userName);
   // const [author, setAuthor] = useState("");
-  // get comment author name by user id - this is not working???
-  // useInsertionEffect(() => {
+  // //get comment author name by user id - this is not working???
+  // useEffect(() => {
   //   async function fetchCommentAuthorName() {
   //     // this is a promise?!
   //     const newAuthor = await usersAPI.getUserInfoById(comment.user);
@@ -31,11 +38,10 @@ export default function CommentsCard({ comment, userId }) {
 
   async function handleDelete() {
     // if the user of the comment is same as the login user
-    const deleteCom = await commentsAPI.deleteComment(comment._id);
-    console.log(deleteCom);
-    // need to refresh it
-    //navigate(`/${postId}`); //not working
-    window.location.href = `/${postId}`;
+    await commentsAPI.deleteComment(comment._id);
+    //console.log(deleteCom);
+    //window.location.href = `/${postId}`;
+    setComments(allComments.filter((com) => com._id !== comment._id));
   }
 
   return (
