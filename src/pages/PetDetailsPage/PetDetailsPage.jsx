@@ -215,7 +215,9 @@ export default function PetDetails({ user }) {
             return (
               <CommentsCard
                 key={comment._id}
+                allComments={comments}
                 comment={comment}
+                setComments={setComments}
                 userId={user._id}
               />
             );

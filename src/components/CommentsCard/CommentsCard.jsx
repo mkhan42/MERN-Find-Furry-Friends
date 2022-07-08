@@ -5,17 +5,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 const moment = require("moment");
 
-export default function CommentsCard({ comment, userId }) {
+export default function CommentsCard({
+  comment,
+  allComments,
+  setComments,
+  userId,
+}) {
   // variables
   const { postId } = useParams();
   const time = moment(comment.createdAt);
   let btn = comment?.user === userId;
-  console.log("button: " + btn); //re-render is still false, after refresh, then it's true
-  console.log(comment);
-  console.log(comment?.user); //undefined
-  console.log(userId); //id
 
-  ///try to move it to the petDetailsPage
+  ///try to move this to the petDetailsPage
   // comment.user is the author of the comment
   // console.log("comment_userid: " + comment.user); //undefined
   //console.log("comment_userName: " + comment.userName);
@@ -37,10 +38,10 @@ export default function CommentsCard({ comment, userId }) {
 
   async function handleDelete() {
     // if the user of the comment is same as the login user
-    const deleteCom = await commentsAPI.deleteComment(comment._id);
+    await commentsAPI.deleteComment(comment._id);
     //console.log(deleteCom);
-    // need to refresh it
-    window.location.href = `/${postId}`;
+    //window.location.href = `/${postId}`;
+    setComments(allComments.filter((com) => com._id !== comment._id));
   }
 
   return (
