@@ -23,7 +23,7 @@ const postSchema = new Schema(
     },
     imgURL: {
       type: String,
-      required: true,
+      // required: true,
     },
     animalType: {
       type: String,
