@@ -2,6 +2,7 @@ import "./UsersPage.css";
 import { useState, useEffect } from "react";
 import PetCard from "../../components/PetCard/PetCard";
 import * as commentsAPI from "../../utilities/comments-api";
+import Avatar, { ConfigProvider } from 'react-avatar';
 
 // import Api from "../../components/Api/Api"
 
@@ -32,11 +33,31 @@ export default function UsersPage({ user, posts }) {
       setUserComments(com);
     }
     fetchComments();
-  }, []);
+  }, [user._id]);
+
+  //const [getDogURL, setGetDogURL] = useState("");
+
+  // async function getDog() {
+  //   const dogURL = `https://dog.ceo/api/breeds/image/random`;
+
+  //   const dogData = await fetch(dogURL);
+  //   const dogDataReal = await dogData.json();
+  //   console.log(dogData);
+  //   return dogDataReal
+  //   //setGetDogURL(getDogURL);
+  // }
 
   return (
     <>
       <h1>HI, {user.name.toUpperCase()}</h1>
+      {/* <img src={user.userProfileImg}  alt="hello" width="200px"/> */}
+      {/* (<Avatar name={ user.name } /> ) */}
+      { user.userProfileImg === "" ? 
+      (<ConfigProvider colors={['red', 'green', 'blue', 'pink', 'purple', 'orange', 'yellow']}>
+        <Avatar name={ user.name } round={true}/>
+      </ConfigProvider> )
+       : (<img src={user.userProfileImg} alt="hello" width="200px"/>)
+       }
       <p>All info as of {today}</p>
       <div className="user-info-container">
         <h3>YOUR EMAIL: {user.email}</h3>
