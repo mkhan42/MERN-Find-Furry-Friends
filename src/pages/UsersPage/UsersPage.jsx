@@ -3,6 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import PetCard from "../../components/PetCard/PetCard";
 import * as commentsAPI from "../../utilities/comments-api";
+import Avatar, { ConfigProvider } from 'react-avatar';
 
 const today = new Date().toLocaleDateString("en-us", {
   weekday: "long",
@@ -30,10 +31,17 @@ export default function UsersPage({ user, posts }) {
     }
     fetchComments();
   }, [user._id]);
-
   return (
     <>
       <h1>HI, {user.name.toUpperCase()}</h1>
+      {/* <img src={user.userProfileImg}  alt="hello" width="200px"/> */}
+      {/* (<Avatar name={ user.name } /> ) */}
+      { user.userProfileImg === "" ? 
+      (<ConfigProvider colors={['red', 'green', 'blue', 'pink', 'purple', 'orange', 'yellow']}>
+        <Avatar name={ user.name } round={true}/>
+      </ConfigProvider> )
+       : (<img src={user.userProfileImg} alt="hello" width="200px"/>)
+       }
       <p>All info as of {today}</p>
       <div className="user-info-container">
         <h3>YOUR EMAIL: {user.email}</h3>
