@@ -16,7 +16,7 @@ import UpdatePostPage from "../../pages/UpdatePostPage/UpdatePostPage";
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import * as postsAPI from "../../utilities/posts-api";
-//import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -55,7 +55,7 @@ export default function App() {
             <Route path="/:postId" element={<PetDetailsPage user={user} />} />
 
             <Route
-              path=":postId/EditPost"
+              path="/:postId/EditPost"
               element={<UpdatePostPage posts={posts} />}
             />
 
