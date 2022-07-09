@@ -20,7 +20,7 @@ export default function FoundPostsPage({ posts }) {
     setSearchContent(data.value);
   }
 
-  function searchItem(value) {
+  function searchItems(value) {
     setSearchInput(value);
     if (searchInput !== 0) {
       const filteredData = foundData.filter((post) => {
@@ -51,7 +51,7 @@ export default function FoundPostsPage({ posts }) {
         iconPosition="left"
         placeholder="Search..."
         onChange={(e) => {
-          searchItem(e.target.value);
+          searchItems(e.target.value);
         }}
       />
       <div></div>
