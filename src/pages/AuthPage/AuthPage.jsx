@@ -10,9 +10,12 @@ export default function AuthPage({ setUser }) {
 
   return (
     <div>
-    <h1 className="my-title">FIND-FURRY-FRIENDS</h1>
+    <div className='my-title'>
+    <h1 >FIND-FURRY-FRIENDS</h1>
+    {/* <p>Lost a furry friend? Found a lost friend? <br/> Find-Furry-Friends is dedicated to helping pet owners find their missing friends! <br/> Just Sign Up or Log in below!</p> */}
+    </div>
      {showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
-      <div>
+      <div className='center-option'>
       <p onClick={() => setShowLogin(!showLogin)}>{showLogin ? `Don't have an account? Sign up!` : 'Already have an account? Log in'}</p>
       </div>
     </div>
