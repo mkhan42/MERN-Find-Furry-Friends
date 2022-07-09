@@ -1,5 +1,5 @@
 /* CSS Custom Properties */
-:root {
+/* :root {
   --white: #FFFFFF;
   --tan-1: #FBF9F6;
   --tan-2: #E7E2DD;
@@ -12,9 +12,9 @@
 
 *, *:before, *:after {
   box-sizing: border-box;
-}
+} */
 
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -24,30 +24,30 @@ body {
   background-color: var(--tan-4);
   padding: 2vmin;
   height: 100vh;
-}
+} */
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
 
-#root {
+/* #root {
   height: 100%;
-}
+} */
 
-.align-ctr {
+/* .align-ctr {
   text-align: center;
-}
+} */
 
-.align-rt {
+/* .align-rt {
   text-align: right;
-}
+} */
 
-.smaller {
+/* .smaller {
   font-size: smaller;
-}
+} */
 
-.flex-ctr-ctr {
+/* .flex-ctr-ctr {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,17 +55,17 @@ code {
 
 .flex-col {
   flex-direction: column;
-}
+} */
 
-.flex-j-end {
+/* .flex-j-end {
   justify-content: flex-end;
-}
+} */
 
-.scroll-y {
+/* .scroll-y {
   overflow-y: scroll;
-}
+} */
 
-.section-heading {
+/* .section-heading {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -88,9 +88,9 @@ code {
 p.error-message {
   color: var(--orange);
   text-align: center;
-}
+} */
 
-form {
+/* form {
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1.25vmin;
@@ -109,7 +109,7 @@ input {
   border: .1vmin solid var(--tan-3);
   border-radius: .5vmin;
   color: var(--text-dark);
-  background-image: none !important; /* prevent lastpass */
+  background-image: none !important; /* prevent lastpass 
   outline: none;
 }
 
@@ -151,3 +151,5 @@ button[type="submit"] {
   grid-column: span 2;
   margin: 1vmin 0 0;
 }
+
+*/

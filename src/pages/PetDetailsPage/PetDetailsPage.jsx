@@ -75,7 +75,7 @@ export default function PetDetails({ user }) {
 
   ////////////////////////////////////////////////////////////////
   //       GOOGLE MAP API
-  ////////////////////////////////////////////////////////////////
+  // ////////////////////////////////////////////////////////////////
   function Places() {
     const { isLoaded } = useLoadScript({
       googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -128,14 +128,6 @@ export default function PetDetails({ user }) {
     // handleSelect()
     return (
       <Combobox onSelect={handleSelect}>
-        {/* <ComboboxInput
-         value={thePost.lastAddress}
-          onChange={(e) => setValue(thePost.lastAddress)}
-          disabled={!ready}
-          className="combobox-input"
-          placeholder="Search an address"
-          name="lastAddress"
-        /> */}
         <ComboboxInput
           value={thePost.lastAddress}
           onSelect={(e) => setValue(thePost.lastAddress)}

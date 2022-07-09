@@ -1,8 +1,17 @@
 body {
-    
+    background-color: #481556;
+    text-align: center;
+}
+
+.my-sign-back-div {
+    background-color: #4C3A51;
+    /* text-align: center; */
 }
 
 .my-sign-card {
+    margin-left: 10%;
+    margin-right: 10%;
+    max-width: 80%;
 
 }
 

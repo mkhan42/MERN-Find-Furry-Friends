@@ -1,18 +1,75 @@
 import PetCard from "../../components/PetCard/PetCard";
-import React from "react";
+import { useState } from "react";
+import { Card, Input, Dropdown } from "semantic-ui-react";
+
 export default function LostPostsPage({ posts }) {
   // data with postType=Lost
   const lostData = posts && posts.filter((p) => p.postType === "Lost");
-  // console.log(lostData);
+
+  const [searchContent, setSearchContent] = useState("animalType");
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredResults, setFilteredResults] = useState([]);
+
+  const options = [
+    { key: "animalType", text: "Animal Type", value: "animalType" },
+    { key: "lastAddress", text: "Last Found Address", value: "lastAddress" },
+    { key: "reward", text: "Reward", value: "reward" },
+  ];
+
+  function handleOptions(e, data) {
+    setSearchContent(data.value);
+  }
+
+  function searchItems(searchValue) {
+    setSearchInput(searchValue);
+    if (searchInput !== "") {
+      const filteredData = lostData.filter((post) => {
+        return Object.values(post[searchContent])
+          .join("")
+          .toLowerCase()
+          .includes(searchInput.toLowerCase());
+      });
+      setFilteredResults(filteredData);
+    } else {
+      setFilteredResults(lostData);
+    }
+  }
+
   return (
     <>
-      <h1>This is LostPostsPage</h1>
+      <h1>Lost Posts</h1>
+      <Input
+        action={
+          <Dropdown
+            button
+            basic
+            floating
+            options={options}
+            defaultValue="animalType"
+            onChange={handleOptions}
+          />
+        }
+        icon="search"
+        iconPosition="left"
+        placeholder="Search..."
+        onChange={(e) => {
+          searchItems(e.target.value);
+        }}
+      />
+      <div></div>
+
       {lostData?.length ? (
-        <>
-          {lostData.map((post) => {
-            return <PetCard key={post._id} post={post} />;
-          })}
-        </>
+        <div>
+          <Card.Group>
+            {searchInput.length === 0
+              ? lostData.map((post) => {
+                  return <PetCard key={post._id} post={post} />;
+                })
+              : filteredResults.map((post) => {
+                  return <PetCard key={post._id} post={post} />;
+                })}
+          </Card.Group>
+        </div>
       ) : (
         <h2>No Lost Post</h2>
       )}

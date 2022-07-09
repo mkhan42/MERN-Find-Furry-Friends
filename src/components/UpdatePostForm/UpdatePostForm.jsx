@@ -107,18 +107,18 @@ export default function UpdatePostForm({ posts }) {
           value={editAPost.name}
         ></input>
         <label>Image URL:</label>
-        {/* <input
+        <input
           type="text"
           name="imgURL"
           onChange={handleChange}
           value={editAPost.imgURL}
-        ></input> */}
+        ></input>
         <FileBase64
           type="file"
           multiple={false}
           name="imgURL"
           onDone={({ base64 }) =>
-            setCurrentPost({ ...currentPost, imgURL: base64 })
+            setEditAPost({ ...currentPost, imgURL: base64 })
           }
         />
 
