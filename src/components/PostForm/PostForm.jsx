@@ -1,15 +1,8 @@
 import * as postAPI from "../../utilities/posts-api";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import FileBase64 from "react-file-base64";
-import {
-  Button,
-  Checkbox,
-  Form,
-  Input,
-  Radio,
-  Select,
-  TextArea,
-} from "semantic-ui-react";
+import { Button, Checkbox, Form, TextArea } from "semantic-ui-react";
+import "./PostForm.css";
 
 export default function PostForm({ user }) {
   const [newPost, setNewPost] = useState({
@@ -21,7 +14,7 @@ export default function PostForm({ user }) {
     age: "",
     lastAddress: "",
     description: "",
-    reward: "$5 or none",
+    reward: "",
     contactInfo: "",
     date: "",
   });
@@ -139,7 +132,7 @@ export default function PostForm({ user }) {
           value={newPost.date}
         />
 
-                  <label>Image URL:</label>
+        <label>Image URL:</label>
         <input
           type="text"
           name="imgURL"
@@ -148,6 +141,16 @@ export default function PostForm({ user }) {
           required
           placeholder="Image URL"
         /> 
+        <label>Description:</label>
+        <input
+          type="text"
+          name="description"
+          onChange={handleChange}
+          value={newPost.description}
+          placeholder="Description of pet"
+        />
+
+
           */}
 
         <Form.Input
@@ -203,6 +206,33 @@ export default function PostForm({ user }) {
             required
           />
         </Form.Group>
+
+        <Form.Group widths="equal">
+          <Form.Input
+            label="Contact Info"
+            placeholder="Ex: contactme@email.com"
+            name="contactInfo"
+            onChange={handleChange}
+            value={newPost.contactInfo}
+            required
+          />
+          <Form.Input
+            label="Day pet was lost/found?:"
+            type="date"
+            name="date"
+            onChange={handleChange}
+            value={newPost.date}
+          />
+          <Form.Input
+            label="Reward($)"
+            name="reward"
+            type="number"
+            min="0"
+            max="1000"
+            onChange={handleChange}
+            value={newPost.reward}
+          />
+        </Form.Group>
         <Form.Input
           label="Last seen/found"
           placeholder="Ex: New York, NY, USA"
@@ -212,38 +242,14 @@ export default function PostForm({ user }) {
           required
         />
         <Form.Input
-          label="Reward($)"
-          name="reward"
-          type="number"
-          min="0"
-          max="1000"
-          onChange={handleChange}
-          value={newPost.reward}
-        />
-        <Form.Input
-          label="Contact Info"
-          placeholder="Ex: contactme@email.com"
-          name="contactInfo"
-          onChange={handleChange}
-          value={newPost.contactInfo}
-          required
-        />
-        <Form.Input
-          label="Day pet was lost/found?:"
-          type="date"
-          name="date"
-          onChange={handleChange}
-          value={newPost.date}
-        />
-        <Form.Input
           label="Image URL / Upload(1 MB per file upload limit):"
           type="text"
           name="imgURL"
-          placeholder="http.."
+          placeholder="https://..."
           onChange={handleChange}
           value={newPost.imgURL}
         />
-
+        <p>-------------------------- or -------------------------- </p>
         <FileBase64
           type="file"
           multiple={false}
@@ -251,14 +257,6 @@ export default function PostForm({ user }) {
           onDone={({ base64 }) => setNewPost({ ...newPost, imgURL: base64 })}
         />
 
-        {/* <label>Description:</label> */}
-        {/* <input
-          type="text"
-          name="description"
-          onChange={handleChange}
-          value={newPost.description}
-          placeholder="Description of pet"
-        /> */}
         <Form.TextArea
           control={TextArea}
           label="Description"
@@ -271,7 +269,9 @@ export default function PostForm({ user }) {
           control={Checkbox}
           label="I agree to Privacy Policy that there is no privacy policy"
         />
-        <Form.Button control={Button}>Submit</Form.Button>
+        <Form.Button color="blue" fluid control={Button}>
+          Submit
+        </Form.Button>
       </Form>
 
       <p className="error-message">&nbsp;{error}</p>

@@ -1,5 +1,5 @@
 import PostForm from "../../components/PostForm/PostForm";
-import React from "react";
+import "./NewPostPage.css";
 
 export default function NewPostPage({ user }) {
   return (
