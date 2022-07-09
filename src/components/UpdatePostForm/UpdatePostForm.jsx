@@ -3,6 +3,8 @@ import React from "react";
 import * as postsAPI from "../../utilities/posts-api";
 import { useParams } from "react-router-dom";
 import FileBase64 from "react-file-base64";
+import { Button, Checkbox, Form, TextArea } from "semantic-ui-react";
+import "../PostForm/PostForm.css";
 
 export default function UpdatePostForm({ posts }) {
   const [currentPost, setCurrentPost] = useState({});
@@ -56,7 +58,6 @@ export default function UpdatePostForm({ posts }) {
       [e.target.name]: e.target.value,
     };
     setEditAPost(editPostData);
-    // console.log(newPostData);
   }
 
   //console.log(newPost);
@@ -79,21 +80,18 @@ export default function UpdatePostForm({ posts }) {
 
   return (
     <>
-      <h1>this is edit Post form</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Post Title:</label>
+      <Form onSubmit={handleSubmit}>
+        {/* <label>Post Title:</label>
         <input
           type="text"
           name="postTitle"
           onChange={handleChange}
           value={editAPost.postTitle}
-          // defaultValue={thePost.postTitle}
         ></input>
         <label>Post Type:</label>
         <select
           name="postType"
           onChange={handleChange}
-          //defaultValue={thePost.postType}
           value={editAPost.postType}
         >
           <option>Lost</option>
@@ -106,13 +104,13 @@ export default function UpdatePostForm({ posts }) {
           onChange={handleChange}
           value={editAPost.name}
         ></input>
-        {/* <label>Image URL:</label>
+        /* <label>Image URL:</label>
         <input
           type="text"
           name="imgURL"
           onChange={handleChange}
           value={editAPost.imgURL}
-        ></input> */}
+        ></input> 
         <FileBase64
           type="file"
           multiple={false}
@@ -172,10 +170,125 @@ export default function UpdatePostForm({ posts }) {
           onChange={handleChange}
           value={editAPost.date}
         ></input>
-        {/* <Link to={`/AllPosts`}> */}
-        <input type="submit" onClick={handleSubmit} />
-        {/* </Link> */}
-      </form>
+        <input type="submit"  /> */}
+
+        <Form.Group widths="equal">
+          <Form.Input
+            label="Post Title"
+            placeholder="Post Title.."
+            name="postTitle"
+            onChange={handleChange}
+            value={editAPost.postTitle}
+            required
+          />
+
+          <Form.Select
+            label="Post Type"
+            options={[
+              { key: "l", text: "Lost", value: "Lost" },
+              { key: "f", text: "Found", value: "Found" },
+            ]}
+            name="postType"
+            onChange={handleChange}
+            value={editAPost.postType}
+            required
+          />
+        </Form.Group>
+        <Form.Group widths="equal">
+          <Form.Input
+            label="Pet Name"
+            placeholder="Pet Name or Unknown."
+            name="name"
+            onChange={handleChange}
+            value={editAPost.name}
+            required
+          />
+          <Form.Input
+            label="Pet Type"
+            placeholder="Ex: Dog"
+            name="animalType"
+            onChange={handleChange}
+            value={editAPost.animalType}
+            required
+          />
+          <Form.Input
+            label="Pet Age"
+            placeholder="Pet Age or Unknown"
+            name="age"
+            onChange={handleChange}
+            value={editAPost.age}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group widths="equal">
+          <Form.Input
+            label="Contact Info"
+            placeholder="Ex: contactme@email.com"
+            name="contactInfo"
+            onChange={handleChange}
+            value={editAPost.contactInfo}
+            required
+          />
+          <Form.Input
+            label="Day pet was lost/found?:"
+            type="date"
+            name="date"
+            onChange={handleChange}
+            value={editAPost.date}
+          />
+          <Form.Input
+            label="Reward($)"
+            name="reward"
+            type="number"
+            min="0"
+            max="1000"
+            onChange={handleChange}
+            value={editAPost.reward}
+          />
+        </Form.Group>
+        <Form.Input
+          label="Last seen/found"
+          placeholder="Ex: New York, NY, USA"
+          name="lastAddress"
+          onChange={handleChange}
+          value={editAPost.lastAddress}
+          required
+        />
+        <Form.Input
+          label="Image URL / Upload(1 MB per file upload limit):"
+          type="text"
+          name="imgURL"
+          placeholder="https://..."
+          onChange={handleChange}
+          value={editAPost.imgURL}
+        />
+        <p>-------------------------- or -------------------------- </p>
+        <FileBase64
+          type="file"
+          multiple={false}
+          name="imgURL"
+          onDone={({ base64 }) =>
+            setEditAPost({ ...currentPost, imgURL: base64 })
+          }
+        />
+
+        <Form.TextArea
+          control={TextArea}
+          label="Description"
+          placeholder="Desciption of pet..."
+          onChange={handleChange}
+          value={editAPost.description}
+          type="text"
+        />
+        <Form.Checkbox
+          control={Checkbox}
+          label="I agree to Privacy Policy that there is no privacy policy"
+        />
+        <Form.Button color="blue" fluid control={Button}>
+          Submit
+        </Form.Button>
+      </Form>
     </>
   );
 }

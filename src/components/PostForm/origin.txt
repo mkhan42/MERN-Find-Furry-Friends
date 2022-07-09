@@ -1,0 +1,114 @@
+ <form onSubmit={handleSubmit}>
+      <label>Author Name:</label>
+      <input
+        type="text"
+        name="userName"
+        defaultValue={user.name.toUpperCase()}
+      />
+
+      <label>Post Title:</label>
+      <input
+        type="text"
+        name="postTitle"
+        onChange={handleChange}
+        value={newPost.postTitle}
+        placeholder="Post Title"
+        required
+      />
+      <label>Post Type:</label>
+      <select
+        name="postType"
+        onChange={handleChange}
+        value={newPost.postType}
+        required
+      >
+        <option>Lost</option>
+        <option>Found</option>
+      </select>
+      <label>Name:</label>
+      <input
+        type="text"
+        name="name"
+        onChange={handleChange}
+        value={newPost.name}
+        placeholder="Pet Name or Unknown"
+        required
+      />
+
+      <label>Animal Type:</label>
+      <input
+        type="text"
+        name="animalType"
+        onChange={handleChange}
+        value={newPost.animalType}
+        placeholder="Ex: Dog"
+        required
+      />
+
+      <label>Animal Age:</label>
+      <input
+        type="text"
+        name="age"
+        onChange={handleChange}
+        value={newPost.age}
+        placeholder="Pet Age or Unknown"
+      />
+      <label>Last seen/found:</label>
+      <input
+        type="text"
+        name="lastAddress"
+        onChange={handleChange}
+        value={newPost.lastAddress}
+        placeholder="Ex: New York, NY, USA"
+        required
+      />
+      <label>Reward:</label>
+      <input
+        type="text"
+        name="reward"
+        onChange={handleChange}
+        value={newPost.reward}
+      />
+      <label>Contact Info:</label>
+      <input
+        type="email"
+        name="contactInfo"
+        onChange={handleChange}
+        value={newPost.contactInfo}
+        required
+        placeholder="Ex: contactme@email.com"
+      />
+      <label>Day pet was lost/found?:</label>
+      <input
+        type="date"
+        name="date"
+        onChange={handleChange}
+        value={newPost.date}
+      />
+
+      <label>Image URL:</label>
+      <input
+        type="text"
+        name="imgURL"
+        onChange={handleChange}
+        value={newPost.imgURL}
+        required
+        placeholder="Image URL"
+      />
+
+      <FileBase64
+        type="file"
+        multiple={true}
+        name="imgURL"
+        onDone={({ base64 }) => setNewPost({ ...newPost, imgURL: base64 })}
+      />
+
+      <label>Description:</label>
+      <input
+        type="text"
+        name="description"
+        onChange={handleChange}
+        value={newPost.description}
+        placeholder="Description of pet"
+      />
+    </form>
