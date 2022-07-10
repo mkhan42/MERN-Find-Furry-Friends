@@ -1,6 +1,6 @@
-form {
+.post-form-container {
   background-color: var(--team-color2);
 }
-form .field {
+.post-form-container .field {
   font-size: 1.2em !important;
 }
