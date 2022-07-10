@@ -1,9 +1,6 @@
 .comments-card-container {
-  background: rgb(223, 221, 221);
+  background: var(--tan-4);
   border-radius: 4px;
-  text-align: left;
   margin: 20px auto;
   padding: 10px;
-  position: relative;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0);
 }

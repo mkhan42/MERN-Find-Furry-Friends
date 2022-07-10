@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import * as commentsAPI from "../../utilities/comments-api";
+import { Button, Form, TextArea } from "semantic-ui-react";
 
 export default function CommentsForm({ addComments }) {
   const [newComment, setNewComment] = useState({});
@@ -37,23 +38,25 @@ export default function CommentsForm({ addComments }) {
 
   return (
     <>
-      <form className="create-comment" onSubmit={handleSubmit}>
-        <label>Comment Title: </label>
-        <input
+      <Form onSubmit={handleSubmit}>
+        <Form.Input
+          label="Title"
           onChange={handleChange}
           type="text"
           value={newComment.commentTitle}
           name="commentTitle"
-        ></input>
-        <label>Content:</label>
-        <input
+        />
+        <Form.TextArea
+          label="Content"
           onChange={handleChange}
           type="text"
           value={newComment.content}
           name="content"
         />
-        <button type="submit">Submit</button>
-      </form>
+        <Form.Button color="blue" fluid control={Button}>
+          Submit
+        </Form.Button>
+      </Form>
       <p className="error-message">&nbsp;{error}</p>
     </>
   );

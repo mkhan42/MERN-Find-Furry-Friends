@@ -1,4 +1,8 @@
 .new-post-container {
   background-color: var(--team-color1);
   color: var(--team-color4);
+  padding: 30px;
+}
+.new-post-container h1 {
+  text-align: center;
 }
