@@ -9,10 +9,8 @@ import {
   Grid,
   Image,
 } from "semantic-ui-react";
-import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
-//import { useCommentsContext } from "../../hooks/useCommentsContext";
 import * as commentsAPI from "../../utilities/comments-api";
 import * as postsAPI from "../../utilities/posts-api";
 
@@ -33,7 +31,7 @@ import "@reach/combobox/styles.css";
 import "../../components/Api/map/AdressInput.css";
 import Api from "../../components/Api/map/Api";
 
-//import post from "../../../models/post";
+import "./PetDetailsPage.css";
 
 const moment = require("moment");
 //import user from "../../../models/user";
@@ -177,36 +175,49 @@ export default function PetDetails({ user }) {
         <Grid>
           {thePost && (
             <>
-              <Grid.Column width={4}>
+              <Grid.Column width={4} className="post-details-info">
                 {/********* Post info **********/}
-                <p>Posted by: {thePost.userName}</p>
-                <p>Contact Info: {thePost.contactInfo}</p>
-                <p>Post Type: {thePost.postType}</p>
-
-                <p>
-                  Post Created at: {postCreatedTime.format("MM/DD/YYYY HH:mm")}
-                </p>
-                {/* only show the updated time if there is an update */}
-                {thePost.createdAt !== thePost.updatedAt ? (
+                <Header as="h2">
+                  <Image
+                    circular
+                    src="https://react.semantic-ui.com/images/avatar/large/patrick.png"
+                  />{" "}
+                  {thePost.userName}
+                </Header>
+                <Header as="h3">
+                  <p>Contact Info: {thePost.contactInfo}</p>
+                  <p>Post Type: {thePost.postType}</p>
+                </Header>
+                <Header as="h4">
                   <p>
-                    Post Updated at:{" "}
-                    {postUpdatedTime.format("MM/DD/YYYY HH:mm")}
+                    Post Created at:{" "}
+                    {postCreatedTime.format("MM/DD/YYYY HH:mm")}
                   </p>
-                ) : (
-                  " "
-                )}
 
+                  {/* only show the updated time if there is an update */}
+                  {thePost.createdAt !== thePost.updatedAt ? (
+                    <p>
+                      Post Updated at:{" "}
+                      {postUpdatedTime.format("MM/DD/YYYY HH:mm")}
+                    </p>
+                  ) : (
+                    " "
+                  )}
+                </Header>
                 {btn && (
                   <div>
+                    <p>As Author, you can:</p>
                     <Button
                       icon="edit"
                       content="Edit"
                       color="green"
+                      size="small"
                       onClick={handleEditPost}
                     />
                     <Button
                       icon="trash alternate"
                       content="Delete"
+                      size="small"
                       onClick={handleDeletePost}
                     />
                   </div>
@@ -214,19 +225,24 @@ export default function PetDetails({ user }) {
               </Grid.Column>
 
               {/* ********* Post Details ************** */}
-              <Grid.Column width={9}>
+              <Grid.Column width={9} className="post-details-details">
                 <p>Title: {thePost.postTitle}</p>
-
-                <p>Animal Name:{thePost.name}</p>
-                <p>Animal Type:{thePost.animalType} </p>
-                <img src={thePost.imgURL} alt={thePost.name} width="600px" />
+                <p>Animal Name: {thePost.name}</p>
+                <p>Animal Type: {thePost.animalType} </p>
                 <p>Animal Age: {thePost.age}</p>
-                <p>Last Seen Location: {thePost.lastAddress} </p>
-
+                <Image
+                  src={thePost.imgURL}
+                  alt={thePost.name}
+                  size="large"
+                  rounded
+                />
                 <p>Description: {thePost.description}</p>
                 <p>Reward($): {thePost.reward}</p>
                 <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
+                <p>Last Seen Location: {thePost.lastAddress} </p>
                 <Places />
+              </Grid.Column>
+              <Grid.Column width={1.5}>
                 <Button
                   color="red"
                   content="Upvote"

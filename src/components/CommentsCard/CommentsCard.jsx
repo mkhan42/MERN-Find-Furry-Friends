@@ -69,6 +69,7 @@ export default function CommentsCard({
             labelPosition="left"
             icon="trash alternate"
             content="Delete"
+            size="small"
           />
         )}
       </Comment.Group>
