@@ -1,3 +1,35 @@
-ul {
+li {
   list-style-type: none;
+}
+
+.my-user-card {
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10%;
+  color: #E7AB79;
+  
+}
+
+.my-user-img {
+  text-align: center;
+  margin-top: 2%;
+}
+
+.animalImg {
+  height: 60%;
+  width: 60%;
+}
+
+.user-welcome {
+  margin-top: 5%;
+}
+
+.my-header-card {
+  background-color: #4C3A51;
+  padding-bottom: 5%;
+}
+
+.my-user-card-body{
+  background-color: #774360;
 }
