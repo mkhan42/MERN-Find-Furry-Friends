@@ -166,6 +166,7 @@ export default function PetDetails({ user }) {
     <>
       <div className="pet-detail-container">
         <h1>Post Details</h1>
+
         {thePost && (
           <>
             <p>Posted by: {thePost.userName}</p>
@@ -181,6 +182,12 @@ export default function PetDetails({ user }) {
             ) : (
               " "
             )}
+            <Divider horizontal>
+              <Header as="h4">
+                <Icon name="tag" />
+                Description
+              </Header>
+            </Divider>
             <p>Title: {thePost.postTitle}</p>
             <p>Animal Name:{thePost.name}</p>
             <p>Animal Type:{thePost.animalType} </p>
