@@ -182,12 +182,12 @@ export default function PetDetails({ user }) {
             ) : (
               " "
             )}
-            <Divider horizontal>
+            {/* <Divider horizontal>
               <Header as="h4">
                 <Icon name="tag" />
                 Description
               </Header>
-            </Divider>
+            </Divider> */}
             <p>Title: {thePost.postTitle}</p>
             <p>Animal Name:{thePost.name}</p>
             <p>Animal Type:{thePost.animalType} </p>
