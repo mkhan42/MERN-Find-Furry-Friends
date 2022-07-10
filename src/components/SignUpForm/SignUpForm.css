@@ -1,16 +1,7 @@
-/* body {
-    background-color: #481556;
-    text-align: center;
-} */
-
-.my-sign-back-div {
-    /* background-color: #4C3A51; */
-    /* text-align: center; */
-}
 
 .my-auth-p {
     text-align: center;
-    margin-top: 50%;
+    margin-top: 70%;
     margin-bottom: 50%;
     margin-left: 10%;
     margin-right: 10%;
@@ -21,7 +12,6 @@
     font-size: 20px;
     font-weight: 900;
 }
-
 
 .my-sign-card {
     margin-left: 10%;
@@ -38,9 +28,8 @@
     opacity: .5;
 }
 .my-sign-card-body {
-
     width: 80%;
-    margin-left: 15%;
+    margin-left: 10%;
 
 }
 
@@ -54,14 +43,14 @@
     text-align: center;
 }
 
-.my-sign-div {
-
+.my-btn {
+    background: #4b005f;
 }
 
-.my-sign-label {
-
+.or-option {
+    font-size: 15px;
+    text-align: center;
+    margin-top: -5%;
+    margin-bottom: -5%;
 }
 
-.my-sign-input {
-    
-}
