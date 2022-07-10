@@ -17,13 +17,13 @@
 
 }
 
-
-.all-posts-container{
-  background:var(--team-color1) ;
+.all-posts-container {
+  background: var(--team-color1);
   text-align: center;
   align-content: center;
   align-items: center;
-  color:var(--team-color4);
+  color: var(--team-color4);
+  padding-bottom: 50px;
 }
 
 .allposth5{
