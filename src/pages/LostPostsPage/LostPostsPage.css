@@ -1,0 +1,17 @@
+#searchforlostpage{
+    text-align: center;
+ margin: 20px;
+   /* background:var(--team-color2); */
+   
+}
+.container{
+    align-content: center;
+    text-align: center;
+    background: var(--team-color1);
+    height: 100vh;
+    width:100%;
+}
+.lostpageh1{
+    text-align: center;
+    color: var(--team-color4);
+}
