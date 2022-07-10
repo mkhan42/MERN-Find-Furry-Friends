@@ -34,7 +34,7 @@ export default function App() {
   // []  -> needs to refresh homepage
 
   return (
-    <main className="App">
+    <main>
       {user ? (
         <>
         <Header user={user} setUser={setUser}/>
