@@ -1,11 +1,16 @@
 import CommentsCard from "../../components/CommentsCard/CommentsCard";
 import CommentsForm from "../../components/CommentsForm/CommentsForm";
-import { Button, Icon, Label, Divider, Header } from "semantic-ui-react";
-
-import React from "react";
+import {
+  Button,
+  Icon,
+  Label,
+  Divider,
+  Header,
+  Grid,
+  Image,
+} from "semantic-ui-react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
-//import { useCommentsContext } from "../../hooks/useCommentsContext";
 import * as commentsAPI from "../../utilities/comments-api";
 import * as postsAPI from "../../utilities/posts-api";
 
@@ -26,7 +31,7 @@ import "@reach/combobox/styles.css";
 import "../../components/Api/map/AdressInput.css";
 import Api from "../../components/Api/map/Api";
 
-//import post from "../../../models/post";
+import "./PetDetailsPage.css";
 
 const moment = require("moment");
 //import user from "../../../models/user";
@@ -163,75 +168,97 @@ export default function PetDetails({ user }) {
   ////////////////////////////////////////////////////////////////
 
   return (
-    <>
+    <div className="pet-detail-page">
       <div className="pet-detail-container">
         <h1>Post Details</h1>
 
-        {thePost && (
-          <>
-            <p>Posted by: {thePost.userName}</p>
-            <p>Contact Info: {thePost.contactInfo}</p>
-            <p>Post Type: {thePost.postType}</p>
+        <Grid>
+          {thePost && (
+            <>
+              <Grid.Column width={4} className="post-details-info">
+                {/********* Post info **********/}
+                <Header as="h2">
+                  <Image
+                    circular
+                    src="https://react.semantic-ui.com/images/avatar/large/patrick.png"
+                  />{" "}
+                  {thePost.userName}
+                </Header>
+                <Header as="h3">
+                  <p>Contact Info: {thePost.contactInfo}</p>
+                  <p>Post Type: {thePost.postType}</p>
+                </Header>
+                <Header as="h4">
+                  <p>
+                    Post Created at:{" "}
+                    {postCreatedTime.format("MM/DD/YYYY HH:mm")}
+                  </p>
 
-            <p>Post Created at: {postCreatedTime.format("MM/DD/YYYY HH:mm")}</p>
-            {/* only show the updated time if there is an update */}
-            {thePost.createdAt !== thePost.updatedAt ? (
-              <p>
-                Post Updated at: {postUpdatedTime.format("MM/DD/YYYY HH:mm")}
-              </p>
-            ) : (
-              " "
-            )}
-            {/* <Divider horizontal>
-              <Header as="h4">
-                <Icon name="tag" />
-                Description
-              </Header>
-            </Divider> */}
-            <p>Title: {thePost.postTitle}</p>
-            <p>Animal Name:{thePost.name}</p>
-            <p>Animal Type:{thePost.animalType} </p>
-            <img src={thePost.imgURL} alt={thePost.name} width="600px" />
-            <p>Animal Age: {thePost.age}</p>
-            <p>Last Seen Location: {thePost.lastAddress} </p>
+                  {/* only show the updated time if there is an update */}
+                  {thePost.createdAt !== thePost.updatedAt ? (
+                    <p>
+                      Post Updated at:{" "}
+                      {postUpdatedTime.format("MM/DD/YYYY HH:mm")}
+                    </p>
+                  ) : (
+                    " "
+                  )}
+                </Header>
+                {btn && (
+                  <div>
+                    <p>As Author, you can:</p>
+                    <Button
+                      icon="edit"
+                      content="Edit"
+                      color="green"
+                      size="small"
+                      onClick={handleEditPost}
+                    />
+                    <Button
+                      icon="trash alternate"
+                      content="Delete"
+                      size="small"
+                      onClick={handleDeletePost}
+                    />
+                  </div>
+                )}
+              </Grid.Column>
 
-            <p>Description: {thePost.description}</p>
-            <p>Reward($): {thePost.reward}</p>
-            <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
-            <Places />
-          </>
-        )}
-        <br />
-        <br />
-
-        {btn && (
-          <div>
-            <Button
-              icon="edit"
-              content="Edit"
-              color="green"
-              onClick={handleEditPost}
-            />
-            <Button
-              icon="trash alternate"
-              content="Delete"
-              onClick={handleDeletePost}
-            />
-          </div>
-        )}
-
-        <Button
-          color="red"
-          content="Upvote"
-          icon="angle double up"
-          label={{
-            basic: true,
-            color: unvotedColor,
-            pointing: "left",
-            content: upvote,
-          }}
-          onClick={handleUpvote}
-        />
+              {/* ********* Post Details ************** */}
+              <Grid.Column width={9} className="post-details-details">
+                <h2> {thePost.postTitle.toUpperCase()}</h2>
+                <p>name: {thePost.name.toUpperCase()}</p>
+                <p>type: {thePost.animalType} </p>
+                <p>age: {thePost.age}</p>
+                <Image
+                  src={thePost.imgURL}
+                  alt={thePost.name}
+                  size="large"
+                  rounded
+                />
+                <p>Description: {thePost.description}</p>
+                <p>Reward($): {thePost.reward}</p>
+                <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
+                <p>Last Seen Location: {thePost.lastAddress} </p>
+                <Places />
+              </Grid.Column>
+              <Grid.Column width={1.5}>
+                <Button
+                  color="red"
+                  content="Upvote"
+                  icon="angle double up"
+                  label={{
+                    basic: true,
+                    color: unvotedColor,
+                    pointing: "left",
+                    content: upvote,
+                  }}
+                  onClick={handleUpvote}
+                />
+              </Grid.Column>
+            </>
+          )}
+        </Grid>
       </div>
 
       <Divider horizontal>
@@ -258,7 +285,7 @@ export default function PetDetails({ user }) {
           })}
         </>
       ) : (
-        <h2>No Comments</h2>
+        <h2 className="comments-card-container">No Comments</h2>
       )}
 
       {/* New Comment */}
@@ -268,8 +295,9 @@ export default function PetDetails({ user }) {
           Create a New Comment
         </Header>
       </Divider>
-
-      <CommentsForm addComments={addComments} />
-    </>
+      <div className="add-form-container">
+        <CommentsForm addComments={addComments} />
+      </div>
+    </div>
   );
 }
