@@ -25,6 +25,9 @@ const userSchema = new Schema(
     },
     userProfileImg: {
       type: String
+    },
+    userUploadImg: {
+      type: String
     }
     //posts: [{ type: Schema.Types.ObjectId, ref: "Post" }]
     // posts that the user created - no need to add it here

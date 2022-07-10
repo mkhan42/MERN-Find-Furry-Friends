@@ -2,6 +2,8 @@
 import React from "react";
 import { useState } from "react";
 import * as usersService from "../../utilities/users-service";
+import "../SignUpForm/SignUpForm.css";
+import "./LoginForm.css";
 
 export default function LoginForm({ setUser }) {
   const [credentials, setCredentials] = useState({
@@ -39,7 +41,7 @@ export default function LoginForm({ setUser }) {
               </div>
         </div>
         <div className="col-md-6 my-sign-col">
-          <div className="card-body my-sign-card-body">
+          <div className="card-body my-login-card-body my-sign-card-body">
         <form autoComplete="off" onSubmit={handleSubmit}>
         <div className="mb-3 my-sign-div">
         <h5 className="card-title my-sign-card-title">Login</h5>

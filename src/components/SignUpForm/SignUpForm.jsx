@@ -90,7 +90,7 @@ export default class SignUpForm extends Component {
               <br></br>
               <div className="mb-3 my-sign-div">
                 <label htmlFor="exampleInputEmail1" className="form-label my-sign-label card-text">
-                  Profile Image
+                Profile Image Link
                 </label>
                 <input
                   className="form-control my-sign-input card-text"
@@ -101,6 +101,27 @@ export default class SignUpForm extends Component {
                   placeholder="Image URL"
                   onChange={this.handleChange}
                 />
+              </div>
+              <hr/>
+              <div className="or-option">
+                <p>OR</p>
+                </div>
+                <hr/>
+              <div className="mb-3 my-sign-div">
+                <label htmlFor="exampleInputEmail1" className="form-label my-sign-label card-text">
+                  Upload Profile Image
+                </label>
+                <input
+                  className="form-control my-sign-input card-text"
+                  id="exampleInputEmail1"
+                  type="file"
+                  name="userUploadImg"
+                  value={this.state.userUploadImg}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="or-option">
+              <p>*Upload(1 MB per file upload limit)</p>
               </div>
               <br></br>
               <div className="mb-3 my-sign-div">

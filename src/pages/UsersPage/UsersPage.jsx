@@ -36,11 +36,11 @@ export default function UsersPage({ user, posts }) {
       <h1>HI, {user.name.toUpperCase()}</h1>
       {/* <img src={user.userProfileImg}  alt="hello" width="200px"/> */}
       {/* (<Avatar name={ user.name } /> ) */}
-      { user.userProfileImg === "" ? 
+      { user.userProfileImg === "" || user.userUploadImg === "" ? 
       (<ConfigProvider colors={['red', 'green', 'blue', 'pink', 'purple', 'orange', 'yellow']}>
         <Avatar name={ user.name } round={true}/>
       </ConfigProvider> )
-       : (<img src={user.userProfileImg} alt="hello" width="200px"/>)
+       : (<img src={user.userProfileImg !== "" ? user.userProfileImg : user.userUploadImg} alt="hello" width="200px"/>)
        }
       <p>All info as of {today}</p>
       <div className="user-info-container">

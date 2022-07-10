@@ -1,7 +1,7 @@
 
 .my-auth-p {
     text-align: center;
-    margin-top: 50%;
+    margin-top: 70%;
     margin-bottom: 50%;
     margin-left: 10%;
     margin-right: 10%;
@@ -12,7 +12,6 @@
     font-size: 20px;
     font-weight: 900;
 }
-
 
 .my-sign-card {
     margin-left: 10%;
@@ -29,9 +28,8 @@
     opacity: .5;
 }
 .my-sign-card-body {
-
     width: 80%;
-    margin-left: 15%;
+    margin-left: 10%;
 
 }
 
@@ -48,3 +46,11 @@
 .my-btn {
     background: #4b005f;
 }
+
+.or-option {
+    font-size: 15px;
+    text-align: center;
+    margin-top: -5%;
+    margin-bottom: -5%;
+}
+
