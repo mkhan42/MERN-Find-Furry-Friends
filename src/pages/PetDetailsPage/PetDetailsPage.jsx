@@ -1,7 +1,14 @@
 import CommentsCard from "../../components/CommentsCard/CommentsCard";
 import CommentsForm from "../../components/CommentsForm/CommentsForm";
-import { Button, Icon, Label, Divider, Header } from "semantic-ui-react";
-
+import {
+  Button,
+  Icon,
+  Label,
+  Divider,
+  Header,
+  Grid,
+  Image,
+} from "semantic-ui-react";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
@@ -167,73 +174,79 @@ export default function PetDetails({ user }) {
       <div className="pet-detail-container">
         <h1>Post Details</h1>
 
-        {thePost && (
-          <>
-            <p>Posted by: {thePost.userName}</p>
-            <p>Contact Info: {thePost.contactInfo}</p>
-            <p>Post Type: {thePost.postType}</p>
+        <Grid>
+          {thePost && (
+            <>
+              <Grid.Column width={4}>
+                {/********* Post info **********/}
+                <p>Posted by: {thePost.userName}</p>
+                <p>Contact Info: {thePost.contactInfo}</p>
+                <p>Post Type: {thePost.postType}</p>
 
-            <p>Post Created at: {postCreatedTime.format("MM/DD/YYYY HH:mm")}</p>
-            {/* only show the updated time if there is an update */}
-            {thePost.createdAt !== thePost.updatedAt ? (
-              <p>
-                Post Updated at: {postUpdatedTime.format("MM/DD/YYYY HH:mm")}
-              </p>
-            ) : (
-              " "
-            )}
-            {/* <Divider horizontal>
-              <Header as="h4">
-                <Icon name="tag" />
-                Description
-              </Header>
-            </Divider> */}
-            <p>Title: {thePost.postTitle}</p>
-            <p>Animal Name:{thePost.name}</p>
-            <p>Animal Type:{thePost.animalType} </p>
-            <img src={thePost.imgURL} alt={thePost.name} width="600px" />
-            <p>Animal Age: {thePost.age}</p>
-            <p>Last Seen Location: {thePost.lastAddress} </p>
+                <p>
+                  Post Created at: {postCreatedTime.format("MM/DD/YYYY HH:mm")}
+                </p>
+                {/* only show the updated time if there is an update */}
+                {thePost.createdAt !== thePost.updatedAt ? (
+                  <p>
+                    Post Updated at:{" "}
+                    {postUpdatedTime.format("MM/DD/YYYY HH:mm")}
+                  </p>
+                ) : (
+                  " "
+                )}
 
-            <p>Description: {thePost.description}</p>
-            <p>Reward($): {thePost.reward}</p>
-            <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
-            <Places />
-          </>
-        )}
-        <br />
-        <br />
+                {btn && (
+                  <div>
+                    <Button
+                      icon="edit"
+                      content="Edit"
+                      color="green"
+                      onClick={handleEditPost}
+                    />
+                    <Button
+                      icon="trash alternate"
+                      content="Delete"
+                      onClick={handleDeletePost}
+                    />
+                  </div>
+                )}
+              </Grid.Column>
 
-        {btn && (
-          <div>
-            <Button
-              icon="edit"
-              content="Edit"
-              color="green"
-              onClick={handleEditPost}
-            />
-            <Button
-              icon="trash alternate"
-              content="Delete"
-              onClick={handleDeletePost}
-            />
-          </div>
-        )}
+              {/* ********* Post Details ************** */}
+              <Grid.Column width={9}>
+                <p>Title: {thePost.postTitle}</p>
 
-        <Button
-          color="red"
-          content="Upvote"
-          icon="angle double up"
-          label={{
-            basic: true,
-            color: unvotedColor,
-            pointing: "left",
-            content: upvote,
-          }}
-          onClick={handleUpvote}
-        />
+                <p>Animal Name:{thePost.name}</p>
+                <p>Animal Type:{thePost.animalType} </p>
+                <img src={thePost.imgURL} alt={thePost.name} width="600px" />
+                <p>Animal Age: {thePost.age}</p>
+                <p>Last Seen Location: {thePost.lastAddress} </p>
+
+                <p>Description: {thePost.description}</p>
+                <p>Reward($): {thePost.reward}</p>
+                <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
+                <Places />
+                <Button
+                  color="red"
+                  content="Upvote"
+                  icon="angle double up"
+                  label={{
+                    basic: true,
+                    color: unvotedColor,
+                    pointing: "left",
+                    content: upvote,
+                  }}
+                  onClick={handleUpvote}
+                />
+              </Grid.Column>
+            </>
+          )}
+        </Grid>
       </div>
 
+      <br />
+      <br />
       <Divider horizontal>
         <Header as="h3">
           <Icon name="comments outline" />
