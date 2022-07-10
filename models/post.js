@@ -18,7 +18,7 @@ const postSchema = new Schema(
     },
     name: {
       type: String,
-      required: true,
+      // required: true,
       default: "Unknown",
     },
     imgURL: {
@@ -51,7 +51,7 @@ const postSchema = new Schema(
       required: true,
     },
     date: {
-      type: Date,
+      type: String,
       // require: true,
     },
     comments: [{ type: Schema.Types.ObjectId, ref: "Comments" }],

@@ -15,6 +15,7 @@ import UpdatePostPage from "../../pages/UpdatePostPage/UpdatePostPage";
 // Components
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header"
 import * as postsAPI from "../../utilities/posts-api";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -36,6 +37,7 @@ export default function App() {
     <main className="App">
       {user ? (
         <>
+         <Header/>
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/AllPosts" element={<AllPostsPage posts={posts} />} />

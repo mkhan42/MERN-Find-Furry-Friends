@@ -1,12 +1,15 @@
 import CommentsCard from "../../components/CommentsCard/CommentsCard";
 import CommentsForm from "../../components/CommentsForm/CommentsForm";
+import { Button, Icon, Label } from "semantic-ui-react";
+
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 //import { useCommentsContext } from "../../hooks/useCommentsContext";
 import * as commentsAPI from "../../utilities/comments-api";
 import * as postsAPI from "../../utilities/posts-api";
 import { ChakraProvider, theme } from '@chakra-ui/react'
-import React from 'react'
+// import React from 'react'
 // import "@reach/combobox/styles.css";
 import Map from "../../components/Api/map/Api"
 // import "../../components/Api/map/AdressInput.css";
@@ -26,6 +29,9 @@ export default function PetDetails({ user }) {
   let { postId } = useParams();
   const [thePost, setThePost] = useState(null);
   const [comments, setComments] = useState([]);
+  const [upvote, setUpvote] = useState(0);
+  const [voted, setVoted] = useState(false);
+  const [unvotedColor, setUnvotedColor] = useState("grey");
   const postCreatedTime = thePost && moment(thePost.createdAt);
   const postUpdatedTime = thePost && moment(thePost.updatedAt);
   const dateTime = thePost && moment(thePost.date);
@@ -49,7 +55,7 @@ export default function PetDetails({ user }) {
 
   async function handleDeletePost() {
     const del = await postsAPI.deletePost(postId);
-    console.log(del);
+    //console.log(del);
     window.location.href = `/AllPosts`;
   }
 
@@ -61,12 +67,25 @@ export default function PetDetails({ user }) {
     setComments([...com]);
   }
 
-//////
+  function handleUpvote() {
+    setUpvote(!voted ? upvote + 1 : upvote - 1);
+    setVoted(!voted);
+    setUnvotedColor(!voted ? "red" : "grey");
+  }
+
+  ////////////////////////////////////////////////////////////////
+  //       GOOGLE MAP API
+  // ////////////////////////////////////////////////////////////////
+  
+    
+  ////////////////////////////////////////////////////////////////
+  //       GOOGLE MAP API
+  ////////////////////////////////////////////////////////////////
 
   return (
     <>
       <div className="pet-detail-container">
-        <h1>This is PetDetails: name, last seen location, Map Api ...</h1>
+        <h1>Post Details</h1>
         {thePost && (
           <>
             <p>Author: {thePost.userName}</p>
@@ -86,7 +105,7 @@ export default function PetDetails({ user }) {
             <p>Animal Name:{thePost.name}</p>
             <p>Animal Type:{thePost.animalType} </p>
             <p>Images: </p>
-            <img src={thePost.imgURL} alt={thePost.name} width="200px" />
+            <img src={thePost.imgURL} alt={thePost.name} width="600px" />
             <p>Animal Age: {thePost.age}</p>
             <p>Last Seen Location:{thePost.lastAddress} </p>
             <p>reserved place for map api</p>
@@ -106,10 +125,32 @@ export default function PetDetails({ user }) {
 
       
           <div>
-            <button onClick={handleEditPost}>Edit</button>
-            <button onClick={handleDeletePost}>Delete</button>
+            <Button
+              icon="edit"
+              content="Edit"
+              color="green"
+              onClick={handleEditPost}
+            />
+            <Button
+              icon="trash alternate"
+              content="Delete"
+              onClick={handleDeletePost}
+            />
           </div>
     
+
+        <Button
+          color="red"
+          content="Upvote"
+          icon="angle double up"
+          label={{
+            basic: true,
+            color: unvotedColor,
+            pointing: "left",
+            content: upvote,
+          }}
+          onClick={handleUpvote}
+        />
 
         <hr />
         <hr />
