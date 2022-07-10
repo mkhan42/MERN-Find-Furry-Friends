@@ -8,8 +8,8 @@ export default function Header({ user, setUser }) {
       <span >FIND FURRY FRIENDS</span>
       
       <br />
-      <span class="username"> Welcome, {user.name}</span> 
-      <div class="img"></div>
+      <span className="username"> Welcome, {user.name}</span> 
+      <div className="img"></div>
     </header>
   );
 }
