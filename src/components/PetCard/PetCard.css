@@ -1,0 +1,14 @@
+.animalImg{
+    width:250px;
+    height: 220px;
+    background-size: cover;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.PetCardh2{
+    color:var(--team-color4);
+    text-decoration: none;
+}

@@ -45,6 +45,7 @@ export default function FoundPostsPage({ posts }) {
             options={options}
             defaultValue="animalType"
             onChange={handleOptions}
+            class="navbar navbar-light bg-light"
           />
         }
         icon="search"
@@ -52,6 +53,7 @@ export default function FoundPostsPage({ posts }) {
         placeholder="Search..."
         onChange={(e) => {
           searchItems(e.target.value);
+          
         }}
       />
       <div></div>
