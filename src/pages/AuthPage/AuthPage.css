@@ -3,12 +3,20 @@
 } */
 
 .my-title {
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 10%;
+    margin-bottom: 10%;
     text-align: center;
 }
 
 .center-option {
     margin-top: 5%;
     text-align: center;
+    cursor:pointer;
+     color:blue;
+     text-decoration:underline;
+}
+
+.my-auth-div {
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
