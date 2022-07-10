@@ -1,4 +1,4 @@
-/* #page-container {
+#page-container {
     position: relative;
     min-height: 100vh;
   }
@@ -6,7 +6,7 @@
   #content-wrap {
     padding-bottom: 2.5rem; 
   }
-   */
+  
  header {
     /* margin-top: 50px;
     padding-bottom: 60px; */
