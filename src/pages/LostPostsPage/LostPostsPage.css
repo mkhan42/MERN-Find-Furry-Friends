@@ -1,24 +1,16 @@
-#searchforlostpage {
-  text-align: center;
-  /* background:var(--team-color2); */
+#searchforlostpage{
+    text-align: center;
+   /* background:var(--team-color2); */
+   
 }
-<<<<<<< HEAD
-.container{
+#container{
     align-content: center;
     text-align: center;
     background: var(--team-color1);
     height: 100vh;
     width:100%;   
-=======
-.container {
-  align-content: center !important;
-  text-align: center !important;
-  background: var(--team-color1);
-  height: 100vh !important;
-  width: 100% !important;
 }
-.lostpageh1 {
-  text-align: center !important;
-  color: var(--team-color4);
->>>>>>> main
-}
+.lostpageh1{
+    text-align: center;
+    color: var(--team-color4);
+} 
