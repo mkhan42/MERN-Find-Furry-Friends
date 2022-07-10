@@ -2,7 +2,7 @@ import "./NavBar.css";
 import React from "react";
 import { Link } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
-
+import Avatar, { ConfigProvider } from 'react-avatar';
 export default function NavBar({ user, setUser }) {
   // Add the following function
   function handleLogOut() {
@@ -13,21 +13,23 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav>
-      <Link to="/AllPosts">All Posts</Link>
+    <nav  id="navbar" >
+      <Link class="navbar-brand" to="/AllPosts">All Posts</Link>
       &nbsp; | &nbsp;
-      <Link to="/LostPosts">LOST</Link>
+      <Link  class="navbar-brand" to="/LostPosts">LOST</Link>
       &nbsp; | &nbsp;
-      <Link to="/FoundPosts">FOUND</Link>
-      &nbsp; | &nbsp; Welcome, {user.name}
+      <Link class="navbar-brand" to="/FoundPosts">FOUND</Link>
+    
       &nbsp; | &nbsp;
-      <Link to="/NewPost">New Post</Link>
+      <Link class="navbar-brand" to="/NewPost">New Post</Link>
       &nbsp; | &nbsp;
-      <Link to="/myaccount">My Account</Link>
+      <Link class="navbar-brand" to="/myaccount">My Account</Link>
       &nbsp; | &nbsp;
-      <Link to="" onClick={handleLogOut}>
+      <Link class="navbar-brand" to="" onClick={handleLogOut}>
         Log Out
       </Link>
+      
+   
     </nav>
   );
 }

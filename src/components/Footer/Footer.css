@@ -1,11 +1,11 @@
-#page-container {
+/* #page-container {
   position: relative;
   min-height: 100vh;
 }
 
 #content-wrap {
   padding-bottom: 2.5rem; 
-}
+} */
 
 footer {
   /* margin-top: 50px;
@@ -14,7 +14,7 @@ footer {
   bottom: 0;
   width: 100%;
   height: 6rem; /* Footer height */
-  background: #C74B50 ;
+  background:var(--team-color3) ;
   text-align: center;
  
 }

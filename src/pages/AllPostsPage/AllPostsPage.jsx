@@ -5,17 +5,17 @@ import { Link } from "react-router-dom";
 export default function AllPostsPage({ posts }) {
   // limit LOST & FOUND pet data to 6
   const losts6 =
-    posts && posts.filter((p) => p.postType === "Lost").slice(0, 6);
+    posts && posts.filter((p) => p.postType === "Lost").slice(0, 8);
   // console.log(losts6);
   const found6 =
-    posts && posts.filter((p) => p.postType === "Found").slice(0, 6);
+    posts && posts.filter((p) => p.postType === "Found").slice(0, 8);
   // console.log(found6);
 
   return (
     <>
       {posts ? (
         <div className="all-posts-container">
-          <h1>All Posts Home Page</h1>
+          <h1 className="">All Posts Home Page</h1>
           <div className="first6-container">
             {losts6.map((lost) => {
               return <PetCard key={lost._id} post={lost} />;

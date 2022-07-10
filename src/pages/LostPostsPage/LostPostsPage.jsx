@@ -47,6 +47,7 @@ export default function LostPostsPage({ posts }) {
             options={options}
             defaultValue="animalType"
             onChange={handleOptions}
+            class="navbar navbar-light bg-light"
           />
         }
         icon="search"

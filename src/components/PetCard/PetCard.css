@@ -1,22 +1,22 @@
 .animalImg{
-    width:300px;
-    height: 290px;
+    width:250px;
+    height: 220px;
     background-size: cover;
     border-radius: 15px;
-    filter: drop-shadow(10, 10, 10, black);
-
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .PetCarddiv{
 text-align: center;
-background:#a03b3e;
-width:320px;
-height: 360px;
+background:var(--team-color1);
+width:280px;
+height: 260px;
 border-radius: 15px;
-filter: drop-shadow(10 10 10 black)
+flex-direction: row;
+flex-wrap: wrap;
 }
 .PetCardh2{
-    color:#f0a243;
+    color:var(--team-color4);
     text-decoration: none;
-
 }

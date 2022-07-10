@@ -1,4 +1,4 @@
-import "./AdressInput.css"
+import "./Api.css"
 import {
     Button,
     Input,
@@ -66,11 +66,11 @@ import {
           )}
         </GoogleMap>
   
-        <Autocomplete>
+        <Autocomplete className="autocomplete">
           <Input type="text" placeholder="Your Adress" ref={originRef} />
         </Autocomplete>
   
-        <Autocomplete>
+        <Autocomplete className="autocomplete">
           <Input type="text"  ref={destiantionRef} value={lastAddress}/>
         </Autocomplete>       
           <Button colorScheme="green" type="submit" onClick={calculateRoute}>

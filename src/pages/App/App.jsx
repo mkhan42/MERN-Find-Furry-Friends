@@ -17,7 +17,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header"
 import * as postsAPI from "../../utilities/posts-api";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -37,7 +37,7 @@ export default function App() {
     <main className="App">
       {user ? (
         <>
-         {/* <Header/> */}
+        <Header user={user} setUser={setUser}/>
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/AllPosts" element={<AllPostsPage posts={posts} />} />
