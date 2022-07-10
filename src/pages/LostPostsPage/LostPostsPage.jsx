@@ -1,6 +1,7 @@
 import PetCard from "../../components/PetCard/PetCard";
 import { useState } from "react";
-import { Card, Input, Dropdown } from "semantic-ui-react";
+import { Card, Input, Dropdown } from "semantic-ui-react"
+import "./LostPostsPage.css"
 
 export default function LostPostsPage({ posts }) {
   // data with postType=Lost
@@ -36,8 +37,9 @@ export default function LostPostsPage({ posts }) {
   }
 
   return (
-    <>
-      <h1>Lost Posts</h1>
+   
+    <div className="container">
+      <h1 className="lostpageh1">Lost Posts</h1>
       <Input
         action={
           <Dropdown
@@ -48,6 +50,7 @@ export default function LostPostsPage({ posts }) {
             defaultValue="animalType"
             onChange={handleOptions}
             class="navbar navbar-light bg-light"
+            id="searchforlostpage"
           />
         }
         icon="search"
@@ -72,8 +75,9 @@ export default function LostPostsPage({ posts }) {
           </Card.Group>
         </div>
       ) : (
-        <h2>No Lost Post</h2>
+        <h2 className="lostpageh1">No Lost Post</h2>
       )}
-    </>
+    </div>
+    
   );
 }
