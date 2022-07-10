@@ -39,7 +39,7 @@ export default function CommentsForm({ addComments }) {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form className="comments-form-container" onSubmit={handleSubmit}>
         <Form.Input
           label="Title"
           onChange={handleChange}
