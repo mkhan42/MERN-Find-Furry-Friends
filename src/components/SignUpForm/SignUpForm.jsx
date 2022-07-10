@@ -134,7 +134,7 @@ export default class SignUpForm extends Component {
                       multiple={false}
                       name="userProfileImg"
                       className="form-control my-sign-input card-text"
-                      id="exampleInputEmail1"
+                      id="exampleInputEmail1 customFile"
                       onDone={({ base64 }) =>
                         this.setState({
                           ...this.state.userProfileImg,

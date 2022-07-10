@@ -1,19 +1,19 @@
-.animalImg{
-    width:250px;
-    height: 220px;
-    background-size: cover;
-    border-radius: 15px;
-    /* display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; */
-    margin: 20px;
-    text-decoration: none;
+.animalImg {
+  width: 250px !important;
+  height: 220px !important;
+  background-size: cover !important;
+  border-radius: 15px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  margin: 20px !important;
+  text-decoration: none;
 }
 
-.PetCardh2{
-    color:var(--team-color4);
-    text-decoration: none;
+.PetCardh2 {
+  color: var(--team-color4);
+  text-decoration: none;
 }
-.linkPetCard{
-    text-decoration: none;
+.linkPetCard {
+  text-decoration: none;
 }
