@@ -1,7 +1,7 @@
 import * as postAPI from "../../utilities/posts-api";
 import { useState } from "react";
 import FileBase64 from "react-file-base64";
-import { Button, Checkbox, Form, TextArea } from "semantic-ui-react";
+import { Button, Checkbox, Form, TextArea, Divider } from "semantic-ui-react";
 import "./PostForm.css";
 
 export default function PostForm({ user }) {
@@ -140,7 +140,7 @@ export default function PostForm({ user }) {
           onChange={handleChange}
           value={newPost.imgURL}
         />
-        <p>-------------------------- or -------------------------- </p>
+        <Divider horizontal>Or</Divider>
         {/* not working??? */}
         <FileBase64
           type="file"

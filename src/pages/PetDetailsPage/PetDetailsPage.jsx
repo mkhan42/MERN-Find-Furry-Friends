@@ -1,6 +1,6 @@
 import CommentsCard from "../../components/CommentsCard/CommentsCard";
 import CommentsForm from "../../components/CommentsForm/CommentsForm";
-import { Button, Icon, Label } from "semantic-ui-react";
+import { Button, Icon, Label, Divider, Header } from "semantic-ui-react";
 
 import React from "react";
 import { useParams } from "react-router-dom";
@@ -86,9 +86,10 @@ export default function PetDetails({ user }) {
     <>
       <div className="pet-detail-container">
         <h1>Post Details</h1>
+
         {thePost && (
           <>
-            <p>Author: {thePost.userName}</p>
+            <p>Posted by: {thePost.userName}</p>
             <p>Contact Info: {thePost.contactInfo}</p>
             <p>Post Type: {thePost.postType}</p>
 
@@ -101,14 +102,19 @@ export default function PetDetails({ user }) {
             ) : (
               " "
             )}
+            <Divider horizontal>
+              <Header as="h4">
+                <Icon name="tag" />
+                Description
+              </Header>
+            </Divider>
             <p>Title: {thePost.postTitle}</p>
             <p>Animal Name:{thePost.name}</p>
             <p>Animal Type:{thePost.animalType} </p>
-            <p>Images: </p>
             <img src={thePost.imgURL} alt={thePost.name} width="600px" />
             <p>Animal Age: {thePost.age}</p>
-            <p>Last Seen Location:{thePost.lastAddress} </p>
-            <p>reserved place for map api</p>
+            <p>Last Seen Location: {thePost.lastAddress} </p>
+
             <p>Description: {thePost.description}</p>
             <p>Reward($): {thePost.reward}</p>
             <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
@@ -151,17 +157,19 @@ export default function PetDetails({ user }) {
           }}
           onClick={handleUpvote}
         />
-
-        <hr />
-        <hr />
-        <br />
-        <br />
       </div>
+
+      <Divider horizontal>
+        <Header as="h3">
+          <Icon name="comments outline" />
+          Comments
+        </Header>
+      </Divider>
+
       {/* Is there any comments? comments.length -not works every time?! */}
       {/* comments for the pet! */}
       {comments?.length ? (
         <>
-          <h3>Comments:</h3>
           {comments.map((comment) => {
             return (
               <CommentsCard
@@ -175,11 +183,17 @@ export default function PetDetails({ user }) {
           })}
         </>
       ) : (
-        <h3>No Comments</h3>
+        <h2>No Comments</h2>
       )}
 
       {/* New Comment */}
-      <h3>Create a New Comment:</h3>
+      <Divider horizontal>
+        <Header as="h3">
+          <Icon name="comment alternate outline" />
+          Create a New Comment
+        </Header>
+      </Divider>
+
       <CommentsForm addComments={addComments} />
     </>
   );

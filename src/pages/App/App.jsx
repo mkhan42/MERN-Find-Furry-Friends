@@ -37,7 +37,7 @@ export default function App() {
     <main className="App">
       {user ? (
         <>
-         <Header/>
+         {/* <Header/> */}
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/AllPosts" element={<AllPostsPage posts={posts} />} />

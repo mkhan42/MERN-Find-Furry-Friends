@@ -3,6 +3,8 @@ import * as commentsAPI from "../../utilities/comments-api";
 // import * as usersAPI from "../../utilities/users-api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Button, Comment } from "semantic-ui-react";
+
 const moment = require("moment");
 
 export default function CommentsCard({
@@ -46,13 +48,36 @@ export default function CommentsCard({
 
   return (
     <div className="comments-card-container">
-      <p>
+      <Comment.Group>
+        <Comment>
+          <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/matt.jpg" />
+          <Comment.Content>
+            <Comment.Author>{comment.userName}</Comment.Author>
+            <Comment.Metadata>
+              <div>
+                {time.format("MM/DD/YYYY HH:mm")} -{" "}
+                {moment.utc(time).local().startOf("seconds").fromNow()}
+              </div>
+            </Comment.Metadata>
+            <Comment.Text>{comment.commentTitle}</Comment.Text>
+            <Comment.Text>{comment.content}</Comment.Text>
+          </Comment.Content>
+        </Comment>
+        {btn && (
+          <Button
+            onClick={handleDelete}
+            labelPosition="left"
+            icon="trash alternate"
+            content="Delete"
+          />
+        )}
+      </Comment.Group>
+      {/* <p>
         <strong>Title:</strong> {comment.commentTitle}
       </p>
       <p>
         <strong>Contents:</strong> {comment.content}
       </p>
-      {/* Need the comment author name .. not the user name/post author name */}
       <p>
         <strong>Author:</strong> {comment.userName}
       </p>
@@ -63,7 +88,7 @@ export default function CommentsCard({
         <div>
           <button onClick={handleDelete}>Delete</button>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
