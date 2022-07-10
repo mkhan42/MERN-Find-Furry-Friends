@@ -1,10 +1,20 @@
-.first6-container {
+.lostfirst6-container{
   display: grid;
   grid-template-columns: repeat(4, 300px);
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; */
+  margin: 50px;
+  border-radius: 20px;
   justify-content: center;
+  background: var(--team-color2);
+
+}
+.foundfirst6-container{
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+ background: var(--team-color2);
+  justify-content: center;
+  margin: 50px;
+  border-radius: 20px;
+
 }
 
 

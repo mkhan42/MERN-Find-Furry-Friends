@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import * as commentsAPI from "../../utilities/comments-api";
 import { Button, Form, TextArea } from "semantic-ui-react";
+import "./CommentsForm.css";
 
 export default function CommentsForm({ addComments }) {
   const [newComment, setNewComment] = useState({});
