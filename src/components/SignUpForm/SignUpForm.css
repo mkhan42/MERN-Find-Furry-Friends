@@ -13,10 +13,18 @@
     font-weight: 900;
 }
 
+.my-sign-back-div {
+    display: flex;
+align-items: center;
+justify-content: center;
+max-height: 20%;
+}
+
 .my-sign-card {
     margin-left: 10%;
     margin-right: 10%;
-    max-width: 80%;
+    max-width: 50%;
+    max-height: 30%;
 }
 
 .my-img-col {
@@ -26,6 +34,10 @@
     background-position: center;
     max-width: 100%;
     opacity: .5;
+}
+
+.my-sign-row {
+    margin-left: 20%;
 }
 .my-sign-card-body {
     width: 80%;

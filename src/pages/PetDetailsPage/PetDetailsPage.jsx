@@ -161,7 +161,6 @@ export default function PetDetails({ user }) {
                 <p>Reward($): {thePost.reward}</p>
                 <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
                 <p>Last Seen Location: {thePost.lastAddress} </p>
-                {/* <Map /> */}
                 <React.StrictMode>
             <ChakraProvider  theme={theme}>
             <Map lastAddress={thePost.lastAddress} />
