@@ -15,28 +15,32 @@ export default function AllPostsPage({ posts }) {
     <>
       {posts ? (
         <div className="all-posts-container">
-          <h1 className="">All Posts Home Page</h1>
-          <div className="first6-container">
+          <h2>Lost Pets</h2>
+          <div className="lostfirst6-container">
             {losts6.map((lost) => {
               return <PetCard key={lost._id} post={lost} />;
             })}
           </div>
-          <br />
+       
           {/* Jump to LOST page */}
-          <Link to="/LostPosts">
-            <h3>More in LOST</h3>
+          <Link className="morein" to="/LostPosts">
+            <h5 className="allposth5">...More in LOST</h5>
           </Link>
-
-          <div className="first6-container">
-            {found6.map((found) => {
+          <br />
+            <hr className="devider"/>
+            <hr className="devider"/>
+            <hr className="devider"/>
+            <h2>Found Pets</h2>
+          <div className="foundfirst6-container">
+        {found6.map((found) => {
               return <PetCard key={found._id} post={found} />;
             })}
           </div>
-          <br />
           {/* Jump to LOST page */}
-          <Link to="/FoundPosts">
-            <h3>More in FOUND</h3>
+          <Link  className="morein" to="/FoundPosts">
+            <h5 className="allposth5">...More in FOUND</h5>
           </Link>
+          <br />
         </div>
       ) : (
         <h1> No Post Yet - Create One</h1>

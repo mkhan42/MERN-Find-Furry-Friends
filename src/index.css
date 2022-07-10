@@ -16,11 +16,11 @@
   --team-color4: #e7ab79;
 }
 
-*,
+/* *,
 *:before,
 *:after {
   box-sizing: border-box;
-}
+} */
 
 /* body {
   margin: 0;
@@ -166,7 +166,7 @@ button[type="submit"] {
 }
 
 */
-p.error-message {
+/* p.error-message {
   color: var(--orange);
   text-align: center;
-}
+} */
