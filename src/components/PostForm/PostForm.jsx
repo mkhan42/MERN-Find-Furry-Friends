@@ -1,6 +1,6 @@
 import * as postAPI from "../../utilities/posts-api";
-import { useState } from "react";
 import FileBase64 from "react-file-base64";
+import { useState } from "react";
 import { Button, Checkbox, Form, TextArea, Divider } from "semantic-ui-react";
 import "./PostForm.css";
 
@@ -22,6 +22,7 @@ export default function PostForm({ user }) {
   const [error, setError] = useState("");
 
   function handleChange(e) {
+    console.log(e);
     e.preventDefault();
     const newPostData = {
       ...newPost,
@@ -141,20 +142,20 @@ export default function PostForm({ user }) {
           value={newPost.imgURL}
         />
         <Divider horizontal>Or</Divider>
-        {/* not working??? */}
+        {/*****************  not working??? ****************/}
         <FileBase64
           type="file"
-          multiple={true}
+          multiple={false}
           name="imgURL"
           onDone={({ base64 }) => setNewPost({ ...newPost, imgURL: base64 })}
         />
-        {/* <Form.Input
-        placeholder="or Upload(1 MB per file upload limit):"
-        type="file"
-        name="imgURL"
-        value={newPost.imgURL}
-        onChange={handleChange}
-      /> */}
+        {/* <input
+          placeholder="or Upload(1 MB per file upload limit):"
+          type="file"
+          name="imgURL"
+          value={newPost.imgURL}
+          onChange={handleChange}
+        /> */}
 
         <Form.TextArea
           label="Description"
