@@ -30,7 +30,7 @@
 }
 
 .my-img-col {
-    background-image: url(https://images.unsplash.com/photo-1619326229465-1942c876e17c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80);
+    background-image: url(https://images.unsplash.com/photo-1501474466180-4704b8607ba5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -48,6 +48,10 @@
     text-align: center;
     font-size: 20px;
     margin-bottom: 10%;
+}
+
+.my-btn-sign {
+    text-align: center;
 }
 
 .my-sign-div {

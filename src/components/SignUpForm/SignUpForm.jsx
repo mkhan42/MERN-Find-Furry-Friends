@@ -64,7 +64,7 @@ export default class SignUpForm extends Component {
             <div className="col-md-6 my-img-col" id="adding-opacity">
               {/* <img src="https://images.unsplash.com/photo-1601758177266-bc599de87707?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80" className="my-sign-img" alt="..."/> */}
               <div className="my-auth-p">
-              <h5 className="site-description">Lost a furry friend? Found a lost friend? <br/> <br/>sFind-Furry-Friends is dedicated to helping pet owners reunite with their missing friends. <br/> <br/>Just Sign Up or Log in!</h5>
+              <h5 className="site-description">Lost a furry friend? Found a lost friend? <br/> <br/>Find-Furry-Friends is dedicated to helping pet owners reunite with their missing friends. <br/> <br/>Just Sign Up or Log in!</h5>
               </div>
             </div>
             <div className="col-md-6 my-sign-col">
@@ -147,6 +147,7 @@ export default class SignUpForm extends Component {
                   required
                 />
               </div>
+              <div className="my-btn-sign">
               <button
                 type="submit"
                 className="btn btn-primary"
@@ -154,6 +155,7 @@ export default class SignUpForm extends Component {
               >
                 SIGN UP
               </button>
+              </div>
             </form>
             <p className="error-message">&nbsp;{this.state.error}</p>
             </div>
