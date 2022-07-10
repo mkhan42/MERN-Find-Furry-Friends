@@ -4,19 +4,22 @@
 
 .my-title {
     margin-top: 10%;
-    margin-bottom: 10%;
+    margin-bottom: 2%;
     text-align: center;
+    max-height: 20%;
 }
 
 .center-option {
-    margin-top: 5%;
+    margin-top: 2%;
     text-align: center;
     cursor:pointer;
      color:blue;
      text-decoration:underline;
 }
 
-.my-auth-div {
+/* .my-auth-div {
     margin-top: 10%;
     margin-bottom: 10%;
-}
+    height: 10%;
+    display: flex;
+} */
