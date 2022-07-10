@@ -38,7 +38,7 @@ export default function LostPostsPage({ posts }) {
 
   return (
    
-    <div className="container">
+    <div id="container">
       <h1 className="lostpageh1">Lost Posts</h1>
       <Input
         action={

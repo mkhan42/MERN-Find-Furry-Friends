@@ -3,9 +3,9 @@
     height: 220px;
     background-size: cover;
     border-radius: 15px;
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
     margin: 20px;
     text-decoration: none;
 }
