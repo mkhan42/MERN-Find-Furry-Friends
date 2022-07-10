@@ -49,7 +49,7 @@ export default function UpdatePostForm({ posts }) {
     fetchPosts();
   }, []);
 
-  console.log(currentPost);
+  //console.log(currentPost);
 
   function handleChange(e) {
     e.preventDefault();
@@ -274,17 +274,16 @@ export default function UpdatePostForm({ posts }) {
         />
 
         <Form.TextArea
-          control={TextArea}
           label="Description"
+          name="description"
           placeholder="Desciption of pet..."
           onChange={handleChange}
           value={editAPost.description}
-          type="text"
         />
-        <Form.Checkbox
+        {/* <Form.Checkbox
           control={Checkbox}
           label="I agree to Privacy Policy that there is no privacy policy"
-        />
+        /> */}
         <Form.Button color="blue" fluid control={Button}>
           Submit
         </Form.Button>

@@ -43,112 +43,113 @@ export default function PostForm({ user }) {
   }
 
   return (
-    <Form>
-      <Form.Input
-        label="Author Name"
-        name="userName"
-        defaultValue={user.name.toUpperCase()}
-      />
-      <Form.Group widths="equal">
+    <>
+      <Form onSubmit={handleSubmit}>
         <Form.Input
-          label="Post Title"
-          placeholder="Post Title.."
-          name="postTitle"
-          onChange={handleChange}
-          value={newPost.postTitle}
-          required
+          label="Author Name"
+          name="userName"
+          defaultValue={user.name.toUpperCase()}
         />
+        <Form.Group widths="equal">
+          <Form.Input
+            label="Post Title"
+            placeholder="Post Title.."
+            name="postTitle"
+            onChange={handleChange}
+            value={newPost.postTitle}
+            required
+          />
 
-        <Form.Select
-          label="Post Type"
-          options={[
-            { key: "l", text: "Lost", value: "Lost" },
-            { key: "f", text: "Found", value: "Found" },
-          ]}
-          name="postType"
-          onChange={handleChange}
-          value={newPost.postType}
-          required
-        />
-      </Form.Group>
-      <Form.Group widths="equal">
-        <Form.Input
-          label="Pet Name"
-          placeholder="Pet Name or Unknown."
-          name="name"
-          onChange={handleChange}
-          value={newPost.name}
-          required
-        />
-        <Form.Input
-          label="Pet Type"
-          placeholder="Ex: Dog"
-          name="animalType"
-          onChange={handleChange}
-          value={newPost.animalType}
-          required
-        />
-        <Form.Input
-          label="Pet Age"
-          placeholder="Pet Age or Unknown"
-          name="age"
-          onChange={handleChange}
-          value={newPost.age}
-          required
-        />
-      </Form.Group>
+          <Form.Select
+            label="Post Type"
+            options={[
+              { key: "l", text: "Lost", value: "Lost" },
+              { key: "f", text: "Found", value: "Found" },
+            ]}
+            name="postType"
+            onChange={handleChange}
+            value={newPost.postType}
+            required
+          />
+        </Form.Group>
+        <Form.Group widths="equal">
+          <Form.Input
+            label="Pet Name"
+            placeholder="Pet Name or Unknown."
+            name="name"
+            onChange={handleChange}
+            value={newPost.name}
+            required
+          />
+          <Form.Input
+            label="Pet Type"
+            placeholder="Ex: Dog"
+            name="animalType"
+            onChange={handleChange}
+            value={newPost.animalType}
+            required
+          />
+          <Form.Input
+            label="Pet Age"
+            placeholder="Pet Age or Unknown"
+            name="age"
+            onChange={handleChange}
+            value={newPost.age}
+            required
+          />
+        </Form.Group>
 
-      <Form.Group widths="equal">
+        <Form.Group widths="equal">
+          <Form.Input
+            label="Contact Info"
+            placeholder="Ex: contactme@email.com"
+            name="contactInfo"
+            onChange={handleChange}
+            value={newPost.contactInfo}
+            required
+          />
+          <Form.Input
+            label="Day pet was lost/found?:"
+            type="date"
+            name="date"
+            onChange={handleChange}
+            value={newPost.date}
+          />
+          <Form.Input
+            label="Reward($)"
+            name="reward"
+            type="number"
+            min="0"
+            max="1000"
+            onChange={handleChange}
+            value={newPost.reward}
+          />
+        </Form.Group>
         <Form.Input
-          label="Contact Info"
-          placeholder="Ex: contactme@email.com"
-          name="contactInfo"
+          label="Last seen/found"
+          placeholder="Ex: New York, NY, USA"
+          name="lastAddress"
           onChange={handleChange}
-          value={newPost.contactInfo}
+          value={newPost.lastAddress}
           required
         />
         <Form.Input
-          label="Day pet was lost/found?:"
-          type="date"
-          name="date"
+          label="Image URL / Upload(1 MB per file upload limit):"
+          type="text"
+          name="imgURL"
+          placeholder="https://..."
           onChange={handleChange}
-          value={newPost.date}
+          value={newPost.imgURL}
         />
-        <Form.Input
-          label="Reward($)"
-          name="reward"
-          type="number"
-          min="0"
-          max="1000"
-          onChange={handleChange}
-          value={newPost.reward}
+        <p>-------------------------- or -------------------------- </p>
+        {/* not working??? */}
+        <FileBase64
+          type="file"
+          multiple={true}
+          name="imgURL"
+          onDone={({ base64 }) => setNewPost({ ...newPost, imgURL: base64 })}
         />
-      </Form.Group>
-      <Form.Input
-        label="Last seen/found"
-        placeholder="Ex: New York, NY, USA"
-        name="lastAddress"
-        onChange={handleChange}
-        value={newPost.lastAddress}
-        required
-      />
-      <Form.Input
-        label="Image URL / Upload(1 MB per file upload limit):"
-        type="text"
-        name="imgURL"
-        placeholder="https://..."
-        onChange={handleChange}
-        value={newPost.imgURL}
-      />
-      <p>-------------------------- or -------------------------- </p>
-      {/* not working??? */}
-      <FileBase64
-        type="file"
-        multiple={true}
-        name="imgURL"
-        onDone={({ base64 }) => setNewPost({ ...newPost, imgURL: base64 })}
-      />
-      {/* <Form.Input
+        {/* <Form.Input
         placeholder="or Upload(1 MB per file upload limit):"
         type="file"
         name="imgURL"
@@ -156,23 +157,22 @@ export default function PostForm({ user }) {
         onChange={handleChange}
       /> */}
 
-      <Form.TextArea
-        control={TextArea}
-        label="Description"
-        placeholder="Desciption of pet..."
-        onChange={handleChange}
-        value={newPost.description}
-        type="text"
-      />
-      <Form.Checkbox
-        control={Checkbox}
-        label="I agree to Privacy Policy that there is no privacy policy"
-      />
-      <Form.Button color="blue" fluid control={Button}>
-        Submit
-      </Form.Button>
-
+        <Form.TextArea
+          label="Description"
+          name="description"
+          placeholder="Desciption of pet..."
+          onChange={handleChange}
+          value={newPost.description}
+        />
+        {/* <Form.Checkbox
+          control={Checkbox}
+          label="I agree to Privacy Policy that there is no privacy policy"
+        /> */}
+        <Form.Button color="blue" fluid control={Button}>
+          Submit
+        </Form.Button>
+      </Form>
       <p className="error-message">&nbsp;{error}</p>
-    </Form>
+    </>
   );
 }
