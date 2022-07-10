@@ -39,7 +39,6 @@ export default function PostForm({ user }) {
       setError("Form Submission Failed - Try again");
     }
   }
-
   return (
     <>
       <h1>this is a create Post form</h1>

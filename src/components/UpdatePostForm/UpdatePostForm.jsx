@@ -106,13 +106,13 @@ export default function UpdatePostForm({ posts }) {
           onChange={handleChange}
           value={editAPost.name}
         ></input>
-        {/* <label>Image URL:</label>
+        <label>Image URL:</label>
         <input
           type="text"
           name="imgURL"
           onChange={handleChange}
           value={editAPost.imgURL}
-        ></input> */}
+        ></input>
         <FileBase64
           type="file"
           multiple={false}
