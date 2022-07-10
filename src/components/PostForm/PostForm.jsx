@@ -41,7 +41,6 @@ export default function PostForm({ user }) {
       setError("Form Submission Failed - Try again");
     }
   }
-
   return (
     <>
       <Form onSubmit={handleSubmit}>

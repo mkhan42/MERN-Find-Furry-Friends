@@ -1,0 +1,67 @@
+/* body {
+    background-color: #481556;
+    text-align: center;
+} */
+
+.my-sign-back-div {
+    /* background-color: #4C3A51; */
+    /* text-align: center; */
+}
+
+.my-auth-p {
+    text-align: center;
+    margin-top: 50%;
+    margin-bottom: 50%;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #fffffffc;
+}
+
+.site-description {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+
+.my-sign-card {
+    margin-left: 10%;
+    margin-right: 10%;
+    max-width: 80%;
+}
+
+.my-img-col {
+    background-image: url(https://images.unsplash.com/photo-1501474466180-4704b8607ba5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    max-width: 100%;
+    opacity: .5;
+}
+.my-sign-card-body {
+
+    width: 80%;
+    margin-left: 15%;
+
+}
+
+.my-sign-card-title {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10%;
+}
+
+.my-btn-sign {
+    text-align: center;
+}
+
+.my-sign-div {
+
+}
+
+.my-sign-label {
+
+}
+
+.my-sign-input {
+    
+}
