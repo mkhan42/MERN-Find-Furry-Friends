@@ -1,6 +1,8 @@
 .comments-card-container {
   background: var(--team-color3);
   border-radius: 4px;
-  margin: 20px auto;
-  padding: 10px;
+  padding: 20px;
+}
+.comment {
+  font-size: 1.3rem !important;
 }

@@ -28,6 +28,10 @@ a {
 }
 
 /* POST  */
+.pet-detail-page {
+  background-color: var(--team-color1);
+}
+
 .pet-detail-container {
   background-color: var(--team-color1);
   color: var(--team-color4);
@@ -44,6 +48,18 @@ a {
 }
 
 .post-details-details {
+  padding-bottom: 2em !important;
   padding-left: 4em !important;
   font-size: 1.5em;
+}
+
+.pet-detail-page .divider {
+  background-color: var(--team-color2);
+  font-size: 6em !important;
+  margin: 0 !important;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+}
+.add-form-container {
+  background-color: var(--team-color2);
 }

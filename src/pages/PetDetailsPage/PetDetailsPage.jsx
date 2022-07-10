@@ -168,7 +168,7 @@ export default function PetDetails({ user }) {
   ////////////////////////////////////////////////////////////////
 
   return (
-    <>
+    <div className="pet-detail-page">
       <div className="pet-detail-container">
         <h1>Post Details</h1>
 
@@ -226,10 +226,10 @@ export default function PetDetails({ user }) {
 
               {/* ********* Post Details ************** */}
               <Grid.Column width={9} className="post-details-details">
-                <p>Title: {thePost.postTitle}</p>
-                <p>Animal Name: {thePost.name}</p>
-                <p>Animal Type: {thePost.animalType} </p>
-                <p>Animal Age: {thePost.age}</p>
+                <h2> {thePost.postTitle.toUpperCase()}</h2>
+                <p>name: {thePost.name.toUpperCase()}</p>
+                <p>type: {thePost.animalType} </p>
+                <p>age: {thePost.age}</p>
                 <Image
                   src={thePost.imgURL}
                   alt={thePost.name}
@@ -261,8 +261,6 @@ export default function PetDetails({ user }) {
         </Grid>
       </div>
 
-      <br />
-      <br />
       <Divider horizontal>
         <Header as="h3">
           <Icon name="comments outline" />
@@ -287,7 +285,7 @@ export default function PetDetails({ user }) {
           })}
         </>
       ) : (
-        <h2>No Comments</h2>
+        <h2 className="comments-card-container">No Comments</h2>
       )}
 
       {/* New Comment */}
@@ -297,8 +295,9 @@ export default function PetDetails({ user }) {
           Create a New Comment
         </Header>
       </Divider>
-
-      <CommentsForm addComments={addComments} />
-    </>
+      <div className="add-form-container">
+        <CommentsForm addComments={addComments} />
+      </div>
+    </div>
   );
 }

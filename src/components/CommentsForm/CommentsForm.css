@@ -1,0 +1,6 @@
+form {
+  background-color: var(--team-color2);
+}
+form .field {
+  font-size: 1.2em !important;
+}
