@@ -14,7 +14,7 @@ import { useEffect, useState, useMemo } from "react";
 import * as commentsAPI from "../../utilities/comments-api";
 import * as postsAPI from "../../utilities/posts-api";
 import { ChakraProvider, theme } from '@chakra-ui/react'
-// import React from 'react'
+import React from 'react'
 // import "@reach/combobox/styles.css";
 import Map from "../../components/Api/map/Api"
 // import "../../components/Api/map/AdressInput.css";
@@ -161,7 +161,11 @@ export default function PetDetails({ user }) {
                 <p>Reward($): {thePost.reward}</p>
                 <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
                 <p>Last Seen Location: {thePost.lastAddress} </p>
-                <Places />
+                <React.StrictMode>
+            <ChakraProvider  theme={theme}>
+            <Map lastAddress={thePost.lastAddress} />
+            </ChakraProvider>
+            </React.StrictMode>
               </Grid.Column>
               <Grid.Column width={1.5}>
                 <Button
