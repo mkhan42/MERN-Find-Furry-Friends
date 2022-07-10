@@ -3,7 +3,7 @@ import React from "react";
 import * as postsAPI from "../../utilities/posts-api";
 import { useParams } from "react-router-dom";
 import FileBase64 from "react-file-base64";
-import { Button, Checkbox, Form, TextArea } from "semantic-ui-react";
+import { Button, Checkbox, Form, TextArea, Divider } from "semantic-ui-react";
 import "../PostForm/PostForm.css";
 
 export default function UpdatePostForm({ posts }) {
@@ -174,7 +174,7 @@ export default function UpdatePostForm({ posts }) {
           value={editAPost.date}
         ></input>
         <input type="submit"  /> */}
-{/* *************************************************** */}
+        {/* *************************************************** */}
         <Form.Group widths="equal">
           <Form.Input
             label="Post Title"
@@ -266,7 +266,7 @@ export default function UpdatePostForm({ posts }) {
           onChange={handleChange}
           value={editAPost.imgURL}
         />
-        <p>-------------------------- or -------------------------- </p>
+        <Divider horizontal>Or</Divider>
         <FileBase64
           type="file"
           multiple={false}
