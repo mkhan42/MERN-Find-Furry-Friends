@@ -44,7 +44,7 @@ export default function PostForm({ user }) {
   }
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      <Form className="post-form-container" onSubmit={handleSubmit}>
         <Form.Input
           label="Author Name"
           name="userName"
