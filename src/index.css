@@ -93,10 +93,11 @@
   border-radius: 1vmin;
 }
 
+
 p.error-message {
   color: var(--orange);
   text-align: center;
-} */
+}
 
 /* form {
   display: grid;
@@ -165,3 +166,7 @@ button[type="submit"] {
 }
 
 */
+p.error-message {
+  color: var(--orange);
+  text-align: center;
+}
