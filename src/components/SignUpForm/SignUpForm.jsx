@@ -98,6 +98,7 @@ export default class SignUpForm extends Component {
                   type="text"
                   name="userProfileImg"
                   value={this.state.userProfileImg}
+                  placeholder="Image URL"
                   onChange={this.handleChange}
                 />
               </div>
@@ -113,6 +114,7 @@ export default class SignUpForm extends Component {
                   name="password"
                   value={this.state.password}
                   onChange={this.handleChange}
+                  placeholder="Password"
                   required
                 />
               </div>
@@ -128,6 +130,7 @@ export default class SignUpForm extends Component {
                   name="confirm"
                   value={this.state.confirm}
                   onChange={this.handleChange}
+                  placeholder="Confirm Password"
                   required
                 />
               </div>
