@@ -61,13 +61,7 @@ export default function PetDetails({ user }) {
     setComments([...com]);
   }
 
-  ////////////////////////////////////////////////////////////////
-  //       GOOGLE MAP API
-  ////////////////////////////////////////////////////////////////
- 
-  ////////////////////////////////////////////////////////////////
-  //       GOOGLE MAP API
-  ////////////////////////////////////////////////////////////////
+//////
 
   return (
     <>
@@ -110,12 +104,12 @@ export default function PetDetails({ user }) {
         <br />
         <br />
 
-        {btn && (
+      
           <div>
             <button onClick={handleEditPost}>Edit</button>
             <button onClick={handleDeletePost}>Delete</button>
           </div>
-        )}
+    
 
         <hr />
         <hr />

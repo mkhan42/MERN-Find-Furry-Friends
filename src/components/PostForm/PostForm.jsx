@@ -2,8 +2,6 @@ import * as postAPI from "../../utilities/posts-api";
 import { useState, useMemo } from "react";
 import FileBase64 from "react-file-base64";
 
-
-
 export default function PostForm({ user }) {
   const [newPost, setNewPost] = useState({
     postTitle: "",
@@ -41,14 +39,6 @@ export default function PostForm({ user }) {
       setError("Form Submission Failed - Try again");
     }
   }
-
-  //let errTitle = newPost.postTitle = ''
-
-  ///////////////////////////////////////////
-
- 
-    
-  ///////////////////////////////////////////
 
   return (
     <>
@@ -98,14 +88,16 @@ export default function PostForm({ user }) {
           value={newPost.imgURL}
           required
           placeholder="Image URL"
-        /> */}
+        />  */}
+
+        <label>Image Upload(1 MB per file upload limit):</label>
         <FileBase64
           type="file"
           multiple={false}
           name="imgURL"
           onDone={({ base64 }) => setNewPost({ ...newPost, imgURL: base64 })}
         />
-        <br />
+
         <label>Animal Type:</label>
         <input
           type="text"
@@ -115,7 +107,7 @@ export default function PostForm({ user }) {
           placeholder="Animal Type: Ex: Dog"
           required
         />
-        <br />
+
         <label>Age:</label>
         <input
           type="text"
