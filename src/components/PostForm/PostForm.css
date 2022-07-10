@@ -1,0 +1,12 @@
+Form {
+  font-size: 1.2rem !important;
+  max-width: 80% !important;
+  margin-left: 10%;
+}
+.ui.form .field > label {
+  color: var(--team-color4);
+}
+
+.ui.checkbox label {
+  color: var(--team-color4);
+}
