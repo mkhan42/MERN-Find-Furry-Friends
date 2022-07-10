@@ -23,13 +23,13 @@ export default function AllPostsPage({ posts }) {
           </div>
        
           {/* Jump to LOST page */}
-          <Link to="/LostPosts">
-            <h5>...More in LOST</h5>
+          <Link className="morein" to="/LostPosts">
+            <h5 className="allposth5">...More in LOST</h5>
           </Link>
           <br />
-            <hr />
-            <hr />
-            <hr />
+            <hr className="devider"/>
+            <hr className="devider"/>
+            <hr className="devider"/>
             <h2>Found Pets</h2>
           <div className="foundfirst6-container">
         {found6.map((found) => {
@@ -37,8 +37,8 @@ export default function AllPostsPage({ posts }) {
             })}
           </div>
           {/* Jump to LOST page */}
-          <Link to="/FoundPosts">
-            <h5>...More in FOUND</h5>
+          <Link  className="morein" to="/FoundPosts">
+            <h5 className="allposth5">...More in FOUND</h5>
           </Link>
           <br />
         </div>

@@ -25,3 +25,11 @@
   align-items: center;
   color:var(--team-color4);
 }
+
+.allposth5{
+  text-decoration: none;
+  color: var(--team-color4);
+}
+.morein{
+  text-decoration: none;
+}

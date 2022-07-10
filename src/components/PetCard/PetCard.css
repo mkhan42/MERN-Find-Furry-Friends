@@ -7,9 +7,13 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin: 20px;
+    text-decoration: none;
 }
 
 .PetCardh2{
     color:var(--team-color4);
+    text-decoration: none;
+}
+.linkPetCard{
     text-decoration: none;
 }

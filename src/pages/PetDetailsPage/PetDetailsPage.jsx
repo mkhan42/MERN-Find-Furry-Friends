@@ -1,6 +1,6 @@
 import CommentsCard from "../../components/CommentsCard/CommentsCard";
 import CommentsForm from "../../components/CommentsForm/CommentsForm";
-
+import React from "react";
 import {
   Button,
   Icon,
@@ -14,12 +14,9 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import * as commentsAPI from "../../utilities/comments-api";
 import * as postsAPI from "../../utilities/posts-api";
-import { ChakraProvider, theme } from '@chakra-ui/react'
-import React from 'react'
-// import "@reach/combobox/styles.css";
-import Map from "../../components/Api/map/Api"
-// import "../../components/Api/map/AdressInput.css";
-// import Api from "../../components/Api/map/Api";
+import { ChakraProvider, theme } from "@chakra-ui/react";
+
+import Map from "../../components/Api/map/Api";
 
 import "./PetDetailsPage.css";
 
@@ -82,8 +79,7 @@ export default function PetDetails({ user }) {
   ////////////////////////////////////////////////////////////////
   //       GOOGLE MAP API
   // ////////////////////////////////////////////////////////////////
-  
-    
+
   ////////////////////////////////////////////////////////////////
   //       GOOGLE MAP API
   ////////////////////////////////////////////////////////////////
@@ -114,7 +110,6 @@ export default function PetDetails({ user }) {
                     Post Created at:{" "}
                     {postCreatedTime.format("MM/DD/YYYY HH:mm")}
                   </p>
-
 
                   {/* only show the updated time if there is an update */}
                   {thePost.createdAt !== thePost.updatedAt ? (
@@ -162,13 +157,14 @@ export default function PetDetails({ user }) {
                 <p>Reward($): {thePost.reward}</p>
                 <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
                 <p>Last Seen Location: {thePost.lastAddress} </p>
+
                 <React.StrictMode>
-            <ChakraProvider  theme={theme}>
-            <Map lastAddress={thePost.lastAddress} />
-            </ChakraProvider>
-            </React.StrictMode>
+                  <ChakraProvider theme={theme}>
+                    <Map lastAddress={thePost.lastAddress} />
+                  </ChakraProvider>
+                </React.StrictMode>
               </Grid.Column>
-              <Grid.Column width={1.5}>
+              <Grid.Column width={1}>
                 <Button
                   color="red"
                   content="Upvote"
@@ -185,7 +181,6 @@ export default function PetDetails({ user }) {
             </>
           )}
         </Grid>
-
       </div>
 
       <Divider horizontal>
