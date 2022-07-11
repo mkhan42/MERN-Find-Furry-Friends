@@ -28,6 +28,7 @@ export default function PostForm({ user }) {
       ...newPost,
       [e.target.name]: e.target.value,
     };
+    console.log(e.target);
     setNewPost(newPostData);
     setError("");
   }
@@ -42,15 +43,16 @@ export default function PostForm({ user }) {
       setError("Form Submission Failed - Try again");
     }
   }
+
   return (
     <>
       <Form className="post-form-container" onSubmit={handleSubmit}>
-        <Form.Input
-          label="Author Name"
-          name="userName"
-          defaultValue={user.name.toUpperCase()}
-        />
-        <Form.Group widths="equal">
+          <Form.Input
+            label="Author Name"
+            name="userName"
+            defaultValue={user.name.toUpperCase()}
+          />
+          <Form.Group widths="equal">
           <Form.Input
             label="Post Title"
             placeholder="Post Title.."
@@ -62,13 +64,15 @@ export default function PostForm({ user }) {
 
           <Form.Select
             label="Post Type"
+            name="postType"
+            onChange={(e, data) =>
+              setNewPost({ ...newPost, postType: data.value })
+            }
+            value={newPost.postType}
             options={[
               { key: "l", text: "Lost", value: "Lost" },
               { key: "f", text: "Found", value: "Found" },
             ]}
-            name="postType"
-            onChange={handleChange}
-            value={newPost.postType}
             required
           />
         </Form.Group>
