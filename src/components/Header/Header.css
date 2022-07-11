@@ -1,5 +1,5 @@
 header {
-  /* margin-top: 50px;
+  /* margin-top: 50px; 
     padding-bottom: 60px; */
   position: relative;
 
@@ -8,7 +8,7 @@ header {
   background: var(--team-color4);
   text-align: center;
 }
-span {
+#title{
   font-size: 50px;
   text-align: center;
   color: var(--team-color3);

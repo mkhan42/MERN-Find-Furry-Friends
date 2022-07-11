@@ -1,9 +1,10 @@
-.container{
+#container{
     align-content: center;
     text-align: center;
     background: var(--team-color1);
     height: 100vh;
-    width: 100%;
+  
+
    
 }
 .findpageh1{
