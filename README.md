@@ -27,10 +27,6 @@
 - Account should aslo show requested pets, where the user can delete the request.
 - For each pet, users should be able to see the location on google maps and pet information.
 
-## Screenshots
-
-- screenshots 2345
-
 ## Technologies Used
 
 - React
@@ -49,20 +45,18 @@
 
 ## Getting Started
 
-## ERD
+# ERD
 ![ERD](https://i.imgur.com/mzFlkEj.png)
 
-## Wireframes
-![WIREFRAME](https://i.imgur.com/U4xsuiG.png)
-![WIREFRAME](https://i.imgur.com/z33Cxkx.png)
-![WIREFRAME](https://i.imgur.com/LPR1jCq.png)
-![WIREFRAME](https://i.imgur.com/pJmPhB6.png)
-![WIREFRAME](https://i.imgur.com/4c936HA.png)
-![WIREFRAME](https://i.imgur.com/SpXs9By.png)
-![WIREFRAME](https://i.imgur.com/exSYNvB.png)
-![WIREFRAME](https://i.imgur.com/y5uOJLG.png)
-![WIREFRAME](https://i.imgur.com/w20CnDd.png)
-![WIREFRAME]()
-## Next Steps
+# Wireframes
+<img src="https://i.imgur.com/U4xsuiG.png">
+<img src="https://i.imgur.com/z33Cxkx.png">
+<img src="https://i.imgur.com/LPR1jCq.png">
+<img src="https://i.imgur.com/pJmPhB6.png">
+<img src="https://i.imgur.com/4c936HA.png">
+<img src="https://i.imgur.com/SpXs9By.png">
+<img src="https://i.imgur.com/exSYNvB.png">
+<img src="https://i.imgur.com/y5uOJLG.png">
+<img src="https://i.imgur.com/w20CnDd.png">
 
 
