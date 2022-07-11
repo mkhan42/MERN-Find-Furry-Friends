@@ -64,12 +64,11 @@ export default function App() {
             {/* redirect to /AllPosts if path in address bar hasn't matched a <Route> above */}
             <Route path="/*" element={<Navigate to="/AllPosts" />} />
           </Routes>
+          <Footer />
         </>
       ) : (
         <AuthPage setUser={setUser} />
       )}
-
-      <Footer />
     </main>
   );
 }

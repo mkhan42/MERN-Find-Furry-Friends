@@ -33,8 +33,13 @@ export default function UsersPage({ user, posts }) {
   }, [user._id]);
   return (
     <>
+      {/* <div className="my-user-card card">
+      <div className="my-header-card">
+      <div className="user-welcome card-title"> */}
     <div id="accContainer">
-      <h1>HI, {user.name.toUpperCase()}</h1>
+    <div className="my-header-card">
+      <h1 id="my-title">HI, {user.name.toUpperCase()}</h1>
+      {/* </div> */}
       {/* <img src={user.userProfileImg}  alt="hello" width="200px"/> */}
       {/* (<Avatar name={ user.name } /> ) */}
       { user.userProfileImg === "" ? 
@@ -43,17 +48,19 @@ export default function UsersPage({ user, posts }) {
       </ConfigProvider> )
        : (<img src={user.userProfileImg} alt="hello" width="200px"/>)
        }
-      <p>All info as of {today}</p>
-      <div className="user-info-container">
-        <h3>YOUR EMAIL: {user.email}</h3>
-        <h3>YOUR POSTS:</h3>
+       </div>
+      <p className="my-info-p">All info as of {today}</p>
+      {/* <div className="user-info-container"> */}
+        <h3 className="my-email">{user.email}</h3>
+        <h3 className="my-posts">POSTS</h3>
         {/* if I have post then show posts, else show "No Post yet" */}
         {userPosts?.length ? (
-          <section className="user-posts-container">
+          <section className="user-posts-container card-text">
             <ol>
               {userPosts?.map((post) => {
                 return (
                   <li>
+                  <hr className="my-hr"/>
                     <PetCard key={post._id} post={post} />
                     created at:{" "}
                     {moment(post.createdAt).format("MM/DD/YYYY HH:mm")}
@@ -61,21 +68,22 @@ export default function UsersPage({ user, posts }) {
                 );
               })}
             </ol>
+            <hr/>
           </section>
         ) : (
           <h3>No Posts Yet</h3>
         )}
-      </div>
+      {/* </div> */}
       {/* COMMENTS SECTION */}
       {/* if I have comments, else show "No Comments yet" */}
-      <h3>YOUR COMMENTS:</h3>
+      <h3 className="my-comments">COMMENTS</h3>
       {userComments.length ? (
         <section className="user-comments-container">
           <ol>
             {userComments.map((c) => {
               return (
                 <li>
-                  <a href={`/${c.post}`}>{c.commentTitle}</a>
+                  <a className="my-linked-comm" href={`/${c.post}`}>{c.commentTitle}</a>
                 </li>
               );
             })}
@@ -90,6 +98,9 @@ export default function UsersPage({ user, posts }) {
       {/* <h3>
         InMail: ??number?? - click then show the list - comment in the post
       </h3>  */}
+      {/* </div>
+      </div>
+      </div> */}
       </div>
     </>
   );
