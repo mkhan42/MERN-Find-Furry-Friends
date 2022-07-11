@@ -37,7 +37,6 @@ export default function LostPostsPage({ posts }) {
   }
 
   return (
-   
     <div id="container">
       <h1 className="lostpageh1">Lost Posts</h1>
       <Input
