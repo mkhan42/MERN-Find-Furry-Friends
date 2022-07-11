@@ -51,14 +51,14 @@
 ![ERD](https://i.imgur.com/mzFlkEj.png)
 
 # Wireframes
-<img src="https://i.imgur.com/U4xsuiG.png">
-<img src="https://i.imgur.com/z33Cxkx.png">
-<img src="https://i.imgur.com/LPR1jCq.png">
-<img src="https://i.imgur.com/pJmPhB6.png">
-<img src="https://i.imgur.com/4c936HA.png">
-<img src="https://i.imgur.com/SpXs9By.png">
-<img src="https://i.imgur.com/exSYNvB.png">
-<img src="https://i.imgur.com/y5uOJLG.png">
-<img src="https://i.imgur.com/w20CnDd.png">
+<img src="https://i.imgur.com/U4xsuiG.png"width="200" height="200">
+<img src="https://i.imgur.com/z33Cxkx.png"width="200" height="200">
+<img src="https://i.imgur.com/LPR1jCq.png"width="200" height="200">
+<img src="https://i.imgur.com/pJmPhB6.png"width="200" height="200">
+<img src="https://i.imgur.com/4c936HA.png"width="200" height="200">
+<img src="https://i.imgur.com/SpXs9By.png"width="200" height="200">
+<img src="https://i.imgur.com/exSYNvB.png"width="200" height="200">
+<img src="https://i.imgur.com/y5uOJLG.png"width="200" height="200">
+<img src="https://i.imgur.com/w20CnDd.png"width="200" height="200">
 
 
