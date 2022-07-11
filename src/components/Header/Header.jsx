@@ -5,7 +5,7 @@ export default function Header({ user, setUser }) {
   return (
     <header>
       {/* Add each one's GitHub link later  - and year */}
-      <span >FIND FURRY FRIENDS</span>
+      <span id="title" >FIND FURRY FRIENDS</span>
       
       <br />
       <span className="username"> Welcome, {user.name}</span> 

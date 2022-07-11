@@ -1,9 +1,13 @@
 #navbar{
     text-align: center;
     align-items: center;
-   background:  var(--team-color4);
-   height: 40px;
+   /* height: 70%; */
    font-size: 10px;
+   background-color: #B25068;
+   padding-top: 2%;
+   padding-bottom: 2%;
+   /* margin-bottom: 5%; */
+   color: #E7AB79;
 }
 .username{
     font-size: 25px;
