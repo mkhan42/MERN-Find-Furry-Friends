@@ -28,8 +28,17 @@ li {
 .my-header-card {
   background-color: #4C3A51;
   padding-bottom: 5%;
+ 
 }
 
 .my-user-card-body{
   background-color: #774360;
+ 
+}
+
+#accContainer{
+  height: 100vh;
+  width:100%;   
+  background: var(--team-color2);
+  text-align: center;
 }

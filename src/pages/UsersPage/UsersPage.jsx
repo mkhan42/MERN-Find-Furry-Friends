@@ -33,53 +33,42 @@ export default function UsersPage({ user, posts }) {
   }, [user._id]);
   return (
     <>
-      <div className="my-user-card card" style={{height: '10rem'}}>
-      <div className="my-header-card">
-      <div className="user-welcome card-title">
+    <div id="accContainer">
       <h1>HI, {user.name.toUpperCase()}</h1>
-      </div>
-
-      <div className="my-user-img">
+      {/* <img src={user.userProfileImg}  alt="hello" width="200px"/> */}
+      {/* (<Avatar name={ user.name } /> ) */}
       { user.userProfileImg === "" ? 
       (<ConfigProvider colors={['red', 'green', 'blue', 'pink', 'purple', 'orange', 'yellow']}>
-        <Avatar name={ user.name } round={true} className="card-img-top"/>
+        <Avatar name={ user.name } round={true}/>
       </ConfigProvider> )
-       : (<img src={user.userProfileImg} className="card-img-top my-user-img" alt="hello" width="200px"/>)
+       : (<img src={user.userProfileImg} alt="hello" width="200px"/>)
        }
-       </div>
-       </div>
-
-       <div className="card-body my-user-card-body">
-       <div className="my-user-info">
-      <p className="card-text">All info as of {today}</p>
+      <p>All info as of {today}</p>
       <div className="user-info-container">
-        <h3 className="card-title">YOUR EMAIL: {user.email}</h3>
-        <h3 className="card-title">YOUR POSTS:</h3>
+        <h3>YOUR EMAIL: {user.email}</h3>
+        <h3>YOUR POSTS:</h3>
         {/* if I have post then show posts, else show "No Post yet" */}
         {userPosts?.length ? (
-          <section className="user-posts-container card-text">
+          <section className="user-posts-container">
             <ol>
               {userPosts?.map((post) => {
                 return (
                   <li>
-                  <div className="user-pet-card-div">
-                    <PetCard className="user-pet-card" key={post._id} post={post} /> <br/>
+                    <PetCard key={post._id} post={post} />
                     created at:{" "}
                     {moment(post.createdAt).format("MM/DD/YYYY HH:mm")}
-                    </div>
-                    <hr/>
                   </li>
                 );
               })}
             </ol>
           </section>
         ) : (
-          <h3 className="card-title">No Posts Yet</h3>
+          <h3>No Posts Yet</h3>
         )}
       </div>
       {/* COMMENTS SECTION */}
       {/* if I have comments, else show "No Comments yet" */}
-      <h3 className="card-title">YOUR COMMENTS:</h3>
+      <h3>YOUR COMMENTS:</h3>
       {userComments.length ? (
         <section className="user-comments-container">
           <ol>
@@ -93,27 +82,15 @@ export default function UsersPage({ user, posts }) {
           </ol>
         </section>
       ) : (
-        <h3 className="card-title">You haven't made any comments yet</h3>
+        <h3>You haven't made any comments yet</h3>
       )}
-      </div>
-      </div>
-      </div>
 
       {/* after mvp */}
       {/* if someone comment our post, we got notification... */}
       {/* <h3>
         InMail: ??number?? - click then show the list - comment in the post
       </h3>  */}
+      </div>
     </>
   );
 }
-
-
-{/* <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div> */}
