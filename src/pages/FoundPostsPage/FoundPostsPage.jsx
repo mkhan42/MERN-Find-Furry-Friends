@@ -35,7 +35,7 @@ export default function FoundPostsPage({ posts }) {
   }
 
   return (
-    <div className="container">
+    <div id="container">
       <h1 className="findpageh1">Found Posts</h1>
       <Input
         action={

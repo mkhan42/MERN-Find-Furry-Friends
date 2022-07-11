@@ -2,17 +2,17 @@
   text-align: center;
   /* background:var(--team-color2); */
 }
-.container {
-  align-content: center !important;
-  text-align: center !important;
+#container {
+  align-content: center;
+  text-align: center;
   background: var(--team-color1);
-  height: 100vh !important;
-  width: 100% !important;
-}
-.lostpageh1 {
-  text-align: center !important;
-  color: var(--team-color4);
+  height: 100vh;
+  width: 100%;
 }
 .search-dropdown span {
   font-size: small;
+}
+.lostpageh1 {
+  text-align: center;
+  color: var(--team-color4);
 }
