@@ -8,17 +8,21 @@ li {
   margin-right: 20%;
   margin-top: 10%;
   color: #E7AB79;
+  max-width: 100%;
+  /* display: flex;
+align-items: center;
+justify-content: center; */
   
 }
 
 .my-user-img {
-  text-align: center;
+  /* text-align: center; */
   margin-top: 2%;
 }
 
 .animalImg {
-  height: 60%;
-  width: 60%;
+  /* height: 60% !important;
+  width: 60% !important; */
 }
 
 .user-welcome {
@@ -32,4 +36,23 @@ li {
 
 .my-user-card-body{
   background-color: #774360;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.user-pet-card-div {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  /* margin-left: 10%; */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.my-user-info {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
 }

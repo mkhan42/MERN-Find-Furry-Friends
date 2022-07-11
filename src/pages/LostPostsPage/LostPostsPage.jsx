@@ -1,7 +1,7 @@
 import PetCard from "../../components/PetCard/PetCard";
 import { useState } from "react";
-import { Card, Input, Dropdown } from "semantic-ui-react"
-import "./LostPostsPage.css"
+import { Card, Input, Dropdown } from "semantic-ui-react";
+import "./LostPostsPage.css";
 
 export default function LostPostsPage({ posts }) {
   // data with postType=Lost
@@ -37,7 +37,6 @@ export default function LostPostsPage({ posts }) {
   }
 
   return (
-   
     <div className="container">
       <h1 className="lostpageh1">Lost Posts</h1>
       <Input
@@ -78,6 +77,5 @@ export default function LostPostsPage({ posts }) {
         <h2 className="lostpageh1">No Lost Post</h2>
       )}
     </div>
-    
   );
 }

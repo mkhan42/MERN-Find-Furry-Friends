@@ -33,7 +33,7 @@ export default function UsersPage({ user, posts }) {
   }, [user._id]);
   return (
     <>
-      <div className="my-user-card card" style={{height: '10rem'}}>
+      <div className="my-user-card card">
       <div className="my-header-card">
       <div className="user-welcome card-title">
       <h1>HI, {user.name.toUpperCase()}</h1>
@@ -57,7 +57,7 @@ export default function UsersPage({ user, posts }) {
         <h3 className="card-title">YOUR POSTS:</h3>
         {/* if I have post then show posts, else show "No Post yet" */}
         {userPosts?.length ? (
-          <section className="user-posts-container card-text">
+          <section className="card-text">
             <ol>
               {userPosts?.map((post) => {
                 return (
