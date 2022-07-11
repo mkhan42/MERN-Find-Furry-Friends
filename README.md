@@ -40,16 +40,29 @@
 - Mongoose
 - JavaScript
 - CSS
+- Bootstrap
+- Semantic UI
 
 ### Api's Used
 
-- petfinder API: https://www.petfinder.com/developers/
 - Google Map API: https://developers.google.com/maps
 
 ## Getting Started
 
 ## ERD
-
-## Next Steps
+![ERD](https://i.imgur.com/mzFlkEj.png)
 
 ## Wireframes
+![WIREFRAME](https://i.imgur.com/U4xsuiG.png)
+![WIREFRAME](https://i.imgur.com/z33Cxkx.png)
+![WIREFRAME](https://i.imgur.com/LPR1jCq.png)
+![WIREFRAME](https://i.imgur.com/pJmPhB6.png)
+![WIREFRAME](https://i.imgur.com/4c936HA.png)
+![WIREFRAME](https://i.imgur.com/SpXs9By.png)
+![WIREFRAME](https://i.imgur.com/exSYNvB.png)
+![WIREFRAME](https://i.imgur.com/y5uOJLG.png)
+![WIREFRAME](https://i.imgur.com/w20CnDd.png)
+![WIREFRAME]()
+## Next Steps
+
+
