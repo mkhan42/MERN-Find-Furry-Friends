@@ -2,9 +2,9 @@
 
 ## Contributors:
 
-- Wenling Yu <img src="https://avatars.githubusercontent.com/u/19142112?v=4" width="46" height="46">
-- Yonatan Kumsa <img src="https://avatars.githubusercontent.com/u/103116531?v=4" width="46" height="46">
-- Michalle Khan <img src="https://avatars.githubusercontent.com/u/76133352?v=4" width="46" height="46">
+- <img src="https://avatars.githubusercontent.com/u/19142112?v=4" width="46" height="46"> Wenling Yu 
+- <img src="https://avatars.githubusercontent.com/u/103116531?v=4" width="46" height="46"> Yonatan Kumsa
+- <img src="https://avatars.githubusercontent.com/u/76133352?v=4" width="46" height="46"> Michalle Khan
 
 ## User Story
 
