@@ -143,28 +143,36 @@ export default function PetDetails({ user }) {
               </Grid.Column>
 
               {/* ********* Post Details ************** */}
-              <Grid.Column width={9} className="post-details-details">
-                <h2> {thePost.postTitle.toUpperCase()}</h2>
+
+              <Grid.Column width={7} className="post-details-details">
+                <h1> {thePost.postTitle.toUpperCase()}</h1>
+
                 <p>name: {thePost.name.toUpperCase()}</p>
                 <p>type: {thePost.animalType} </p>
                 <p>age: {thePost.age}</p>
-                <Image
-                  src={thePost.imgURL}
-                  alt={thePost.name}
-                  size="large"
-                  rounded
-                />
+
                 <p>Description: {thePost.description}</p>
                 <p>Reward($): {thePost.reward}</p>
                 <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
                 <p>Last Seen Location: {thePost.lastAddress} </p>
-
+                <br />
+                <br />
+                <br />
                 <React.StrictMode>
                   <ChakraProvider theme={theme}>
                     <Map lastAddress={thePost.lastAddress} />
                   </ChakraProvider>
                 </React.StrictMode>
               </Grid.Column>
+              <Grid.Column width={4}>
+                <Image
+                  src={thePost.imgURL}
+                  alt={thePost.name}
+                  width="800px"
+                  rounded
+                />
+              </Grid.Column>
+
               <Grid.Column width={1}>
                 <Button
                   color="red"
