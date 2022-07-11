@@ -21,13 +21,14 @@ export default function PostForm({ user }) {
 
   const [error, setError] = useState("");
 
-  function handleChange(e) {
-    console.log(e);
-    e.preventDefault();
+  function handleChange(e, data) {
+    //console.log(data.value);
+
     const newPostData = {
       ...newPost,
       [e.target.name]: e.target.value,
     };
+    // console.log(newPostData);
     setNewPost(newPostData);
     setError("");
   }
@@ -62,13 +63,15 @@ export default function PostForm({ user }) {
 
           <Form.Select
             label="Post Type"
+            name="postType"
+            onChange={(e, data) =>
+              setNewPost({ ...newPost, postType: data.value })
+            }
+            value={newPost.postType}
             options={[
               { key: "l", text: "Lost", value: "Lost" },
               { key: "f", text: "Found", value: "Found" },
             ]}
-            name="postType"
-            onChange={handleChange}
-            value={newPost.postType}
             required
           />
         </Form.Group>

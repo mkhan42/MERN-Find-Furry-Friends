@@ -47,6 +47,7 @@ export default function PetDetails({ user }) {
     async function fetchPostComment() {
       const po = await postsAPI.getById(postId);
       setThePost(po);
+      setUpvote(po.upvote);
       const com = await commentsAPI.getAll(postId);
       setComments(com);
     }
@@ -144,7 +145,7 @@ export default function PetDetails({ user }) {
 
               {/* ********* Post Details ************** */}
 
-              <Grid.Column width={7} className="post-details-details">
+              <Grid.Column width={8} className="post-details-details">
                 <h1> {thePost.postTitle.toUpperCase()}</h1>
 
                 <p>name: {thePost.name.toUpperCase()}</p>
@@ -154,25 +155,22 @@ export default function PetDetails({ user }) {
                 <p>Description: {thePost.description}</p>
                 <p>Reward($): {thePost.reward}</p>
                 <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
-                <p>Last Seen Location: {thePost.lastAddress} </p>
-                <br />
-                <br />
-                <br />
-                <React.StrictMode>
-                  <ChakraProvider theme={theme}>
-                    <Map lastAddress={thePost.lastAddress} />
-                  </ChakraProvider>
-                </React.StrictMode>
-              </Grid.Column>
-              <Grid.Column width={4}>
                 <Image
                   src={thePost.imgURL}
                   alt={thePost.name}
                   width="800px"
                   rounded
                 />
-              </Grid.Column>
+                <br />
+                <p>Last Seen Location: {thePost.lastAddress} </p>
+                <br />
 
+                <React.StrictMode>
+                  <ChakraProvider theme={theme}>
+                    <Map lastAddress={thePost.lastAddress} />
+                  </ChakraProvider>
+                </React.StrictMode>
+              </Grid.Column>
               <Grid.Column width={1}>
                 <Button
                   color="red"

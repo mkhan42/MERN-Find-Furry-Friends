@@ -55,6 +55,10 @@ const postSchema = new Schema(
       // require: true,
     },
     comments: [{ type: Schema.Types.ObjectId, ref: "Comments" }],
+    upvote: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,
