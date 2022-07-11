@@ -17,7 +17,6 @@ import * as postsAPI from "../../utilities/posts-api";
 
 import { ChakraProvider, theme } from "@chakra-ui/react";
 
-
 import Map from "../../components/Api/map/Api";
 
 import "./PetDetailsPage.css";
@@ -219,9 +218,8 @@ export default function PetDetails({ user }) {
           Create a New Comment
         </Header>
       </Divider>
-      <div className="add-form-container">
-        <CommentsForm addComments={addComments} />
-      </div>
+
+      <CommentsForm addComments={addComments} />
     </div>
   );
 }

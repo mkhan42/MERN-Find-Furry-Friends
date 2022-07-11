@@ -13,3 +13,6 @@
   text-align: center !important;
   color: var(--team-color4);
 }
+.search-dropdown span {
+  font-size: small;
+}
