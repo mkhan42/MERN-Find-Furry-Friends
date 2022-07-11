@@ -8,17 +8,21 @@ li {
   margin-right: 20%;
   margin-top: 10%;
   color: #E7AB79;
+  max-width: 100%;
+  /* display: flex;
+align-items: center;
+justify-content: center; */
   
 }
 
 .my-user-img {
-  text-align: center;
+  /* text-align: center; */
   margin-top: 2%;
 }
 
 .animalImg {
-  height: 60%;
-  width: 60%;
+  /* height: 60% !important;
+  width: 60% !important; */
 }
 
 .user-welcome {
@@ -27,7 +31,8 @@ li {
 
 .my-header-card {
   background-color: #4C3A51;
-  padding-bottom: 5%;
+  padding-bottom: 2%;
+  padding-top: 2%;
  
 }
 
@@ -36,9 +41,39 @@ li {
  
 }
 
+#my-title {
+  margin-bottom: 2%;
+}
+
 #accContainer{
-  height: 100vh;
+  height: 100%;
   width:100%;   
   background: var(--team-color2);
   text-align: center;
+  /* padding-top: 2%; */
+  padding-bottom: 2%;
+  color: #E7AB79;
 }
+ .my-info-p {
+   margin-top: 2%;
+   margin-bottom: 2%;
+   font-size: 20px;
+ }
+
+ .my-email {
+   margin-bottom: 2%;
+   font-size: 30px;
+ }
+
+ .my-posts{
+   font-size: 50px;
+ }
+
+ .my-comments {
+  font-size: 50px;
+ }
+
+ .my-linked-comm {
+   font-size: 20px;
+   color: #E7AB79;
+ }

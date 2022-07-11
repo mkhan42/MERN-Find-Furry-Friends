@@ -14,18 +14,18 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav  id="navbar" >
-      <Link class="navbar-brand" to="/AllPosts">All Posts</Link>
+      <Link className="navbar-brand" to="/AllPosts">All Posts</Link>
       &nbsp; | &nbsp;
-      <Link  class="navbar-brand" to="/LostPosts">LOST</Link>
+      <Link  className="navbar-brand" to="/LostPosts">LOST</Link>
       &nbsp; | &nbsp;
-      <Link class="navbar-brand" to="/FoundPosts">FOUND</Link>
+      <Link className="navbar-brand" to="/FoundPosts">FOUND</Link>
     
       &nbsp; | &nbsp;
-      <Link class="navbar-brand" to="/NewPost">New Post</Link>
+      <Link className="navbar-brand" to="/NewPost">New Post</Link>
       &nbsp; | &nbsp;
-      <Link class="navbar-brand" to="/myaccount">My Account</Link>
+      <Link className="navbar-brand" to="/myaccount">My Account</Link>
       &nbsp; | &nbsp;
-      <Link class="navbar-brand" to="" onClick={handleLogOut}>
+      <Link className="navbar-brand" to="" onClick={handleLogOut}>
         Log Out
       </Link>
       
