@@ -1,6 +1,6 @@
-.post-form-container {
+.comments-form-container {
   background-color: var(--team-color2);
 }
-.post-form-container .field {
+.comments-form-container .field {
   font-size: 1.2em !important;
 }
