@@ -146,7 +146,7 @@ export default function PetDetails({ user }) {
               {/* ********* Post Details ************** */}
 
               <Grid.Column width={8} className="post-details-details">
-                <h1> {thePost.postTitle.toUpperCase()}</h1>
+                <h2> {thePost.postTitle.toUpperCase()}</h2>
 
                 <p>name: {thePost.name.toUpperCase()}</p>
                 <p>type: {thePost.animalType} </p>
