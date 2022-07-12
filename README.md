@@ -2,9 +2,9 @@
 
 ## Contributors:
 
-- Wenling Yu
-- Yonatan Kumsa
-- Michalle Khan
+- <img src="https://avatars.githubusercontent.com/u/19142112?v=4" width="46" height="46"> Wenling Yu 
+- <img src="https://avatars.githubusercontent.com/u/103116531?v=4" width="46" height="46"> Yonatan Kumsa
+- <img src="https://avatars.githubusercontent.com/u/76133352?v=4" width="46" height="46"> Michalle Khan
 
 ## User Story
 
@@ -27,29 +27,38 @@
 - Account should aslo show requested pets, where the user can delete the request.
 - For each pet, users should be able to see the location on google maps and pet information.
 
-## Screenshots
-
-- screenshots 2345
-
 ## Technologies Used
 
-- React
-- Express
-- Node
-- MongoDB
-- Mongoose
-- JavaScript
-- CSS
+<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" width="36" height="36" alt="React"> | 
+<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/express-colored-dark.svg" width="36" height="36" alt="Express"> |
+<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nodejs-colored.svg" width="36" height="36" alt="NodeJS"> |
+<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mongodb-colored.svg" width="36" height="36" alt="MongoDB"> |
+<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/heroku-colored.svg" width="36" height="36" alt="Heroku"> |
+<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="36" height="36" alt="JavaScript"> |
+<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" width="36" height="36" alt="CSS3"> |
+<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/bootstrap-colored.svg" width="36" height="36" alt="Bootstrap"> |
+<img src="https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_46af5e8a92842c05323841db5eb3c097/semantic-ui-react.png" width="56" height="36" alt="Semantic UI"> |
+<img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" width="36" height="36" alt="HTML5">
+
 
 ### Api's Used
 
-- petfinder API: https://www.petfinder.com/developers/
 - Google Map API: https://developers.google.com/maps
 
 ## Getting Started
 
-## ERD
+# ERD
+![ERD](https://i.imgur.com/mzFlkEj.png)
 
-## Next Steps
+# Wireframes
+<img src="https://i.imgur.com/U4xsuiG.png" width="800" height="600">
+<img src="https://i.imgur.com/z33Cxkx.png" width="800" height="600">
+<img src="https://i.imgur.com/LPR1jCq.png" width="800" height="600">
+<img src="https://i.imgur.com/pJmPhB6.png" width="800" height="600">
+<img src="https://i.imgur.com/4c936HA.png" width="800" height="600">
+<img src="https://i.imgur.com/nCkruzC.png" width="800" height="600">
+<img src="https://i.imgur.com/exSYNvB.png" width="800" height="600">
+<img src="https://i.imgur.com/y5uOJLG.png" width="800" height="600">
+<img src="https://i.imgur.com/w20CnDd.png" width="800" height="600">
 
-## Wireframes
+

@@ -2,6 +2,7 @@
   text-align: center;
   /* background:var(--team-color2); */
 }
+
 #container {
   align-content: center;
   text-align: center;
@@ -15,4 +16,5 @@
 .lostpageh1 {
   text-align: center;
   color: var(--team-color4);
+
 }
