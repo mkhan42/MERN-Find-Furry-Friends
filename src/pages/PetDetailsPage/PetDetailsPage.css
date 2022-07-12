@@ -41,9 +41,9 @@ a {
   padding: 30px;
   font-size: 5em;
 }
-.pet-detail-container h4 {
+.pet-detail-container h2 {
   padding: 10px;
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 .post-details-info {
