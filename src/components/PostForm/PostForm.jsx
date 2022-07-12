@@ -3,6 +3,13 @@ import FileBase64 from "react-file-base64";
 import { useState } from "react";
 import { Button, Checkbox, Form, TextArea, Divider } from "semantic-ui-react";
 import "./PostForm.css";
+import {
+  useJsApiLoader,
+  GoogleMap,
+  Marker,
+  Autocomplete,
+  DirectionsRenderer,
+} from "@react-google-maps/api";
 
 export default function PostForm({ user }) {
   const [newPost, setNewPost] = useState({
@@ -129,6 +136,7 @@ export default function PostForm({ user }) {
             value={newPost.reward}
           />
         </Form.Group>
+        {/* <Autocomplete> */}
         <Form.Input
           label="Last seen/found"
           placeholder="Ex: New York, NY, USA"
@@ -137,6 +145,7 @@ export default function PostForm({ user }) {
           value={newPost.lastAddress}
           required
         />
+        {/* </Autocomplete> */}
         <Form.Input
           label="Image URL / Upload(1 MB per file upload limit):"
           type="text"
