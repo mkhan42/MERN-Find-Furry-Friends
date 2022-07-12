@@ -128,7 +128,7 @@ export default function PostForm({ user }) {
             value={newPost.reward}
           />
         </Form.Group>
-        <Autocomplete>
+        {/* <Autocomplete> */}
         <Form.Input
           label="Last seen/found"
           placeholder="Ex: New York, NY, USA"
@@ -137,7 +137,7 @@ export default function PostForm({ user }) {
           value={newPost.lastAddress}
           required
         />
-        </Autocomplete>
+        {/* </Autocomplete> */}
         <Form.Input
           label="Image URL / Upload(1 MB per file upload limit):"
           type="text"
