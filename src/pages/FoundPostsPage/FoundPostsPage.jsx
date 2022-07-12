@@ -1,7 +1,7 @@
 import PetCard from "../../components/PetCard/PetCard";
 import { useState } from "react";
 import { Card, Input, Dropdown } from "semantic-ui-react";
-import "./FoundPostsPage.css"
+import "./FoundPostsPage.css";
 
 export default function FoundPostsPage({ posts }) {
   // data with postType=Found
@@ -36,7 +36,7 @@ export default function FoundPostsPage({ posts }) {
 
   return (
     <div id="container">
-   <h1 className="findpageh1">Found Posts</h1>
+      <h1 className="findpageh1">Found Posts</h1>
       <Input
         action={
           <Dropdown
@@ -54,7 +54,6 @@ export default function FoundPostsPage({ posts }) {
         placeholder="Search..."
         onChange={(e) => {
           searchItems(e.target.value);
-          
         }}
       />
       <div></div>
@@ -73,6 +72,6 @@ export default function FoundPostsPage({ posts }) {
       ) : (
         <h2 className="findpageh1">No Found Post</h2>
       )}
-  </div>
+    </div>
   );
 }

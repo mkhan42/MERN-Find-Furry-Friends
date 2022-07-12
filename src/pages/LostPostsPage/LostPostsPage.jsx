@@ -37,7 +37,6 @@ export default function LostPostsPage({ posts }) {
   }
 
   return (
-   
     <div id="container">
       <h1 className="lostpageh1">Lost Posts</h1>
       <Input
@@ -49,7 +48,7 @@ export default function LostPostsPage({ posts }) {
             options={options}
             defaultValue="animalType"
             onChange={handleOptions}
-            className="navbar navbar-light bg-light"
+            className="navbar navbar-light bg-light search-dropdown"
             id="searchforlostpage"
           />
         }

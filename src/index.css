@@ -15,7 +15,9 @@
   --team-color3: #b25068;
   --team-color4: #e7ab79;
 }
-
+*{
+  font-family: 'Indie Flower', cursive;
+}
 /* *,
 *:before,
 *:after {

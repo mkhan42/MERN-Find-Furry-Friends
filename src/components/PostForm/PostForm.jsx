@@ -3,14 +3,7 @@ import FileBase64 from "react-file-base64";
 import { useState } from "react";
 import { Button, Checkbox, Form, TextArea, Divider } from "semantic-ui-react";
 import "./PostForm.css";
-import {
-  useJsApiLoader,
-  GoogleMap,
-  Marker,
-  Autocomplete,
-  DirectionsRenderer,
-} from "@react-google-maps/api";
-
+import { Autocomplete } from "@react-google-maps/api";
 export default function PostForm({ user }) {
   const [newPost, setNewPost] = useState({
     postTitle: "",
@@ -28,14 +21,13 @@ export default function PostForm({ user }) {
 
   const [error, setError] = useState("");
 
-  function handleChange(e) {
-    console.log(e);
-    e.preventDefault();
+  function handleChange(e, data) {
+    //console.log(data.value);
+
     const newPostData = {
       ...newPost,
       [e.target.name]: e.target.value,
     };
-    console.log(e.target);
     setNewPost(newPostData);
     setError("");
   }
@@ -69,7 +61,7 @@ export default function PostForm({ user }) {
             required
           />
 
-          <Form.Select
+<Form.Select
             label="Post Type"
             name="postType"
             onChange={(e, data) =>
@@ -136,7 +128,7 @@ export default function PostForm({ user }) {
             value={newPost.reward}
           />
         </Form.Group>
-        {/* <Autocomplete> */}
+        <Autocomplete>
         <Form.Input
           label="Last seen/found"
           placeholder="Ex: New York, NY, USA"
@@ -145,7 +137,7 @@ export default function PostForm({ user }) {
           value={newPost.lastAddress}
           required
         />
-        {/* </Autocomplete> */}
+        </Autocomplete>
         <Form.Input
           label="Image URL / Upload(1 MB per file upload limit):"
           type="text"
