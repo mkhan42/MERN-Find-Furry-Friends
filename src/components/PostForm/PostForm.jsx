@@ -21,13 +21,14 @@ export default function PostForm({ user }) {
 
   const [error, setError] = useState("");
 
-  function handleChange(e) {
-    console.log(e);
-    e.preventDefault();
+  function handleChange(e, data) {
+    //console.log(data.value);
+
     const newPostData = {
       ...newPost,
       [e.target.name]: e.target.value,
     };
+    // console.log(newPostData);
     setNewPost(newPostData);
     setError("");
   }

@@ -52,7 +52,6 @@ export default function UpdatePostForm({ posts }) {
   //console.log(currentPost);
 
   function handleChange(e) {
-    e.preventDefault();
     const editPostData = {
       ...editAPost,
       [e.target.name]: e.target.value,
@@ -187,13 +186,15 @@ export default function UpdatePostForm({ posts }) {
 
           <Form.Select
             label="Post Type"
+            name="postType"
+            onChange={(e, data) =>
+              setEditAPost({ ...editAPost, postType: data.value })
+            }
+            value={editAPost.postType}
             options={[
               { key: "l", text: "Lost", value: "Lost" },
               { key: "f", text: "Found", value: "Found" },
             ]}
-            name="postType"
-            onChange={handleChange}
-            value={editAPost.postType}
             required
           />
         </Form.Group>

@@ -41,6 +41,10 @@ a {
   padding: 30px;
   font-size: 5em;
 }
+.pet-detail-container h4 {
+  padding: 10px;
+  font-size: 1.5em;
+}
 
 .post-details-info {
   background-color: var(--team-color2);
@@ -59,7 +63,4 @@ a {
   margin: 0 !important;
   padding-top: 1em;
   padding-bottom: 0.5em;
-}
-.add-form-container {
-  background-color: var(--team-color2);
 }

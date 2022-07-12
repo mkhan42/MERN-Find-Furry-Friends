@@ -17,7 +17,6 @@ import * as postsAPI from "../../utilities/posts-api";
 
 import { ChakraProvider, theme } from "@chakra-ui/react";
 
-
 import Map from "../../components/Api/map/Api";
 
 import "./PetDetailsPage.css";
@@ -48,6 +47,7 @@ export default function PetDetails({ user }) {
     async function fetchPostComment() {
       const po = await postsAPI.getById(postId);
       setThePost(po);
+      setUpvote(po.upvote);
       const com = await commentsAPI.getAll(postId);
       setComments(com);
     }
@@ -144,21 +144,26 @@ export default function PetDetails({ user }) {
               </Grid.Column>
 
               {/* ********* Post Details ************** */}
-              <Grid.Column width={9} className="post-details-details">
-                <h2> {thePost.postTitle.toUpperCase()}</h2>
+
+              <Grid.Column width={8} className="post-details-details">
+                <h1> {thePost.postTitle.toUpperCase()}</h1>
+
                 <p>name: {thePost.name.toUpperCase()}</p>
                 <p>type: {thePost.animalType} </p>
                 <p>age: {thePost.age}</p>
-                <Image
-                  src={thePost.imgURL}
-                  alt={thePost.name}
-                  size="large"
-                  rounded
-                />
+
                 <p>Description: {thePost.description}</p>
                 <p>Reward($): {thePost.reward}</p>
                 <p>Day pet was lost/found?: {dateTime.format("MM/DD/YYYY")}</p>
+                <Image
+                  src={thePost.imgURL}
+                  alt={thePost.name}
+                  width="800px"
+                  rounded
+                />
+                <br />
                 <p>Last Seen Location: {thePost.lastAddress} </p>
+                <br />
 
                 <React.StrictMode>
                   <ChakraProvider theme={theme}>
@@ -219,9 +224,8 @@ export default function PetDetails({ user }) {
           Create a New Comment
         </Header>
       </Divider>
-      <div className="add-form-container">
-        <CommentsForm addComments={addComments} />
-      </div>
+
+      <CommentsForm addComments={addComments} />
     </div>
   );
 }
