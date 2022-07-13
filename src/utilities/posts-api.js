@@ -21,4 +21,3 @@ export function updatePost(id, body) {
 export function deletePost(id) {
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }
-

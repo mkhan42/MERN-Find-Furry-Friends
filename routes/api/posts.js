@@ -19,5 +19,7 @@ router.delete("/:id", postCtrl.deletePost);
 // UPDATE a post
 router.put("/:id", postCtrl.updatePost);
 
+router.put("/:id/vote", postCtrl.vote);
+
 module.exports = router;
 

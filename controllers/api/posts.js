@@ -7,6 +7,7 @@ module.exports = {
   getOnePost,
   deletePost,
   updatePost,
+  vote
 };
 
 async function createPost(req, res) {
@@ -80,4 +81,18 @@ async function updatePost(req, res) {
     res.status(404).json({ error: "No Such Post" });
   }
   res.status(200).json(post);
+}
+
+async function vote(req, res) {
+  try {
+    let post = await Post.findById( req.params.id );
+    post.vote( req.body.val );
+    // if ( req.user._id !== post.postedBy ) {
+    //     return res.status( 403 ).json( { error: "Unauthorized!" } );
+    // }
+    post = await Post.findByIdAndUpdate( req.params.id, post ).lean().exec();
+    return res.status( 203 ).json( { post } );
+  } catch ( err ) {
+    return res.status( 500 ).json( { error: err.message } );
+  }
 }
