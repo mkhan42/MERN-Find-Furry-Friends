@@ -21,3 +21,7 @@ export function updatePost(id, body) {
 export function deletePost(id) {
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }
+
+export function vote(id, body) {
+  return sendRequest(`${BASE_URL}/${id}/vote`, 'PUT', body);
+}

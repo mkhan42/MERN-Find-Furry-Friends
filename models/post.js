@@ -65,4 +65,8 @@ const postSchema = new Schema(
   }
 );
 
+postSchema.methods.vote = function ( val ) {
+  this.votes += Number( val );
+}
+
 module.exports = mongoose.model("Post", postSchema);
