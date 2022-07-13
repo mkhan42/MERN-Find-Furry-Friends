@@ -2,12 +2,6 @@
     background-color: #481556;
 } */
 
-.my-title {
-    margin-top: 10%;
-    margin-bottom: 2%;
-    text-align: center;
-    max-height: 20%;
-}
 
 .center-option {
     margin-top: 2%;
@@ -15,11 +9,23 @@
     cursor:pointer;
      color:blue;
      text-decoration:underline;
+     font-family: 'Montserrat';
+     color: #4ab7df;
 }
 
+.center-option:hover {
+    color: blue;;
+}
 /* .my-auth-div {
     margin-top: 10%;
     margin-bottom: 10%;
     height: 10%;
     display: flex;
 } */
+
+.my-title-new {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    color: #4ab7df;
+}

@@ -15,8 +15,8 @@
   --team-color3: #b25068;
   --team-color4: #e7ab79;
 }
-*{
-  
+body {
+  font-family: 'Montserrat', sans-serif;
 }
 /* *,
 *:before,

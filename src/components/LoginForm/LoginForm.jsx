@@ -33,7 +33,7 @@ export default function LoginForm({ setUser }) {
 
   return (
     <div className="my-sign-back-div">
-    <div className="card my-sign-card mb-3">
+    <div className="card my-sign-card mb-3 shadow-lg">
     <div className="row g-0 my-sign-row">
             <div className="col-md-6 my-img-col" id="adding-opacity">
               <div className="my-auth-p">

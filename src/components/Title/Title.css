@@ -1,0 +1,9 @@
+.my-title {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-align: center;
+    max-height: 20%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #4ab7df;
+}

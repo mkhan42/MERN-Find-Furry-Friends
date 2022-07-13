@@ -1,11 +1,12 @@
 import "./Header.css";
+import Title from "../Title/Title.jsx"
 import React from "react";
 
 export default function Header({ user, setUser }) {
   return (
     <header>
       {/* Add each one's GitHub link later  - and year */}
-      <span id="title" >FIND FURRY FRIENDS</span>
+      <Title />
       
       <br />
       <span className="username"> Welcome, {user.name}</span> 

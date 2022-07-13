@@ -10,6 +10,7 @@
 .site-description {
   font-size: 20px;
   font-weight: 900;
+  font-family: 'Montserrat', sans-serif, 500;
 }
 
 .my-sign-back-div {
@@ -24,6 +25,9 @@
   margin-left: 10%;
   margin-right: 10%;
   max-width: 45%;
+  color: #4ab7df;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
 .my-img-col {
@@ -46,6 +50,8 @@
 .my-sign-card-title {
   text-align: center;
   font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
 .my-btn-sign {
@@ -61,4 +67,8 @@
   text-align: center;
   margin-top: -5%;
   margin-bottom: -5%;
+}
+
+.my-sign-col {
+  background-color: #fff0f0;
 }
