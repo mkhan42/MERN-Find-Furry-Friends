@@ -2,7 +2,7 @@
   "name": "find-furry-friends",
   "version": "0.1.0",
   "engines": {
-    "node": "18.5.0"
+    "node": "16"
   },
   "private": true,
   "dependencies": {
