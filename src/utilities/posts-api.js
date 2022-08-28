@@ -1,6 +1,6 @@
 import sendRequest from "./send-request";
 
-const BASE_URL = "https://mern-find-furry-friends.vercel.app/api/posts";
+const BASE_URL = "/api/posts";
 
 export function getAll() {
   return sendRequest(BASE_URL);
