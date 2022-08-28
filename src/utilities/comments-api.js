@@ -1,6 +1,6 @@
 import sendRequest from "./send-request";
 
-const BASE_URL = "/api/comments";
+const BASE_URL = "https://mern-find-furry-friends.vercel.app/api/comments";
 
 // get all comments by Postid
 export function getAll(postId) {

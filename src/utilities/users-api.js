@@ -2,7 +2,7 @@ import { getToken } from "./users-service";
 import sendRequest from "./send-request";
 
 // This is the base path of the Express rout we'll defing
-const BASE_URL = "/api/users";
+const BASE_URL = "https://mern-find-furry-friends.vercel.app/api/users";
 
 // Get user name by user id
 // export async function getUserInfoById(userId) {
