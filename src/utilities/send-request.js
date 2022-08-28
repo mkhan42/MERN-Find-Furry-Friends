@@ -17,7 +17,7 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
     // Prefacing with 'Bearer' is recommended in the HTTP specification
     options.headers.Authorization = `Bearer ${token}`;
   }
-  const res = await fetch('https://mern-find-furry-friends.vercel.app/api/users', options);
+  const res = await fetch(url, options);
   // res.ok will be false if the status code set to 4xx in the controller action
   if (res.ok) return res.json();
   throw new Error('Bad Request');
